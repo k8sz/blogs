@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on ZB</title>
+    <link>https://www.k8sz.com/tags/</link>
+    <description>Recent content in Tags on ZB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 26 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.k8sz.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ConfigMap</title>
+      <link>https://www.k8sz.com/tags/configmap/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/configmap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CronJob</title>
+      <link>https://www.k8sz.com/tags/cronjob/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/cronjob/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HPA</title>
+      <link>https://www.k8sz.com/tags/hpa/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/hpa/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Job</title>
+      <link>https://www.k8sz.com/tags/job/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/job/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Resource Quotas</title>
+      <link>https://www.k8sz.com/tags/resource-quotas/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/resource-quotas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Secret</title>
+      <link>https://www.k8sz.com/tags/secret/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/secret/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Service Account</title>
+      <link>https://www.k8sz.com/tags/service-account/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/service-account/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>StatefulSet</title>
+      <link>https://www.k8sz.com/tags/statefulset/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/statefulset/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>StorageClass</title>
+      <link>https://www.k8sz.com/tags/storageclass/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/storageclass/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>concept</title>
+      <link>https://www.k8sz.com/tags/concept/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/concept/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>deployment</title>
+      <link>https://www.k8sz.com/tags/deployment/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/deployment/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ingress</title>
+      <link>https://www.k8sz.com/tags/ingress/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/ingress/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>https://www.k8sz.com/tags/kubernetes/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>namespace</title>
+      <link>https://www.k8sz.com/tags/namespace/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/namespace/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nas</title>
+      <link>https://www.k8sz.com/tags/nas/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/nas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pod</title>
+      <link>https://www.k8sz.com/tags/pod/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/pod/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pv</title>
+      <link>https://www.k8sz.com/tags/pv/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/pv/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pvc</title>
+      <link>https://www.k8sz.com/tags/pvc/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/pvc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>service</title>
+      <link>https://www.k8sz.com/tags/service/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/service/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>volume</title>
+      <link>https://www.k8sz.com/tags/volume/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/volume/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>helm</title>
+      <link>https://www.k8sz.com/tags/helm/</link>
+      <pubDate>Fri, 25 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/helm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kustomize</title>
+      <link>https://www.k8sz.com/tags/kustomize/</link>
+      <pubDate>Fri, 25 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/kustomize/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>command</title>
+      <link>https://www.k8sz.com/tags/command/</link>
+      <pubDate>Tue, 22 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/command/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://www.k8sz.com/tags/linux/</link>
+      <pubDate>Tue, 22 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vim</title>
+      <link>https://www.k8sz.com/tags/vim/</link>
+      <pubDate>Tue, 22 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/vim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Chartmuseum</title>
+      <link>https://www.k8sz.com/tags/chartmuseum/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/chartmuseum/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Draft</title>
+      <link>https://www.k8sz.com/tags/draft/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/draft/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Monocular</title>
+      <link>https://www.k8sz.com/tags/monocular/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/monocular/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nexus</title>
+      <link>https://www.k8sz.com/tags/nexus/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/nexus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>devops</title>
+      <link>https://www.k8sz.com/tags/devops/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>github</title>
+      <link>https://www.k8sz.com/tags/github/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jenkins</title>
+      <link>https://www.k8sz.com/tags/jenkins/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/jenkins/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jenkins x</title>
+      <link>https://www.k8sz.com/tags/jenkins-x/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/jenkins-x/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jx</title>
+      <link>https://www.k8sz.com/tags/jx/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/jx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>skaffold</title>
+      <link>https://www.k8sz.com/tags/skaffold/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/skaffold/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cert manager</title>
+      <link>https://www.k8sz.com/tags/cert-manager/</link>
+      <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/cert-manager/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nginx-ingress</title>
+      <link>https://www.k8sz.com/tags/nginx-ingress/</link>
+      <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/nginx-ingress/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>backup</title>
+      <link>https://www.k8sz.com/tags/backup/</link>
+      <pubDate>Tue, 17 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/backup/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>data</title>
+      <link>https://www.k8sz.com/tags/data/</link>
+      <pubDate>Tue, 17 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/data/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>k8s</title>
+      <link>https://www.k8sz.com/tags/k8s/</link>
+      <pubDate>Tue, 17 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/k8s/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ci/cd</title>
+      <link>https://www.k8sz.com/tags/ci/cd/</link>
+      <pubDate>Mon, 16 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/ci/cd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://www.k8sz.com/tags/docker/</link>
+      <pubDate>Mon, 16 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubectl</title>
+      <link>https://www.k8sz.com/tags/kubectl/</link>
+      <pubDate>Mon, 16 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/kubectl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ldap</title>
+      <link>https://www.k8sz.com/tags/ldap/</link>
+      <pubDate>Mon, 16 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/ldap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>yaml</title>
+      <link>https://www.k8sz.com/tags/yaml/</link>
+      <pubDate>Mon, 16 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/yaml/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cicd</title>
+      <link>https://www.k8sz.com/tags/cicd/</link>
+      <pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/cicd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://www.k8sz.com/tags/git/</link>
+      <pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>prometheus</title>
+      <link>https://www.k8sz.com/tags/prometheus/</link>
+      <pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/prometheus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>监控</title>
+      <link>https://www.k8sz.com/tags/%E7%9B%91%E6%8E%A7/</link>
+      <pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/%E7%9B%91%E6%8E%A7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>drone</title>
+      <link>https://www.k8sz.com/tags/drone/</link>
+      <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/drone/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gogs</title>
+      <link>https://www.k8sz.com/tags/gogs/</link>
+      <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/gogs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubeadm</title>
+      <link>https://www.k8sz.com/tags/kubeadm/</link>
+      <pubDate>Sat, 17 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/kubeadm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>life</title>
+      <link>https://www.k8sz.com/tags/life/</link>
+      <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/life/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>motivational</title>
+      <link>https://www.k8sz.com/tags/motivational/</link>
+      <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/motivational/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>win</title>
+      <link>https://www.k8sz.com/tags/win/</link>
+      <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/tags/win/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

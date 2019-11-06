@@ -1,0 +1,782 @@
+[
+    {
+        "title": "About me",
+        "uri": "page/about",
+        "content": "Nothing world place Persistence  Talent will not  nothing common unsuccessful men talent  Genius will not  unrewarded genius almost proverb  Education will not  world full educated derelicts  Persistence Determination alone omnipotent  slogan  Press On  solved will always solve problems human race",
+        "objectID": "page/about",
+        "subtitle": "Why you'd want to go on a date with me",
+        "comments": false,
+        "unrelated": true,
+        "nopager": true
+    },
+    {
+        "title": "Archive",
+        "uri": "page/archive",
+        "content": "Kubernetes Docker Kubernetes",
+        "objectID": "page/archive",
+        "comments": false,
+        "unrelated": true,
+        "nopager": true
+    },
+    {
+        "title": "友情链接",
+        "uri": "page/friend",
+        "content": "K8S    Ryan Yang JACK LEE           Jimmy Song Roc RECALL s Blog devopser",
+        "objectID": "page/friend",
+        "subtitle": "阳明的一些朋友",
+        "comments": false,
+        "unrelated": true,
+        "nopager": true
+    },
+    {
+        "title": "Kubernetes",
+        "uri": "page/kubernetes.io",
+        "content": "Kubernetes                                                          Kubernetes     Google 15                              Kubernetes   1           Google                   Kubernetes                                                    Kubernetes                                            Kubernetes                                                     Kubernetes   2                                                                                                                                                                  UI      CPU                                                      Kubernetes           IP            DNS",
+        "objectID": "page/kubernetes.io",
+        "subtitle": "生产级别的容器编排系统",
+        "comments": false,
+        "unrelated": true,
+        "nopager": true
+    },
+    {
+        "title": "Kubernetes中文社区",
+        "uri": "page/kubernetes.org.cn",
+        "content": "Kubernetes     www kubernetes org cn     K8S              K8S              K8S",
+        "objectID": "page/kubernetes.org.cn",
+        "subtitle": "分享最新K8S资讯、教程、实践和中文文档",
+        "comments": false,
+        "unrelated": true,
+        "nopager": true
+    },
+    {
+        "title": "Kubernetes 开篇",
+        "uri": "post/Kubernetes-开篇",
+        "content": "Kubernetes                                                               Docker     Kubernetes                         Kubernetes                 Kubernetes      Master                                master           kube apiserver kube controller manager kube scheduler          master            kubelet   master         kube proxy          Kubernetes                kubernetes                      shell                             shell                Kubernetes              Kubernetes                                                         Kubernetes    DNS        IP                 Kubernetes                           Kubernetes                                             Kubernetes                                            Kubernetes                                   Kubernetes             CPU    RAM              Kubernetes                     Kubernetes                                                                    Kubernetes                  OAuth   ssh                                             Kubernetes   kube apiserver   Kubernetes API master       Kubernetes                                     ETCD                Kubernetes              kube scheduler                 pod                                                                               kube controller manager                                                                                                                                  pod                                                    API                               pod   Kubernetes       kubelet                       pod     kubelet              PodSpecs      PodSpecs           kubelet      Kubernetes       kube proxy kube proxy                                            Kubernetes      kube proxy       kube proxy            TCP UDP      TCP UDP    Container Runtime                  Kubernetes          Docker  containerd cri o  rktlet  Kubernetes CRI",
+        "objectID": "post/Kubernetes-开篇",
+        "date": "2019-08-15T00:00:00.000Z",
+        "tags": [
+            "kubernetes",
+            "devops"
+        ],
+        "slug": "Kubernetesopenings",
+        "keywords": [
+            "kubernetes",
+            "技术",
+            "分享",
+            "实践"
+        ],
+        "bigimg": [
+            {
+                "src": "/img/great-wall-01.jpg",
+                "desc": ""
+            }
+        ],
+        "category": "kubernetes"
+    },
+    {
+        "title": "Kubernetes之16个入门概念",
+        "uri": "post/kubernetes之16个入门概念",
+        "content": "kubernetes Google             Google           Borg                                                                           Volume             Kubernetes                              Kubernetes             Pod Pod                      Pod                                        Kubernetes        Pod        Pod       IP  Pod              IPC Network UTC namespace         localhost     Pod           Volume               Pod              SIGTERM        grace period                        SecurityContext                                    restartPolicy      Always OnFailure Never            imagePullPolicy      Always Never IfNotPresent      Kubernetes  CGroup     CPU            request  limit                     livenessProbe redinessProbe                                                                      Pod Init container                                                                           postStart preStop                         Namespace Namespace                                                     pod service replicaSet deployment        namespace     default   node  persistentVolumes       namespace    namespace     shell     namespace kubectl namespace   namespace kubectl create namespace ns name   namespace kubectl delete namespace ns name                        namespace          namespace     default   kube system           PersistentVolumes      namespace   PersistentVolumeClaim       namespace   Events    namespace     events     Node Node Pod                      Node     Kubernetes      Kubernetes    Node         Pod   Node         container runtime Docker  kubelet kube proxy      node     shell     node kubectl nodes  node        kubectl cordon  nodename  node       kubectl uncordon  nodename   taint       kubectl taint       Node       Node          Pod                Node  Pod         Node     Pod             key value effect   taint effect          NoSchedule   k8s    Pod         Node  PreferNoSchedule   k8s      Pod         Node  NoExecute   k8s    Pod         Node      Node      Pod              shell  node0         kubectl taint node node0 key1 value1 NoShedule  node0 key  key1      kubectl taint node node0 key   kube master           kubectl taint node node1 node role kubernetes io master  NoSchedule  kube master             kubectl taint node node1 node role kubernetes io master PreferNoSchedule      Tolerations        Node   taint effect NoSchedule PreferNoSchedule NoExecute Pod          Pod             Node         Pod      Toleration           Pod                      Node   Service Service           Pods                     Service                                Service     label      Pod     ReplicaSet  Deployment              service            ClusterIP  ClusterIP                         IP NodePort   ClusterIP    Service                     NodeIP NodePort        LoadBalancer   NodePort       cloud provider                     NodeIP NodePort ExternalName       DNS CNAME                          Service      Kubernetes            Service       Label selector    Service          endpoint  Volume                                       Docker   Volume             Kubernetes       Volume                              Kubernetes         Pod        Kubelet        Volume        Pod    Volume                 Volume     emptyDir        PV        Kubernetes      Volume    emptyDir Pod   emptyDir             emptyDir           pod        emptyDir      hostPath hostPath    Node       Pod    NFS Network File System         Kubernetes             NFS Pod   NFS               NFS         glusterfs  NFS            Kubernetes   glusterfs   Pod          cephfs                  Pod          subpath Pod          Volume        secret                         Pod  persistentVolumeClaim          PersistentVolume    Pod          PersistentVolume PV         PersistentVolume PV                Node            PersistentVolume  PV  PersistentVolumeClaim  PVC             PV          PVC            Pod   PV      accessModes      ReadWriteOnce RWO                      Pod    ReadOnlyMany ROX             Pod    ReadWriteMany RWX                 Pod                                           NFS  PVC  PV                                  PV      persistentVolumeReclaimPolicy      Retain      Volume         Recycle        rm  rf  thevolume      NFS HostPath    Delete        Deployment                     Pod                    Pod            Kubernetes  Deloyment Controller                  Deployment   Pod ReplicaSet                      Deployment          shell     Deployment   kubectl run www  image 10 0 0 183 5000 hanker www 0 0 1   port 8080   Deployment kubectl deployment   all namespaces     Deployment kubectl describe deployment www   Deployment   kubectl edit deployment www    Deployment kubectl delete deployment www          Deployment  Pod     kubectl scale deployment www  replicas 2      kubectl set image deployment nginx deployment nginx nginx 1 9 1      kubectl rollout undo deployment nginx deployment        kubectl rollout status deployment nginx deployment        HPA   horizontal pod autoscaling                ",
+        "objectID": "post/kubernetes之16个入门概念",
+        "subtitle": "Kubernetes基础篇",
+        "date": "2019-10-25T00:00:00.000Z",
+        "tags": [
+            "kubernetes",
+            "concept",
+            "service",
+            "pod",
+            "ingress",
+            "namespace",
+            "volume",
+            "pv",
+            "pvc",
+            "deployment",
+            "StatefulSet",
+            "Job",
+            "CronJob",
+            "HPA",
+            "Service Account",
+            "Secret",
+            "ConfigMap",
+            "Resource Quotas"
+        ],
+        "keywords": [
+            "kubernetes",
+            "concept",
+            "service",
+            "pod",
+            "ingress",
+            "namespace",
+            "volume",
+            "pv",
+            "pvc",
+            "deployment",
+            "StatefulSet",
+            "Job",
+            "CronJob",
+            "HPA",
+            "Service Account",
+            "Secret",
+            "ConfigMap",
+            "Resource Quotas"
+        ],
+        "slug": "kubernetes-concept",
+        "gitcomment": true,
+        "bigimg": [
+            {
+                "src": "https://bxdc-static.oss-cn-beijing.aliyuncs.com/images/photo-1565780421727-543646cefafb.jpeg",
+                "desc": ""
+            }
+        ],
+        "category": "kubernetes"
+    },
+    {
+        "title": "kubernetes CI/CD之drone安装",
+        "uri": "post/kubernetes之drone安装",
+        "content": "Drone                      YAML          Docker      Pipeline Drone           Server                Secrets  Webhook     Agent                    Pipeline     Server   Agent                  10 15MB          kubernetes     Drone    CI CD       gogs     kubernetes gogs   Drone     drone pvc yaml    yaml kind  PersistentVolumeClaim apiVersion  v1 metadata  name  dronepvc namespace  default spec  accessModes  ReadWriteOnce resources  requests  storage  5Gi storageClassName  alicloud disk available    kubernet    drone pvc yaml    drone   pvc  shell kubectl apply  f drone pvc yaml  user S001 basics   kubectl pvc NAME STATUS VOLUME CAPACITY ACCESS MODES STORAGECLASS AGE dronepvc Bound pvc 7a832ccb 2ee2 4a7b 8cf0 1036357d95b4 5Gi RWO alicloud disk available 21h     drone rbac yaml     drone server  agent  rbac     yaml apiVersion  v1 kind  ServiceAccount metadata  name  drone pipeline namespace  default labels  app  drone apiVersion  v1 kind  ServiceAccount metadata  name  drone labels  app  drone apiVersion  rbac authorization k8s io v1 kind  ClusterRole metadata  name  drone pipeline labels  app  drone rules  apiGroups  extensions resources  deployments verbs  list watch patch update apiGroups     resources  namespaces configmaps secrets pods services verbs  create delete list watch apiGroups     resources  pods log verbs  apiVersion  rbac authorization k8s io v1 kind  ClusterRoleBinding metadata  name  drone pipeline labels  app  drone subjects  kind  ServiceAccount name  drone pipeline namespace  default roleRef  kind  ClusterRole name  drone pipeline apiGroup  rbac authorization k8s io apiVersion  rbac authorization k8s io v1 kind  Role metadata  name  drone labels  app  drone rules  apiGroups  batch resources  jobs verbs      apiGroups  extensions resources  deployments verbs  list patch update apiVersion  rbac authorization k8s io v1 kind  RoleBinding metadata  name  drone labels  app  drone roleRef  apiGroup  rbac authorization k8s io kind  Role name  drone subjects  kind  ServiceAccount name  drone namespace  default    kubernet    drone rbac yaml      shell kubectl apply  f drone rbac yaml     drone deployment yaml    yaml apiVersion  v1 kind  Service metadata  name  drone annotations  labels  app  drone spec  type  ClusterIP ports  name  http port  80 targetPort  80 selector  app  drone apiVersion  extensions v1beta1 kind  Deployment metadata  name  drone server labels  app  drone spec  replicas  1 template  metadata  labels  app  drone spec  serviceAccountName  drone containers  name  server image   docker io drone drone 1 2  imagePullPolicy  IfNotPresent env  name  DRONEPRIVATEMODE value   true  name  DRONETLSAUTOCERT value   true  name  DRONEKUBERNETESENABLED value   true  name  DRONEKUBERNETESNAMESPACE value  default name  DRONEGOGSSERVER value   http   gogs basics 3000  name  DRONEGITALWAYS_AUTH value   false  name  DRONESERVERHOST value   drone  name  DRONERPCPROTO value   http  name  DRONERPCHOST value  drone default 80 name  DRONESERVERPROTO value  http name  DRONERPCSECRET value   b0a7e0969f6736a09a73c1e4933809de  name  DRONEDATABASEDATASOURCE value    var lib drone drone sqlite  name  DRONEDATABASEDRIVER value   sqlite3  name  DRONELOGSDEBUG value   false  name  DRONEUSERCREATE value  username root admin true ports  name  http containerPort  80 protocol  TCP name  https containerPort  443 protocol  TCP name  grpc containerPort  9000 protocol  TCP livenessProbe  httpGet  path    port  http volumeMounts  name  data mountPath   var lib drone volumes  name  data persistentVolumeClaim  claimName  dronepvc         POD                 kubernet    drone deployment yaml      shell kubectl apply  f drone deployment yaml  user S001     kubectl pods  l app drone NAME READY STATUS RESTARTS AGE drone server 5f5888d48 7t5lr 1 1 Running 0 10s     istio ingressgatewqy  yaml apiVersion  networking istio io v1alpha3 kind  Gateway metadata  name  drone gateway namespace  default spec  selector  istio  ingressgateway servers  port  number  80 name  http drone protocol  HTTP hosts   drone zb vip  apiVersion  networking istio io v1alpha3 kind  VirtualService metadata  name  drone vs namespace  default spec  hosts   drone zb vip  gateways  drone gateway http  match  uri  prefix    route  destination  host  drone port  number  80 apiVersion  networking istio io v1alpha3 kind  DestinationRule metadata  name  drone namespace  default spec  host  drone trafficPolicy  tls  mode  DISABLE    kubernetes       shell kubectl apply  f drone gw yaml      DNS    drone zb com         drone zb com    drone           gogs    git          git     ACTIVATE REPOSITORY",
+        "objectID": "post/kubernetes之drone安装",
+        "subtitle": "基于gogs",
+        "date": "2019-08-27T00:00:00.000Z",
+        "tags": [
+            "kubernetes",
+            "ldap",
+            "docker",
+            "kubectl",
+            "yaml",
+            "gogs",
+            "devops",
+            "ci/cd",
+            "drone"
+        ],
+        "keywords": [
+            "kubernetes",
+            "ldap",
+            "更新",
+            "kubectl",
+            "docker"
+        ],
+        "slug": "kubernetes-drone-install",
+        "gitcomment": false,
+        "bigimg": [
+            {
+                "src": "/img/great-wall-01.jpg",
+                "desc": ""
+            }
+        ],
+        "category": "kubernetes"
+    },
+    {
+        "title": "kubernetes之gogs安装",
+        "uri": "post/kubernetes之gogs安装",
+        "content": "Gogs            Git     Gogs                            Git       Go        Gogs                   Go               Linux Mac OS X Windows    ARM          kubernetes  gogs git        pvc yaml   gogs         yaml apiVersion  v1 metadata  name  gogs pvc namespace  basics spec  accessModes  ReadWriteOnce resources  requests  storage  5Gi storageClassName  alicloud disk available    shell kubectl apply  f pvc yaml  user S001 basics   kubectl pvc NAME STATUS VOLUME CAPACITY ACCESS MODES STORAGECLASS AGE gogs pvc Bound pvc 37ecf2e0 6723 4ff8 9af8 72058aa44d3c 5Gi RWO alicloud disk available 59s            nfs storageClass     gogs deployment yaml  yaml apiVersion  extensions v1beta1 kind  Deployment metadata  name  gogs labels  app  gogs namespace  basics spec  replicas  1 selector  matchLabels  app  gogs template  metadata  name  gogs labels  app  gogs spec  containers  name  gogs image  gogs gogs 0 11 86 imagePullPolicy  IfNotPresent env  name  TZ value  Asia Shanghai volumeMounts  name  gogs data mountPath   data ports  containerPort  3000 name  web protocol  TCP containerPort  22 name  ssh protocol  TCP resources  limits  cpu   1000m  memory   1024Mi  requests  cpu   500m  memory   512Mi  livenessProbe  httpGet  port  3000 readinessProbe  httpGet  port  3000 volumes  name  gogs data persistentVolumeClaim  claimName  gogs pvc apiVersion  v1 kind  Service metadata  name  gogs labels  app  gogs namespace  basics spec  selector  app  gogs ports  name  http port  3000 type  ClusterIP    shell kubectl apply  f gogs deployment yaml  user S001     kubectl pods svc n default  l app gogs NAME READY STATUS RESTARTS AGE gogs 7499894d8d vcfpb 2 2 Running 0 22s NAME TYPE CLUSTER IP EXTERNAL IP PORT S  AGE service gogs ClusterIP 10 88 244 169 3000 TCP 77s       gogs   kubernetes     istio      istio ingressgateway  ingress  yaml apiVersion  networking istio io v1alpha3 kind  Gateway metadata  name  gogs gateway namespace  default spec  selector  istio  ingressgateway servers  port  number  80 name  http gogs protocol  HTTP hosts   gogs zb vip  apiVersion  networking istio io v1alpha3 kind  VirtualService metadata  name  gogs vs namespace  default spec  hosts   gogs zb vip  gateways  gogs gateway http  match  uri  prefix   gogs route  destination  host  gogs port  number  3000 apiVersion  networking istio io v1alpha3 kind  DestinationRule metadata  name  gogs namespace  default spec  host  gogs trafficPolicy  tls  mode  DISABLEE    shell  root ProApiS001 basics   kubectl apply  f gogs gw yaml gateway networking istio io gogs gateway created virtualservice networking istio io gogs vs created destinationrule networking istio io gogs created          DNS          hosts                       gogs                              SQLite3              gogs      3000   URL      git URL     https   github com kubernetes kubernetes git                    4                     gogs  ldap                                                   k8s       openldap    DN    ldap        openldap                                                  ldap   ldap                             gogs gitlab",
+        "objectID": "post/kubernetes之gogs安装",
+        "subtitle": "配置LDAP验证",
+        "date": "2019-08-26T00:00:00.000Z",
+        "tags": [
+            "kubernetes",
+            "ldap",
+            "docker",
+            "kubectl",
+            "yaml",
+            "gogs",
+            "git"
+        ],
+        "keywords": [
+            "kubernetes",
+            "ldap",
+            "更新",
+            "kubectl",
+            "docker",
+            "gogs",
+            "devops"
+        ],
+        "slug": "kubernetesgogs",
+        "bigimg": [
+            {
+                "src": "/img/great-wall-01.jpg",
+                "desc": ""
+            }
+        ],
+        "category": "kubernetes"
+    },
+    {
+        "title": "HelmV2迁移到V3版本",
+        "uri": "post/kubernetes之helm3",
+        "content": "Helm V3            Beta        V2   V3                          V2           V3                                                    helm 2to3                     Helm V3       Helm V2 CLI                               CLI                            V2                Helm GitHub          V3 Beta       https   github com helm helm releases                          Mac       MacOS amd64                Helm CLI      helm3      PATH       usr local bin                 helm3        helm3 version version BuildInfo Version  v3 0 0 beta 3   GitCommit  5cb923eecbe80d1ad76399aee234717c11931d9a   GitTreeState  clean   GoVersion  go1 12 9     helm repo list NAME URL stable http   mirror azure cn kubernetes charts  local http   127 0 0 1 8879 charts   helm3 repo list Error  no repositories show          helm3               chart       HELM 2TO3    helm 2to3           Helm V2        release     Helm V3          Kubernetes                                                       helm3 plugin install https   github com helm helm 2to3 Downloading installing helm 2to3 v0 1 1     https   github com helm helm 2to3 releases download v0 1 1 helm 2to30 1 1darwin_amd64 tar gz Installed plugin  2to3        helm3                 helm3 plugin list NAME VERSION DESCRIPTION 2to3 0 1 1 migrate Helm v2 configuration releases in place Helm v3   helm3 2to3 Migrate Helm v2 configuration releases in place Helm v3 Usage  2to3  command  Available Commands  convert migrate Helm v2 release in place Helm v3 help Help command move migrate Helm v2 configuration in place Helm v3 Flags   h    help help 2to3 Use  2to3  command    help  information command            helm 2to3                                      Helm V2       Helm V2 release                  Helm V2             Helm V2                 helm3 2to3 move config  Helm 2  Home directory   Users ych  helm  Helm 3  Config directory   Users ych Library Preferences helm  Helm 3  Data directory   Users ych Library helm  Helm 3  Create config folder   Users ych Library Preferences helm     Helm 3  Config folder   Users ych Library Preferences helm  created   Helm 2  repositories file   Users ych  helm repository repositories yaml  will copy  Helm 3  config folder   Users ych Library Preferences helm repositories yaml     Helm 2  repositories file   Users ych  helm repository repositories yaml  copied successfully  Helm 3  config folder   Users ych Library Preferences helm repositories yaml     Helm 3  Create data folder   Users ych Library helm     Helm 3  data folder   Users ych Library helm  created   Helm 2  plugins   Users ych  helm plugins  will copy  Helm 3  data folder   Users ych Library helm plugins     Helm 2  plugins   Users ych  helm plugins  copied successfully  Helm 3  data folder   Users ych Library helm plugins     Helm 2  starters   Users ych  helm starters  will copy  Helm 3  data folder   Users ych Library helm starters     Helm 2  starters   Users ych  helm starters  copied successfully  Helm 3  data folder   Users ych Library helm starters              Chart starters Chart                          Helm V2            Helm V3                               Chart         helm3 repo list NAME URL stable http   mirror azure cn kubernetes charts  local http   127 0 0 1 8879 charts   helm3 plugin list NAME VERSION DESCRIPTION 2to3 0 1 1 migrate Helm v2 configuration releases in place Helm v3 push 0 7 1 Push chart package ChartMuseum              Chart         Helm V3           V2       Chart             move config       Helm V3                      repositories yaml                         Helm V2       Helm V3                       export HELMV2HOME  HOME  helm2   export HELMV3CONFIG  HOME  helm3   export HELMV3DATA  PWD  helm3   helm3 2to3 move config    Helm V2 Release            releases                         helm3 2to3 convert  h migrate Helm v2 release in place Helm v3 Usage  2to3 convert  flags  RELEASE Flags    delete v2 releases v2 releases deleted migration  default  v2 releases retained   dry run simulate convert  h    help help convert  l    label string label select tiller resources  default  OWNER TILLER    s    release storage string v2 release storage type object   secrets   configmaps   used  tiller out cluster  flag  default  secrets    t    tiller ns string namespace Tiller  default  kube system     tiller out cluster when Tiller not running cluster e g  Tillerless           tiller out cluster         Tillerless Helm v2           Helm V2     release                 helm list NAME REVISION UPDATED STATUS CHART APP VERSION NAMESPACE minio 1 Wed Sep 11 11 47 51 2019 DEPLOYED minio 2 5 13 RELEASE 2019 08 07T01 59 21Z argo redis 1 Wed Sep 11 14 52 57 2019 DEPLOYED redis 9 1 7 5 0 5 redis                 dry run                            helm3 2to3 convert   dry run minio NOTE  dry run mode  following actions will not executed  Run without   dry run actions described below  Release  minio  will converted Helm 2 Helm 3   Helm 3  Release  minio  will created   Helm 3  ReleaseVersion  minio v1  will created           dry run                                      helm3 2to3 convert minio Releas",
+        "objectID": "post/kubernetes之helm3",
+        "date": "2019-10-18T00:00:00.000Z",
+        "tags": [
+            "kubernetes",
+            "helm"
+        ],
+        "keywords": [
+            "kubernetes",
+            "helm",
+            "chart",
+            "迁移"
+        ],
+        "slug": "helm2-to-v3",
+        "gitcomment": false,
+        "category": "kubernetes",
+        "bigimg": [
+            {
+                "src": "https://bxdc-static.oss-cn-beijing.aliyuncs.com/images/photo-1568549422238-cc366fee8a26.jpeg",
+                "desc": ""
+            }
+        ]
+    },
+    {
+        "title": "kubernetes之Helm安装",
+        "uri": "post/kubernetes之Helm安装",
+        "content": "Helm      Kubernetes       Helm Charts                Kubernetes     Helm    kubernetes    yum       Helm   chart  Helm                         yum  rpm     Chart                Chart yaml  templates         Kubernetes manifest      Release  Kubernetes        Chart             Chart           MySQL Chart             MySQL           Chart               Release      Release    Repository        Chart     Helm   Helm            Helm Client                   helm         Chart     chart  Tiller        Chart               Tiller    k8s node       helm         helm          releases            shell wget https   get helm sh helm v2 14 3 linux amd64 tar gz tar xf helm v2 14 3 linux arm64 tar gz cd linux amd64 cp  a helm  usr bin helm version   Tiller     Tiller ServiceAccount   Cluster admin   Tiller sa rbac yaml  yaml apiVersion  v1 kind  ServiceAccount metadata  name  tiller namespace  kube system apiVersion  rbac authorization k8s io v1 kind  ClusterRoleBinding metadata  name  tiller roleRef  apiGroup  rbac authorization k8s io kind  ClusterRole name  cluster admin subjects  kind  ServiceAccount name  tiller namespace  kube system     kubectl apply  shell  user S001     kubectl apply  f Tiller sa rbac yaml serviceaccount tiller created clusterrolebinding rbac authorization k8s io tiller created     helm init     Tiller    shell helm init   upgrade   service account tiller   tiller image registry cn hangzhou aliyuncs com google_containers tiller v2 14 3     Tiller  shell  user S01 k8sz   kubectl pods  n kube system  l name tiller NAME READY STATUS RESTARTS AGE tiller deploy 78f54ccfd4 jxdgb 1 1 Running 0 1d   helm     chart    shell         helm version          helm repo update    helm    chart helm search    chart     helm inspect stable jenkins    incubator repo helm repo add incubator https   aliacs app catalog oss cn hangzhou aliyuncs com charts incubator     repo    helm repo list    repo         helm repository  helm repo index      repo helm repo remove incubator   release    shell      release helm install   name mem1 stable tomcat    release helm upgrade   set mysqlRootPassword passwd db mysql stable mysql    release helm rollback db mysql 1    Release   helm listh helm ls    release helm delete   purge redis      release         helm install   dry run   debug   name els   namespace efk  f values yaml incubator elasticsearch        chart helm create hello chart validate chart helm lint    chart   tgz helm package hello chart      chart  kubernetes yaml   helm template install kubernetes helm istio init   name istio init   namespace istio system   istio yaml      helm kubernetes                webui helm",
+        "objectID": "post/kubernetes之Helm安装",
+        "date": "2019-08-17T00:00:00.000Z",
+        "tags": [
+            "kubernetes",
+            "helm",
+            "docker",
+            "kubectl",
+            "yaml"
+        ],
+        "keywords": [
+            "kubernetes",
+            "helm",
+            "kubectl"
+        ],
+        "slug": "kuberneteshelm",
+        "bigimg": [
+            {
+                "src": "/img/great-wall-01.jpg",
+                "desc": ""
+            }
+        ],
+        "category": "kubernetes"
+    },
+    {
+        "title": "kubernetes之NginxIngress HTTPS自动化",
+        "uri": "post/kubernetes之Ingress-HTTPS自动化",
+        "content": "cert manager   Kubernetes                          Let s Encrypt HashiCorp Vault Venafi                      kubernetes     cert manager  HELM Inagess nginx  shell helm     kubernetes Helm   ingress nginx helm install  n nginx ingress   namespace kube system stable nginx ingress                       cluster issuer    Cert manager        kubernetes io tls acme   true annotation      TLS   shell   set ingressShim defaultIssuerName letsencrypt prod   set ingressShim defaultIssuerKind ClusterIssuer       shell   CRD   kubectl apply  f https   raw githubusercontent com jetstack cert manager release 0 11 deploy manifests 00 crds yaml        kubectl label namespace kube system certmanager k8s io disable validation true   helm repo helm repo add jetstack https   charts jetstack io   helm repo helm repo update     root master01 tmp   helm install   name cert manager   namespace kube system   set ingressShim defaultIssuerName letsencrypt prod   set ingressShim defaultIssuerKind ClusterIssuer jetstack cert manager   version v0 11 0 NAME  cert manager LAST DEPLOYED  Tue Oct 8 13 42 00 2019 NAMESPACE  kube system STATUS  DEPLOYED RESOURCES    v1 ClusterRole NAME AGE cert manager edit 1s cert manager view 1s cert manager webhook webhook requester 1s   v1 Deployment NAME READY UP TO DATE AVAILABLE AGE cert manager 0 1 1 0 1s cert manager cainjector 0 1 1 0 1s cert manager webhook 0 1 1 0 1s   v1 Pod related  NAME READY STATUS RESTARTS AGE cert manager 7b867c7d5 jd7mw 0 1 ContainerCreating 0 1s cert manager cainjector 57f6bd5577 zfhqn 0 1 ContainerCreating 0 1s cert manager webhook 66df9566cb 2rx82 0 1 ContainerCreating 0 1s   v1 Service NAME TYPE CLUSTER IP EXTERNAL IP PORT S  AGE cert manager ClusterIP 10 88 165 143 9402 TCP 1s cert manager webhook ClusterIP 10 88 59 130 443 TCP 1s   v1 ServiceAccount NAME SECRETS AGE cert manager 1 1s cert manager cainjector 1 1s cert manager webhook 1 1s   v1beta1 APIService NAME AGE v1beta1 webhook certmanager k8s io 1s   v1beta1 ClusterRole NAME AGE cert manager cainjector 1s cert manager controller certificates 1s cert manager controller challenges 1s cert manager controller clusterissuers 1s cert manager controller ingress shim 1s cert manager controller issuers 1s cert manager controller orders 1s cert manager leaderelection 1s   v1beta1 ClusterRoleBinding NAME AGE cert manager cainjector 1s cert manager controller certificates 1s cert manager controller challenges 1s cert manager controller clusterissuers 1s cert manager controller ingress shim 1s cert manager controller issuers 1s cert manager controller orders 1s cert manager leaderelection 1s cert manager webhook auth delegator 1s   v1beta1 MutatingWebhookConfiguration NAME AGE cert manager webhook 1s   v1beta1 RoleBinding NAME AGE cert manager webhook webhook authentication reader 1s   v1beta1 ValidatingWebhookConfiguration NAME AGE cert manager webhook 1s NOTES  cert manager deployed successfully  order begin issuing certificates  will need set ClusterIssuer Issuer resource  for example  creating  letsencrypt staging  issuer   information different types issuers configure found documentation  https   docs cert manager io en latest reference issuers html information configure cert manager automatically provision Certificates Ingress resources  look ingress shim documentation  https   docs cert manager io en latest reference ingress shim html     pod    shell  root master01 tmp   kubectl pod  n kube system   selector app cert manager NAME READY STATUS RESTARTS AGE cert manager 7b867c7d5 jd7mw 1 1 Running 0 91s             shell vim issuer yaml apiVersion  cert manager io v1alpha2 kind  ClusterIssuer metadata  name  letsencrypt prod spec  acme  server  https   acme v02 api letsencrypt org directory email  512251296 qq com privateKeySecretRef  name  letsencrypt prod solvers  http01  ingress  class  nginx       ClusterIssuer     shell  root master01 tmp   kubectl apply  f issuer yaml clusterissuer certmanager k8s io letsencrypt prod created  root master01 tmp   kubectl clusterissuer NAME AGE letsencrypt prod 2m49s    ingress   cert manager  yaml apiVersion  extensions v1beta1 kind  Ingress metadata  annotations  kubernetes io ingress class  nginx kubernetes io tls acme   true  name  gitlab namespace  kube ops spec  tls  hosts  git zb vip secretName  gitlab rules  host  git zb vip http  paths  backend  serviceName  gitlab servicePort  http         http   docs cert manager io en latest getting started install kubernetes html https   www qikqiak com post automatic kubernetes ingress https with lets encrypt",
+        "objectID": "post/kubernetes之Ingress-HTTPS自动化",
+        "subtitle": "使用 Let's Encrypt 实现",
+        "date": "2019-10-08T00:00:00.000Z",
+        "tags": [
+            "kubernetes",
+            "ingress",
+            "nginx-ingress",
+            "Cert manager"
+        ],
+        "keywords": [
+            "kubernetes",
+            "ingress"
+        ],
+        "slug": "kubernetes-ingress-https",
+        "gitcomment": true,
+        "bigimg": [
+            {
+                "src": "/img/k8s/k8s001.jpg",
+                "desc": ""
+            }
+        ],
+        "category": "ingress"
+    },
+    {
+        "title": "kubernetes之Jenkins x主要组件",
+        "uri": "post/kubernetes之jenkins_x简介",
+        "content": "Jenkins X          CI CD     Jenkins Kubernetes                                                    jx    CICD devops                          jx          jenkins X    gitops jx   gitops  k8s  preview staging production     devops    devops            jenkins pipeline jx  Jenkins Pipeline   CI   Jenkins Pipeline jenkins             Pipeline      Jenkins Pipeline                 Pipeline DSL             Pipeline   helm charts Helm   Kubernetes charts    charts                  Ubuntu APT CentOS  yum      helm            Helm charts      Kubernetes                     Kubernetes                  Helm       skaffold Skaffold            Kubernetes                         Kubernetes                 Kubernetes                                                                         Draft draft        A tool developers create cloud native applications Kubernetes           K8S                                          JENKINSFile charts                             Draft        Draft                                        Draft           draft init     docker registry       Kubernetes       draftd               docker registry          draft create draft    packs                 Dockerfile   Kubernetes Helm Charts draft up    Dockfile          Helm        Kubernetes                            draft client                    draftd      jx        draft                   draft      draft packs      Nexus jx  Nexus           Artifact repository  Nexus                maven      Nexus     Nexus     npm nuget docker    Chartmuseum  Monocular Chartmuseum      helm chart   jx    chart    Monocular   web       helm charts       charts     https   www cnblogs com xiaoqi p jenkins x part1 html",
+        "objectID": "post/kubernetes之jenkins_x简介",
+        "subtitle": "基于kubernetes 的CI/CD",
+        "date": "2019-09-06T00:00:00.000Z",
+        "tags": [
+            "kubernetes",
+            "jenkins x",
+            "devops",
+            "jx",
+            "github",
+            "Chartmuseum",
+            "Monocular",
+            "Nexus",
+            "Draft",
+            "skaffold",
+            "helm",
+            "jenkins"
+        ],
+        "keywords": [
+            "kubernetes",
+            "ldap",
+            "更新",
+            "kubectl",
+            "docker"
+        ],
+        "slug": "kubernetes-jx-component",
+        "gitcomment": false,
+        "bigimg": [
+            {
+                "src": "/img/k8s/k8s001.jpg",
+                "desc": ""
+            }
+        ],
+        "category": "kubernetes"
+    },
+    {
+        "title": "kubernetes之Jenkins 流水线语法",
+        "uri": "post/kubernetes之Jenkins_流水线语法",
+        "content": "Jenkins                                                                 Jenkins Pipeline   Groovy             Groovy                         Groovy                         Jenkinsfile def singlyQuoted    Hello  def doublyQuoted    World                                    Jenkinsfile def username    Jenkins  echo  Hello Mr    username   echo  I said  Hello Mr    username           Jenkinsfile Hello Mr    username  said  Hello Mr  Jenkins          Jenkins                   env        Jenkinsfile  Jenkins Pipeline                  localhost 8080 pipeline syntax globals env    Jenkins    localhost 8080      BUILDID     ID Jenkins  1 597      BUILDNUMBER   JOB_NAME             foo   foo   bar                   Groovy Map                Jenkinsfile Jenkinsfile        pipeline   agent stages   stage  Example     steps   echo  Running   env BUILDID    env JENKINSURL              Jenkinsfile env MYTOOL_VERSION    1 33  node   sh   usr local mytool  MYTOOL_VERSION bin start                                 Jenkins                                             withEnv      Jenkinsfile Jenkinsfile        pipeline   agent environment     CC    clang    stages   stage  Example     environment     DEBUG_FLAGS     g    steps   sh  printenv                                        Jenkins    Pipeline    credentials        environment                                                                                                                                      Amazon Web Services AWS        Jenkins        ID jenkins aws secret key id jenkins aws secret access key  Jenkinsfile Jenkinsfile        pipeline   agent      Define agent details   environment   AWSACCESSKEY_ID   credentials  jenkins aws secret key id   AWSSECRETACCESS_KEY   credentials  jenkins aws secret access key     stages   stage  Example stage 1     steps            stage  Example stage 2     steps                                                                                  properties                                                      params             Greeting            Jenkinsfile         params Greeting         Jenkinsfile Jenkinsfile        pipeline   agent parameters   string name   Greeting   defaultValue   Hello   description   How greet world      stages   stage  Example     steps   echo    params Greeting  World                           post                      post         always  unstable  success  failure changed                    post          Jenkinsfile Jenkinsfile        pipeline   agent stages   stage  Test     steps   sh  make check        post   always   junit    target  xml    failure   mail to  team example com  subject   The Pipeline failed             agent  agent               Jenkins               agent              pipeline         stage                                         stage                       agent                                      stage          agent      stage    agent none                               stage         agent      agent none                   agent                   label                stage          node docker dockerfile         node      customWorkspace               stage  agent                                            node                     Jenkinsfile agent   node   label  my defined label  customWorkspace   some other path              docker dockerfile             stage  agent       post post                       stage                post       post            always changed fixed regression aborted failure success unstable cleanup                                                              None             stage      always      stage           post          changed                                post      fixed                                 post      regression                                       post      aborted                         post                      web UI        failure                         post        web UI        success                           post        web UI           unstable                                              post         cleanup                    post            post            Jenkinsfile Jenkinsfile  Declarative Pipeline  pipeline   agent stages   stage  Example     steps   echo  Hello World        post     always     echo  I will always say Hello again                post             Post                  stages                                                                                                 None                    Jenkinsfile Jenkinsfile  Declarative Pipeline  pipeline   agent stages     stage  Example     steps   echo  Hello World                               steps steps         stage                       Jenkinsfile Jenkinsfile  Declarative Pipeline  pipeline   agent stages     stage  Example     steps   echo  Hello World                                options                                   buildDiscarder             timestamps                None                     buildDiscarder                artifacts          options  buildder  logRotator numToKeepStr   1     disableConcurrentBuilds                              option",
+        "objectID": "post/kubernetes之Jenkins_流水线语法",
+        "subtitle": "基于kubernetes 的CI/CD",
+        "date": "2019-10-14T00:00:00.000Z",
+        "tags": [
+            "kubernetes",
+            "jenkins x",
+            "devops",
+            "jx",
+            "github",
+            "Chartmuseum",
+            "Monocular",
+            "Nexus",
+            "Draft",
+            "skaffold",
+            "helm",
+            "jenkins"
+        ],
+        "keywords": [
+            "kubernetes",
+            "ldap",
+            "更新",
+            "kubectl",
+            "docker"
+        ],
+        "slug": "kubernetes-jenkinsfile",
+        "gitcomment": false,
+        "bigimg": [
+            {
+                "src": "/img/k8s/k8s001.jpg",
+                "desc": ""
+            }
+        ],
+        "category": "kubernetes"
+    },
+    {
+        "title": "kubernetes之Jenkins x安装",
+        "uri": "post/kubernetes之Jenkins-x安装",
+        "content": "jx    CICD devops                                  kuberneter    Jenkins x       GIT    jx     git     2 15 0   centos7 5  yum    git   1 8 3 git       jx         githun       clone        shell yum install curl devel expat devel gettext devel openssl devel zlib devel yum install gcc perl ExtUtils MakeMaker     git     shell wget https   mirrors edge kernel org pub software scm git git 2 23 0 tar xz tar xf git 2 23 0 tar xz cd git 2 23 0         shell   configure   without iconv CFLAGS  liconv prefix  usr local git CFLAGS  liconv prefix  usr local git install      configure    install          shell cd  usr bin rm  f git ln  s  usr local git bin git git           shell git   version     Jenkins x   jx             shell wget https   github com jenkins x jx releases download v2 0 696 jx linux amd64 tar gz tar xzv jx linux amd64 tar gz  C    jx bin export PATH  PATH    jx bin echo  export PATH  PATH    jx bin        bashrc     jx    pv  yaml apiVersion  v1 kind  PersistentVolume metadata  name  jenkinsx pv labels  app  jenkinsx pv spec  hostPath  path   wd jenkins type  DirectoryOrCreate accessModes    ReadWriteMany   ReadWriteOnce   capacity  storage  30Gi apiVersion  v1 kind  PersistentVolume metadata  name  chartmuseum pv labels  app  chartmuseum pv spec  hostPath  path   wd chartmuseum type  DirectoryOrCreate accessModes    ReadWriteMany   ReadWriteOnce   capacity  storage  8Gi apiVersion  v1 kind  PersistentVolume metadata  name  docker registry pv labels  app  docker registry pv spec  hostPath  path   wd docker registry type  DirectoryOrCreate accessModes    ReadWriteMany   ReadWriteOnce   capacity  storage  100Gi apiVersion  v1 kind  PersistentVolume metadata  name  nexus pv labels  app  nexus pv spec  hostPath  path   wd nexus type  DirectoryOrCreate accessModes    ReadWriteMany   ReadWriteOnce   capacity  storage  8Gi              pv        storage class pull jx   docker   shell     shell    bin bash set  e K8SGCRURL k8s gcr io GCR_URL gcr io DOCKER  usr bin docker ALIYUN_URL mirrorgooglecontainers MY_URL gcr azk8s cn MAIN_VERSION 0 1 706 JENKINSX_VERSION 0 0 76 NEXUS_VERSION 0 1 7 JX_VERSION 2 0 645 MAIN_IMAGES   builder maven  MAIN_VERSION builder jx  MAIN_VERSION jenkinsx  JENKINSX_VERSION jx  JX_VERSION nexus  NEXUS_VERSION   IMAGESNAME   MAIN_IMAGES      DOCKER pull  MY_URL  IMAGESNAME  DOCKER tag  MYURL  MAINIMAGESNAME  GCR_URL  IMAGESNAME  DOCKER rmi  MY_URL  IMAGESNAME done       shell jx install   external ip 10 0 0 88   namespace  jx    git provider url  https   github com    git username   gitname    git api token   gittoken    provider kubernetes   domain   domain   no default environments   static jenkins               gitname  gittoken  domain       shell  user S01 h5web   kubectl pods NAME READY STATUS RESTARTS AGE jenkins 64b6bc7589 6bx2l 1 1 Running 1 3d22h jenkins x chartmuseum d87cbb789 qsvl9 1 1 Running 1 3d22h jenkins x controllerrole 5bc8cc8777 hr685 1 1 Running 1 3d22h jenkins x controllerteam 58565889 5jfvw 1 1 Running 2 3d22h jenkins x controllerworkflow f64cfb8bb txp2l 1 1 Running 1 3d22h jenkins x docker registry 69d666d455 s4cx4 1 1 Running 1 3d22h jenkins x gcactivities 1568613600 94j9v 0 1 Completed 0 98m jenkins x gcactivities 1568615400 bvnt8 0 1 Completed 0 68m jenkins x gcpods 1568613600 82gmq 0 1 Completed 0 98m jenkins x gcpods 1568615400 2nx6p 0 1 Completed 0 68m jenkins x gcpreviews 1568613600 mrsmm 0 1 Completed 0 98m jenkins x heapster ff6df6848 jbjdc 2 2 Running 2 3d22h jenkins x nexus 6bc788447f l66zw 1 1 Running 1 3d22h      https   jenkins x io getting started install on cluster",
+        "objectID": "post/kubernetes之Jenkins-x安装",
+        "date": "2019-09-16T00:00:00.000Z",
+        "tags": [
+            "kubernetes",
+            "ldap",
+            "docker",
+            "kubectl",
+            "yaml",
+            "jenkins",
+            "ci/cd",
+            "jx"
+        ],
+        "keywords": [
+            "kubernetes",
+            "ldap",
+            "更新",
+            "kubectl",
+            "docker"
+        ],
+        "slug": "kubernetes-jx-install",
+        "gitcomment": true,
+        "bigimg": [
+            {
+                "src": "/img/k8s/k8s001.jpg",
+                "desc": ""
+            }
+        ],
+        "category": "kubernetes"
+    },
+    {
+        "title": "kubernetes之LDAP安装",
+        "uri": "post/kubernetes之LDAP安装",
+        "content": "Lightweight Directory Access Protocol     LDAP                        IP                                                      LDAP                                 LDAP           bug             LDAP                            LDAP   LDAP                                                                                     LDAP           Helm kubernetes        OpenLDAP      OpenLDAP   Helm values yaml          Helm values yaml                                 yaml env  LDAP_ORGANISATION   ZB Inc   LDAP_DOMAIN   zb com  LDAP_BACKEND   hdb  LDAP_TLS   true  LDAPTLSENFORCE   false  LDAPREMOVECONFIGAFTERSETUP   true            LDAPDOMAIN      LDAPORGANISATION                          Chart   values yaml              Chart       shell  user S01     helm search stable openldap NAME CHART VERSION APP VERSION DESCRIPTION stable openldap 1 1 0 2 4 47 Community developed LDAP software          helm  openldap            repo      openldap Chart      shell  user S01 openldap   helm repo update Hang tight grab latest chart repositories       Skip local chart repository    Successfully update  incubator  chart repository    Successfully update  stable  chart repository Update Complete   user S01     helm search stable openldap NAME CHART VERSION APP VERSION DESCRIPTION stable openldap 1 1 0 2 4 47 Community developed LDAP software        openldap    shell  user S01     helm install  n openldap   namespace default  f zb yaml stable openldap NAME  openldap LAST DEPLOYED  Fri Aug 16 14 37 24 2019 NAMESPACE  default STATUS  DEPLOYED RESOURCES    v1 ConfigMap NAME DATA AGE openldap env 6 0s   v1 Pod related  NAME READY STATUS RESTARTS AGE openldap 858575df78 6kpgd 0 1 ContainerCreating 0 0s   v1 Secret NAME TYPE DATA AGE openldap Opaque 2 0s   v1 Service NAME TYPE CLUSTER IP EXTERNAL IP PORT S  AGE openldap ClusterIP 10 109 187 113 389 TCP 636 TCP 0s   v1beta2 Deployment NAME READY UP TO DATE AVAILABLE AGE openldap 0 1 1 0 0s NOTES  OpenLDAP installed  access server within k8s cluster using  openldap default svc cluster local 389 access LDAP adminPassword configPassword using  kubectl secret   namespace default openldap  o jsonpath    data LDAPADMINPASSWORD     base64   decode  echo kubectl secret   namespace default openldap  o jsonpath    data LDAPCONFIGPASSWORD     base64   decode  echo access LDAP service  within cluster  or kubectl port forward  command  replace password domain   ldapsearch  x  H ldap   openldap service default svc cluster local 389  b dc example dc org  D  cn admin dc example dc org   w  LDAPADMINPASSWORD Test server health using Helm test  helm test openldap consider installing helm chart phpldapadmin manage instance OpenLDAP  install Apache Directory Studio  connect using kubectl port forward     admin          base64              helm      openldap admin    shell  user S01     kubectl secret   namespace default openldap  o jsonpath    data LDAPADMINPASSWORD     base64   decode  echo B74G7RiwwSYXC8LRqAagNaqkDGcZ5RRL     openldap               openldap        shell  root ZabbixServer01     helm list openldap NAME REVISION UPDATED STATUS CHART APP VERSION NAMESPACE openldap 1 Fri Aug 16 14 37 24 2019 DEPLOYED openldap 1 1 0 2 4 47 default       kubetl  Pod         shell  root ZabbixServer01     kubectl pods openldap 858575df78 6kpgd NAME READY STATUS RESTARTS AGE openldap 858575df78 6kpgd 1 1 Running 0 11m   STATUS Running  Pod     openldap                openladp   kubernetes          nodeport                openldap service  shell  user S01     kubectl svc openldap NAME TYPE CLUSTER IP EXTERNAL IP PORT S  AGE openldap NodePort 10 109 187 113 389 389 TCP 636 636 TCP 50m  user S01     kubectl edit  n default svc openldap Please edit object below  Lines beginning     will ignored  empty file will abort edit  error occurs saving file will reopened relevant failures  apiVersion  v1 kind  Service metadata  creationTimestamp   2019 08 16T06 37 24Z  labels  app  openldap chart  openldap 1 1 0 heritage  Tiller release  openldap name  openldap namespace  default resourceVersion   9925276  selfLink   api v1 namespaces default services openldap uid  4eb64b71 bff0 11e9 97d3 525400eeff5c spec  clusterIP  10 109 187 113 ports  name  ldap port port  389 nodePort  389 protocol  TCP targetPort  ldap port name  ssl ldap port port  636 nodePort  636 protocol  TCP targetPort  ssl ldap port selector  app  openldap release  openldap sessionAffinity  None type  NodePort status  loadBalancer         nodePort  389  nodePort  636   type   NodePort       kubernetes      30000 32768             kube apiserver                 shell  user S01     netstat  tnpl  grep  389 tcp6 0 0    389      LISTEN 5285 kube proxy         LdapAdmin              Start       Connections   New connections          Connection name   openldap Host IP              Host IP     Host       Fetch DNs     Base     Username   cn admin dc zb dc com Password     openldap admin      Test connection                  Connection successful    OK            openldap      OU                                                         ldap",
+        "objectID": "post/kubernetes之LDAP安装",
+        "date": "2019-08-16T00:00:00.000Z",
+        "tags": [
+            "kubernetes",
+            "ldap",
+            "docker",
+            "kubectl",
+            "yaml"
+        ],
+        "keywords": [
+            "kubernetes",
+            "ldap",
+            "更新",
+            "kubectl",
+            "docker"
+        ],
+        "slug": "kubernetesldap",
+        "gitcomment": false,
+        "bigimg": [
+            {
+                "src": "/img/great-wall-01.jpg",
+                "desc": ""
+            }
+        ],
+        "category": "kubernetes"
+    },
+    {
+        "title": "kubernetes之prometheus简介",
+        "uri": "post/kubernetes之prometheus简介",
+        "content": "kubernetes                                                                       Prometheus                             Kubernetes     Prometheus      Prometheus  Prometheus  SoundCloud  Go                       TSDB    Google BorgMon          2016  Google  Linux             Cloud Native Computing Foundation    Prometheus            Prometheus            Prometheus Heapster Heapster K8S                                Prometheus                Prometheus                                                                                 Prometheus Alertmanager       Alertmanager         PagerDuty OpsGenie                     Prometheus UI                      Grafana                 Docker StatsD JMX    Prometheus      Prometheus Prometheus                     SoundCloud  2012 Prometheus                                                                                  2016 Prometheus  CNCF      Kubernetes           Prometheus                      k v                PromQL                  HTTP pull               pushgateway prometheus         push                                     Prometheus   Prometheus Server             Prometheus Alert manager                        node exporter                     http    Prometheus                   Prometheus           exporter      Prometheus       prometheus webhook dingtalk Prometheus        Prometheus                            Prometheus                                                              Prometheus                       Prometheus                                                                        100                    Prometheus    Prometheus   Prometheus                         Prometheus   Go                      Prometheus Server Prometheus                              PromQL        Push Gateway      push                pushgateway      server   pull   server       pushgateway         server   2                   Job             Prometheus targets    exporter                  Prometheus           Service discovery       file_sd                                           Kubernetes API         Alertmanager               PromDash   Rails      Dashboard               SDK            go java scala python ruby                  nodejs php erlang   Exporter Prometheus                               Prometheus                                                    prometheus_cli                           Prometheus       HAProxy StatsD Graphite              Prometheus     prometheus                      Prometheus server targets   Prometheus                                         Prometheus                   exporter                      node exporter  getMemInfo                             nodememoryMemTotal  Jenkins  Jenkins Exporter    Jenkins api   Jenkins job       Jenkinsjobcount_value                                      prometheus server                           Prometheus          Prometheus server                      Prometheus          http                                    Prometheus server          Prometheus                              Prometheus alerting Prometheus serve                alertmanager                               20             Prometheus server                 nodememoryActive nodememoryMemTotal",
+        "objectID": "post/kubernetes之prometheus简介",
+        "subtitle": "kubernetes监控篇",
+        "date": "2019-08-28T00:00:00.000Z",
+        "tags": [
+            "kubernetes",
+            "cicd",
+            "devops",
+            "prometheus",
+            "监控"
+        ],
+        "keywords": [
+            "kubernetes",
+            "ldap",
+            "更新",
+            "kubectl",
+            "docker"
+        ],
+        "slug": "kubernetes-prometheus-intro",
+        "gitcomment": false,
+        "bigimg": [
+            {
+                "src": "/img/great-wall-01.jpg",
+                "desc": ""
+            }
+        ],
+        "category": "kubernetes"
+    },
+    {
+        "title": "kubernetes之使用kubeadm安装1.15.4",
+        "uri": "post/kubernetes之使用kubeadm安装1.15.4",
+        "content": "Kubeadm            kubeadm init    kubeadm join             kubernetes          kubeadm                                                                             Kubernetes Dashboard                                             kubeadm                                  kubeadm                                      kubeadm                                                                  shell  user S001     cat  etc redhat release CentOS Linux release 7 6 1810  Core   user S001     uname  r 3 10 0 957 21 3 el7 x86_64                                        shell  user S001     hostnamectl   set hostname   static master001      etc hosts                   IP    shell  root CATS001     vim  etc hosts   1 localhost localhost localdomain localhost6 localhost6 localdomain6 127 0 0 1 localhost localhost localdomain localhost4 localhost4 localdomain4 192 168 1 32 CATS001 CATS001 192 168 1 32 k8s zb vip                                                         shell  user CATS001     systemctl stop firewalld    systemctl disable firewalld     selinux               shell setenforce 0             etc selinux config    shell sed  i s SELINUX enforcing SELINUX disabled g  etc selinux config     SWAP kubernetes 1 8      swap             shell swapoff  a vm swappiness 0     IPVS  shell cat    etc sysconfig modules ipvs modules  dev null 2  1       eq 0     sbin modprobe    kernel_module  fi done EOF     IPVS      shell chmod 755  etc sysconfig modules ipvs modules    bash  etc sysconfig modules ipvs modules    lsmod   grep ip_vs            L2         iptables FORWARD       shell echo     vm swappiness   0 net bridge bridge nf call ip6tables   1 net bridge bridge nf call iptables   1         etc sysctl conf              centos7  bridge nf call ip6tables  No file directory            modprobe br_netfilter  shell sysctl  p     ipvs      timeout     900    shell cat  etc sysctl d k8s conf net ipv4 tcpkeepalivetime   600 net ipv4 tcpkeepaliveintvl   30 net ipv4 tcpkeepaliveprobes   10 net ipv6 conf all disable_ipv6   1 net ipv6 conf default disable_ipv6   1 net ipv6 conf lo disable_ipv6   1 net ipv4 neigh default gcstaletime   120 net ipv4 conf all rp_filter   0 net ipv4 conf default rp_filter   0 net ipv4 conf default arp_announce   2 net ipv4 conf lo arp_announce   2 net ipv4 conf all arp_announce   2 net ipv4 ip_forward   1 net ipv4 tcpmaxtw_buckets   5000 net ipv4 tcp_syncookies   1 net ipv4 tcpmaxsyn_backlog   1024 net ipv4 tcpsynackretries   2 net bridge bridge nf call ip6tables   1 net bridge bridge nf call iptables   1 net netfilter nfconntrackmax   2310720 fs inotify maxuserwatches 89100 fs maydetachmounts   1 fs file max   52706963 fs nr_open   52706963 net bridge bridge nf call arptables   1 vm swappiness   0 vm overcommit_memory 1 vm paniconoom 0 EOF            shell sysctl   system     Docker                 shell yum install  y yum utils device mapper persistent data lvm2 yum config manager   add repo https   download docker com linux centos docker ce repo yum makecache fast yum list docker ce   showduplicates   sort  r yum install docker ce      Docker      Docker yum                                      Docker       Docker               yum  y install  y install docker ce   Docker      shell sed  i  13i ExecStartPost  usr sbin iptables  P FORWARD ACCEPT   usr lib systemd system docker service mkdir  p  etc docker cat    etc docker daemon json  etc yum repos d kubernetes repo  kubernetes  name Kubernetes baseurl http   mirrors aliyun com kubernetes yum repos kubernetes el7 x86_64 enabled 1 gpgcheck 0 repo_gpgcheck 0 gpgkey http   mirrors aliyun com kubernetes yum doc yum key gpg http   mirrors aliyun com kubernetes yum doc rpm package key gpg EOF     kuberlet kuberadm kubectl  shell yum install  y kubelet kubeadm kubectl     kubelet      shell systemctl enable kubelet     kubradm                shell echo     apiVersion  kubeadm k8s io v1beta2 kind  ClusterConfiguration kubernetesVersion  v1 15 4 imageRepository  registry aliyuncs com google_containers controlPlaneEndpoint   k8s zb vip 6443  apiServer  certSANS   k8s zb vip  networking  podSubnet  10 244 0 0 16 serviceSubnet  10 88 0 0 16 apiVersion  kubeproxy config k8s io v1alpha1 kind  KubeProxyConfiguration mode  ipvs        etc kubernetes kubeadm config yaml     Kubernetes     apiServer                        kube proxy IPVS      iptbles    master kubelet  shell kubeadm init   config  etc kubernetes kubeadm config yaml   upload certs   tee kubeadm init log Kubernetes control plane initialized successfully  start using cluster  need run following regular user  mkdir  p  HOME  kube sudo cp  i  etc kubernetes admin conf  HOME  kube config sudo chown   id  u    id  g   HOME  kube config deploy pod network cluster  Run  kubectl apply  f  podnetwork  yaml  one options listed at  https   kubernetes io docs concepts cluster administration addons  join number control plane node running following command root  kubeadm join k8s xiaobu vip 6443   token 8lp09d m961tfj5cctkq76s     discovery token ca cert hash sha256 f0553763add9e232b4eebde18b018f5cd09a0c43afe6f490e38d0f30ba4f2708     control",
+        "objectID": "post/kubernetes之使用kubeadm安装1.15.4",
+        "date": "2019-08-17T00:00:00.000Z",
+        "tags": [
+            "kubernetes",
+            "kubectl",
+            "yaml",
+            "kubeadm"
+        ],
+        "keywords": [
+            "kubernetes",
+            "kubeadm",
+            "更新",
+            "kubectl",
+            "docker"
+        ],
+        "slug": "kuberneteskubeadm",
+        "gitcomment": true,
+        "bigimg": [
+            {
+                "src": "/img/great-wall-01.jpg",
+                "desc": ""
+            }
+        ],
+        "category": "kubernetes"
+    },
+    {
+        "title": "kubernetes之集群数据备份",
+        "uri": "post/kubernetes之集群数据备份",
+        "content": "Etcd Kubernetes                                        flannel              etcd          kubernetes                                    kubernetes etcd   kubernetes       ETCD   Etcd    raft                    KV                   raft                Etcd        Etcd         etcdctl    shell            https   github com etcd io etcd releases wget https   github com etcd io etcd releases download v3 4 0 etcd v3 4 0 linux amd64 tar gz tar xf etcd v3 4 0 linux amd64 tar gz cp  a etcdctl  usr bin  etcdctl version   ETCD Kubernetes        flannel  etcd    v2 API  kubernetes  etcd   v3 API          etcdctl       ETCDCTL_API            2       3 kubeadm   kubernetes1 15 3 ETCD      shell      etcdctl   endpoints https   192 168 1 25 2379 https   192 168 1 26 2379 https   192 168 1 35 2379   cert  etc kubernetes pki etcd server crt   key  etc kubernetes pki etcd server key   cacert  etc kubernetes pki etcd ca crt member list   kubernetes   export ETCDCTL_API 3 etcdctl     prefix   keys only   cert  etc kubernetes pki etcd server crt   key  etc kubernetes pki etcd server key   cacert  etc kubernetes pki etcd ca crt              etc kubernetes              manifest     var lib kubelet          plugins        etcd V3 api         bash    bin bash         shell  etcd   etcdctl   cert  etc kubernetes pki etcd server crt   key  etc kubernetes pki etcd server key   cacert  etc kubernetes pki etcd ca crt snapshot save 20190917k8s snapshot db   etcd                                             kube apiserver   etcd        etcd   kube apiserver                Master   kube apiserver etcd   kube apiserver etcd        shell mv  etc kubernetes manifests  etc kubernetes manifests bak          etcd      snapshot   3 master       shell            IP export ETCDCTL_API 3 etcdctl snapshot restore 2019 09 97 k8s snapshot db   endpoints 192 168 1 25 2379   name proapis001   cert  etc kubernetes pki etcd server crt   key  etc kubernetes pki etcd server key   cacert  etc kubernetes pki etcd ca crt   initial advertise peer urls https   192 168 1 25 2380   initial cluster token etcd cluster 0   initial cluster proapis001 https   192 168 1 25 2380 proapis002 https   192 168 1 26 2380 proapis003 https   192 168 1 35 2380   data dir  var lib etcd                    Master    manifests  shell mv  etc kubernetes manifests bak  etc kubernetes manifests             shell etcdctl     prefix   keys only   cert  etc kubernetes pki etcd server crt   key  etc kubernetes pki etcd server key   cacert  etc kubernetes pki etcd ca crt      https   blog csdn net ygqygq2 article details 82753840",
+        "objectID": "post/kubernetes之集群数据备份",
+        "subtitle": "kubernetes基础篇",
+        "date": "2019-09-17T00:00:00.000Z",
+        "tags": [
+            "kubernetes",
+            "k8s",
+            "data",
+            "backup"
+        ],
+        "keywords": [
+            "data",
+            "backup"
+        ],
+        "slug": "kubernetes-data-backup",
+        "gitcomment": false,
+        "bigimg": [
+            {
+                "src": "/img/k8s/k8s001.jpg",
+                "desc": ""
+            }
+        ],
+        "category": "databackup"
+    },
+    {
+        "title": "kubernetes挂载阿里云nas存储作为StorageClass",
+        "uri": "post/kubernetes挂载阿里云nas存储作为StorageClass",
+        "content": "Kubernetes                                                          StorageClass                            Kubernetes                                  Kubernetes                         SA    RBAC  YAML apiVersion  v1 kind  ServiceAccount metadata  name  nfs admin namespace  kube system kind  ClusterRole apiVersion  rbac authorization k8s io v1 metadata  name  nfs admin namespace  kube system rules  apiGroups       resources    persistentvolumes   verbs    get    list    watch    create    delete   apiGroups       resources    persistentvolumeclaims   verbs    get    list    watch    update   apiGroups    storage k8s io   resources    storageclasses   verbs    get    list    watch   apiGroups       resources    events   verbs    create    update    patch   kind  ClusterRoleBinding apiVersion  rbac authorization k8s io v1 metadata  name  nfs admin namespace  kube system subjects  kind  ServiceAccount name  nfs admin namespace  kube system roleRef  kind  ClusterRole name  nfs admin apiGroup  rbac authorization k8s io kind  Role apiVersion  rbac authorization k8s io v1 metadata  name  leader locking nfs provisioner namespace  kube system rules  apiGroups       resources    endpoints   verbs    get    list    watch    create    update    patch   kind  RoleBinding apiVersion  rbac authorization k8s io v1 metadata  name  leader locking nfs provisioner namespace  kube system subjects  kind  ServiceAccount name  nfs admin namespace  kube system roleRef  kind  Role name  leader locking nfs provisioner apiGroup  rbac authorization k8s io     deployment  nas    StorageClass  yaml apiVersion  storage k8s io v1 kind  StorageClass metadata  name  alicloud disk available namespace  kube system provisioner  example com nfs reclaimPolicy  Retain kind  Deployment apiVersion  extensions v1beta1 metadata  name  alicloud nas controller namespace  kube system spec  replicas  1 strategy  type  Recreate template  metadata  labels  app  alicloud nas controller spec  tolerations  effect  NoSchedule operator  Exists key  node role kubernetes io master effect  NoSchedule operator  Exists key  node cloudprovider kubernetes io uninitialized nodeSelector  node role kubernetes io master     serviceAccount  nfs admin containers  name  alicloud nas controller image  gmoney23 nfs client provisioner 1 0 volumeMounts  mountPath   persistentvolumes name  nfs client root env  name  PROVISIONER_NAME value  example com nfs name  NFS_SERVER value  2f71e4829f tlh16 cn shenzhen nas aliyuncs com name  NFS_PATH value    volumes  name  nfs client root nfs  path    server  2f71e4829f tlh16 cn shenzhen nas aliyuncs com   PVC  StorageClass  yaml apiVersion  v1 kind  PersistentVolumeClaim metadata  labels  app  jenkins name  jenkins namespace  jx spec  accessModes   ReadWriteOnce  resources  requests  storage  30Gi storageClassName  alicloud disk available   NAS      shell Nodes     nas     nas   yum install nfs common nfs utils  y",
+        "objectID": "post/kubernetes挂载阿里云nas存储作为StorageClass",
+        "subtitle": "Kubernetes生产之基础篇",
+        "date": "2019-10-26T00:00:00.000Z",
+        "tags": [
+            "kubernetes",
+            "concept",
+            "service",
+            "pod",
+            "ingress",
+            "namespace",
+            "volume",
+            "pv",
+            "pvc",
+            "deployment",
+            "StatefulSet",
+            "Job",
+            "CronJob",
+            "HPA",
+            "Service Account",
+            "Secret",
+            "ConfigMap",
+            "Resource Quotas",
+            "StorageClass",
+            "nas"
+        ],
+        "keywords": [
+            "kubernetes",
+            "concept",
+            "service",
+            "pod",
+            "ingress",
+            "namespace",
+            "volume",
+            "pv",
+            "pvc",
+            "deployment",
+            "StatefulSet",
+            "Job",
+            "CronJob",
+            "HPA",
+            "Service Account",
+            "Secret",
+            "ConfigMap",
+            "Resource Quotas"
+        ],
+        "slug": "kubernetes-nas-storageclass",
+        "gitcomment": false,
+        "bigimg": [
+            {
+                "src": "https://bxdc-static.oss-cn-beijing.aliyuncs.com/images/photo-1565780421727-543646cefafb.jpeg",
+                "desc": ""
+            }
+        ],
+        "category": "kubernetes"
+    },
+    {
+        "title": "Kubernetes生产基础服务之Kubesphere部署",
+        "uri": "post/Kubernetes生产基础服务之Kubesphere部署",
+        "content": "KubeSphere              Kubernetes                                                                                         Kubernetes                                                                                                                                       KubeSphere          CI CD                     LDAP         HPA                    Secrets ConfigMaps                       s2i                     kubesnetes      Kubernetes      KubeSphere   Namespace   Kubernetes         kubesphere system   kubesphere monitoring system   namespace  shell cat",
+        "objectID": "post/Kubernetes生产基础服务之Kubesphere部署",
+        "subtitle": "Kubernetes生产之基础篇",
+        "date": "2019-10-26T00:00:00.000Z",
+        "tags": [
+            "kubernetes",
+            "concept",
+            "service",
+            "pod",
+            "ingress",
+            "namespace",
+            "volume",
+            "pv",
+            "pvc",
+            "deployment",
+            "StatefulSet",
+            "Job",
+            "CronJob",
+            "HPA",
+            "Service Account",
+            "Secret",
+            "ConfigMap",
+            "Resource Quotas"
+        ],
+        "keywords": [
+            "kubernetes",
+            "concept",
+            "service",
+            "pod",
+            "ingress",
+            "namespace",
+            "volume",
+            "pv",
+            "pvc",
+            "deployment",
+            "StatefulSet",
+            "Job",
+            "CronJob",
+            "HPA",
+            "Service Account",
+            "Secret",
+            "ConfigMap",
+            "Resource Quotas"
+        ],
+        "slug": "kubernetes-kubesphere",
+        "gitcomment": false,
+        "bigimg": [
+            {
+                "src": "https://bxdc-static.oss-cn-beijing.aliyuncs.com/images/photo-1565780421727-543646cefafb.jpeg",
+                "desc": ""
+            }
+        ],
+        "category": "kubernetes"
+    },
+    {
+        "title": "Linux之git常用命令",
+        "uri": "post/Linux之git常用命令",
+        "content": "git                                          Git   Linus Torvalds       Linux                             git           shell          Git      git init              Git      git init  project name                    git clone  url        shell      Git     git config   list   Git       git config  e    global                 git config    global  user name   name     git config    global  user email   email address              shell              git add  file1   file2                         git add  dir                    git add                                          git add  p                        git rm  file1   file2                             git rm   cached  file                      git mv  file original   file renamed          shell             git commit  m  message                   git commit  file1   file2       m  message          commit               git commit  a        diff     git commit  v       commit                             commit        git commit   amend  m  message       commit               git commit   amend  file1   file2            shell            git branch            git branch  r                 git branch  a                     git branch  branch name                   git checkout  b  branch             commit   git branch  branch   commit                          git branch   track  branch   remote branch                   git checkout  branch name             git checkout                            git branch   set upstream  branch   remote branch                git merge  branch      commit           git cherry pick  commit         git branch  d  branch name           git push origin   delete  branch name    git branch  dr  remote branch           git checkout B sta   a yaml       shell     tag   git tag     tag   commit   git tag  tag      tag   commit   git tag  tag   commit      tag   git tag  d  tag      tag   git push origin  refs tags  tagName    tag     git show  tag      tag   git push  remote   tag      tag   git push  remote    tags            tag   git checkout  b  branch   tag          shell            git status               git log   commit       commit          git log   stat                git log  S  keyword      commit          commit       git log  tag  HEAD   pretty format  s     commit                          git log  tag  HEAD   grep feature                      git log   follow  file    git whatchanged  file              diff   git log  p  file      5      git log  5   pretty   oneline                      git shortlog  sn                      git blame  file                 git diff          commit      git diff   cached  file              commit        git diff HEAD               git diff  first branch     second branch                 git diff   shortstat    0 day ago                     git show  commit                  git show   name only  commit                    git show  commit   filename                  git reflog         shell               git fetch  remote             git remote  v               git remote show  remote                   git remote add  shortname   url                       git pull  remote   branch                       u   git push  remote   branch                        git push  remote    force               git push  remote    all       shell                  git checkout  file      commit                git checkout  commit   file                   git checkout                  commit              git reset  file                commit       git reset   hard             commit                  git reset  commit         HEAD   commit                commit     git reset   hard  commit      HEAD   commit                git reset   keep  commit      commit       commit                            git revert  commit                      git stash   git stash pop       shell                git archive         https   gitee com all about git",
+        "objectID": "post/Linux之git常用命令",
+        "subtitle": "Linux基础篇",
+        "date": "2019-08-28T00:00:00.000Z",
+        "tags": [
+            "linux",
+            "git"
+        ],
+        "keywords": [
+            "linux",
+            "git"
+        ],
+        "slug": "linux-git-command",
+        "gitcomment": false,
+        "bigimg": [
+            {
+                "src": "/img/k8s/k8s001.jpg",
+                "desc": ""
+            }
+        ],
+        "category": "linux"
+    },
+    {
+        "title": "Linux之vim技巧",
+        "uri": "post/Linux之vim技巧",
+        "content": "Vim      Vi                      Vi               VIM                                  vim                    chrome idea atom          vim mode                                                 vim                     h j k l                                               vim                                                   vim      vim                                     du  h            100MB                j    30j     30  k    h    l    0                                gg        G        100G     100                            y iyy      10yy     10  yw             y          yfB           B      y2fB           B           x x                         3x      xp             bs  sb      d               p          dd      200dd   200  dw               df                    p p            3p                     v                                   v        h j k l              ctrl v     1            s       g         2   ESC          gg     3   ctrl v           G     4             I         list add   5   ESC                                                                    s   sth       sth  s   M  g    dos      M  ctrl v   Enter      g    s   d               s      g                                                    sed                                                         n         N         2n                                  set nu               vim                             ArrayList   1    gg    2    qa      a            3   I         list add   4   ESC                5   j               6      q      7     a            8    100 a   100          100                                          r      ggVG    u      J       gU        ggguG                                       e  tmp a            tmp a                                   bp           bn                 wq           wqa           q           qa                   vim",
+        "objectID": "post/Linux之vim技巧",
+        "subtitle": "Linux基础篇",
+        "date": "2019-10-22T00:00:00.000Z",
+        "tags": [
+            "kubernetes",
+            "vim"
+        ],
+        "keywords": [
+            "kubernetes",
+            "vim",
+            "技巧"
+        ],
+        "slug": "linux-vim",
+        "gitcomment": false,
+        "category": "kubernetes",
+        "bigimg": [
+            {
+                "src": "https://bxdc-static.oss-cn-beijing.aliyuncs.com/images/photo-1568549422238-cc366fee8a26.jpeg",
+                "desc": ""
+            }
+        ]
+    },
+    {
+        "title": "Linux之常用命令",
+        "uri": "post/Linux之常用命令",
+        "content": "Linux                                                                                                 linux                          mkdir      dir cp      copy mv      move rm      remove      shell         a b c d mkdir  p a b c d      a  tmp   cp  rvf a   tmp      a  tmp        b mv  vf  tmp b            rm  rvf          ls                 ls  l                pwd                         cd          cd             find find                         shell    tmp   ls  tmp          pwd     tmp   cd  tmp   tmp        find  tmp  name file             cat       cat                cat                      ctrl c     shell        du  h file        cat file   less   cat                      less            vim less                 n N                  vim           tail                           nginx        shell tail  f access log   tail                n        head       n   head                           shell tail  n100 access log head  n100 access log      sort uniq        sort     t         k                nginx   ip   ip pv pv    10  shell  2019 06 26T10 01 57 08 00 nginx001 server ops pro dc 100 116 222 80 10 31 150 232 41021 0 014 0 011 0 000 200 200 273    visit sign 91CD1988CE8B313B8A0454A4BBE930DF     http POST 112 4 238 213 awk  F      print  3   access log   sort   uniq  c   sort  nk1  r   head  n10      grep grep              color                    n                      nginx    POST    shell grep  rn   color POST access log                                        ABC                        n  B    n  C count      n          shell grep  rn   color Exception  A10  B2 error log   diff diff                    ide          diff               diff patch                      pass                          linux         tar bzip2 zip rar  7z           tar   tar         bz2   bzip2      gz   gzip      zip   unzip      rar   unrar            tar gz            tar       gzip            shell tar cvfz archive tar gz dir        shell tar xvfz  archive tar gz        mount mount               u    iso       ssd             shell mount  dev sdb1  xiaodianying   chown chown                  chmod                      linux     777         shell        chmod 000  R     a         xjj chown  R xjj xjj  a sh                 chmod a x a sh   yum       centos         yum         wget                   shell yum install wget  y   systemctl    centos             service     systemctl   service            mysql              shell service mysql restart systemctl restart mysqld               kill             kill             kill  9        kill  15  kill  3        su su             root    xjj             su     shell su tomcat su   tomcat sudo su",
+        "objectID": "post/Linux之常用命令",
+        "subtitle": "Linux基础篇",
+        "date": "2019-10-22T00:00:00.000Z",
+        "tags": [
+            "linux",
+            "command"
+        ],
+        "keywords": [
+            "linux",
+            "command"
+        ],
+        "slug": "linux-command",
+        "gitcomment": false,
+        "bigimg": [
+            {
+                "src": "/img/k8s/k8s001.jpg",
+                "desc": ""
+            }
+        ],
+        "category": "linux"
+    },
+    {
+        "title": "不要站在幸福里找幸福",
+        "uri": "post/不要站在幸福里找幸福",
+        "content": "",
+        "objectID": "post/不要站在幸福里找幸福",
+        "subtitle": "转自 论正能量",
+        "date": "2019-08-14T00:00:00.000Z",
+        "tags": [
+            "life",
+            "win",
+            "motivational"
+        ],
+        "slug": "happiness",
+        "keywords": [
+            "life",
+            "win",
+            "人生",
+            "幸福"
+        ],
+        "bigimg": [
+            {
+                "src": "/img/rs/SixRegrets.jpg",
+                "desc": ""
+            }
+        ],
+        "category": "motivational"
+    },
+    {
+        "title": "Kubernetes之使用Kustomize配置应用",
+        "uri": "post/使用_Kustomize_配置_Kubernetes_应用",
+        "content": "Kubernetes                                    Helm Helm                    tiller                             Helm Chart                      go template               Docker   Kubernetes                           Kustomize           Kustomize                       kubectl 1 14                                    kubectl                              Helm        Kustomize   Kubernetes                                                            Docker                                                                                                  Git                                                   Linux                Release                 PATH          shell curl  s https   api github com repos kubernetes sigs kustomize releases   grep browser_download   grep linux   cut  d      f 4  grep  kustomize v   sort   tail  n 1   xargs curl  O  L tar xzf   kustomizev linux_amd64 tar gz   kustomize version                           https   github com Kubernetes sigs kustomize           Kustomize           yaml                             base        k8s base                                                                 kubectl apply  f   k8s base                        Service   Deployment                          service yaml        yaml apiVersion  v1 kind  Service metadata  name  sl demo app spec  ports  name  http port  8080 selector  app  sl demo app   deployment yaml        yaml apiVersion  apps v1 kind  Deployment metadata  name  sl demo app spec  selector  matchLabels  app  sl demo app template  metadata  labels  app  sl demo app spec  containers  name  app image  foo bar latest ports  name  http containerPort  8080 protocol  TCP                   kustomization yaml      yaml apiVersion  kustomize config k8s io v1beta1 kind  Kustomization resources  service yaml deployment yaml                                      kubectl apply  f   k8s base      kustomization yaml                     validate false                                                          shell   kubectl apply  k k8s base service sl demo app created deployment apps sl demo app created                             kustomize build     kubectl apply  k       kubectl kustomize               kubectl 1 14            kustomize    kustomize build                              shell   kustomize build k8s base apiVersion  v1 kind  Service metadata  name  sl demo app spec  ports  name  http port  8080 selector  app  sl demo app apiVersion  apps v1 kind  Deployment metadata  name  sl demo app spec  selector  matchLabels  app  sl demo app template  metadata  labels  app  sl demo app spec  containers  image  foo bar latest name  app ports  containerPort  8080 name  http protocol  TCP                                                          Kustomize                                               k8s overlays prod         kustomzization yaml             yaml apiVersion  kustomize config k8s io v1beta1 kind  Kustomization bases        base                      shell   tree       k8s     base       deployment yaml       kustomization yaml       service yaml     overlays     prod     kustomization yaml                          base           shell   kustomzie build k8s overlays prod apiVersion  v1 kind  Service metadata  name  sl demo app spec  ports  name  http port  8080 selector  app  sl demo app apiVersion  apps v1 kind  Deployment metadata  name  sl demo app spec  selector  matchLabels  app  sl demo app template  metadata  labels  app  sl demo app spec  containers  image  foo bar latest name  app ports  containerPort  8080 name  http protocol  TCP             prod                   base                                                                                      kustomization yaml                              custom env yaml   yaml apiVersion  apps v1 kind  Deployment metadata  name  sl demo app spec  template  spec  containers  name  app    1  env  name  CUSTOMENVVARIABLE value  Value defined Kustomize         1        name        kustomize                    yaml                                               k8s overlays prod kustomization yaml        yaml apiVersion  kustomize config k8s io v1beta1 kind  Kustomization bases        base patchesStrategicMerge  custom env yaml                            shell   kustomize build k8s overlays prod apiVersion  v1 kind  Service metadata  name  sl demo app spec  ports  name  http port  8080 selector  app  sl demo app apiVersion  apps v1 kind  Deployment metadata  name  sl demo app spec  selector  matchLabels  app  sl demo app template  metadata  labels  app  sl demo app spec  containers  env  name  CUSTOMENVVARIABLE value  Value defined Kustomize image  foo bar latest name  app ports  containerPort  8080 name  http protocol  TCP           env                        env        deployment yaml                                                             base                                         YAML                       replica and rollout strategy yaml              yaml apiVersion  apps v1 kind  Deployment metadata  name  sl demo app spec  replicas  10 strategy  rollingUpdate  maxSurge  1 maxUnavailable  1 type  Rolli",
+        "objectID": "post/使用_Kustomize_配置_Kubernetes_应用",
+        "subtitle": "Kubernetes应用篇",
+        "date": "2019-10-25T00:00:00.000Z",
+        "tags": [
+            "kubernetes",
+            "helm",
+            "kustomize"
+        ],
+        "keywords": [
+            "kubernetes",
+            "helm",
+            "kustomize",
+            "模板"
+        ],
+        "slug": "kubernetes-kustomize",
+        "gitcomment": false,
+        "bigimg": [
+            {
+                "src": "https://bxdc-static.oss-cn-beijing.aliyuncs.com/images/photo-1565780421727-543646cefafb.jpeg",
+                "desc": ""
+            }
+        ],
+        "category": "kubernetes"
+    },
+    {
+        "title": "全文仅42个字道尽人生六大悔事",
+        "uri": "post/全文仅42个字道尽人生六大悔事",
+        "content": "",
+        "objectID": "post/全文仅42个字道尽人生六大悔事",
+        "subtitle": "转自 领导者成功思维",
+        "date": "2019-08-14T00:00:00.000Z",
+        "tags": [
+            "life",
+            "win",
+            "motivational"
+        ],
+        "slug": "SixRegrets",
+        "keywords": [
+            "kubernetes",
+            "docker",
+            "dockerfile",
+            "实践"
+        ],
+        "bigimg": [
+            {
+                "src": "/img/rs/SixRegrets.jpg",
+                "desc": ""
+            }
+        ],
+        "category": "motivational"
+    }
+]

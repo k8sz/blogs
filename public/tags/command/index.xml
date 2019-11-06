@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>command on ZB</title>
+    <link>https://www.k8sz.com/tags/command/</link>
+    <description>Recent content in command on ZB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 22 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.k8sz.com/tags/command/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linux之常用命令</title>
+      <link>https://www.k8sz.com/post/linux-command/</link>
+      <pubDate>Tue, 22 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/linux-command/</guid>
+      <description>&lt;p&gt;Linux这么多命令，通常会让初学者望而生畏。
+内容：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;✔ 目录操作&lt;/li&gt;
+&lt;li&gt;✔ 文本处理&lt;/li&gt;
+&lt;li&gt;✔ 压缩&lt;/li&gt;
+&lt;li&gt;✔ 日常运维&lt;/li&gt;
+&lt;li&gt;✔ 系统状态概览&lt;/li&gt;
+&lt;li&gt;✔ 工作常用&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

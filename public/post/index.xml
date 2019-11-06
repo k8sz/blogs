@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on ZB</title>
+    <link>https://www.k8sz.com/post/</link>
+    <description>Recent content in Posts on ZB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 26 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.k8sz.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kubernetes生产基础服务之Kubesphere部署</title>
+      <link>https://www.k8sz.com/post/kubernetes-kubesphere/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-kubesphere/</guid>
+      <description>&lt;p&gt;KubeSphere 是在目前主流容器调度平台 Kubernetes 之上构建的企业级分布式多租户容器平台，提供简单易用的操作界面以及向导式操作方式，在降低用户使用容器调度平台学习成本的同时，极大减轻开发、测试、运维的日常工作的复杂度，旨在解决 Kubernetes 本身存在的存储、网络、安全和易用性等痛点。除此之外，平台已经整合并优化了多个适用于容器场景的功能模块，以完整的解决方案帮助企业轻松应对敏捷开发与自动化运维、微服务治理、多租户管理、工作负载和集群管理、服务与网络管理、应用编排与管理、镜像仓库管理和存储管理等业务场景。&lt;/p&gt;
+
+&lt;p&gt;KubeSphere为我们提供了可视化 CI/CD 流水线、多维度监控告警日志、多租户管理、LDAP 集成、新增支持 HPA (水平自动伸缩) 、容器健康检查以及 Secrets、ConfigMaps 的配置管理等功能，新增微服务治理、灰度发布、s2i、代码质量检查等。一定程度上简化了我们管理kubesnetes集群。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes挂载阿里云nas存储作为StorageClass</title>
+      <link>https://www.k8sz.com/post/kubernetes-nas-storageclass/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-nas-storageclass/</guid>
+      <description>&lt;p&gt;Kubernetes集群管理员通过提供不同的存储类，可以满足用户不同的服务质量级别、备份策略和任意策略要求的存储需求。动态存储卷供应使用StorageClass进行实现，其允许存储卷按需被创建。如果没有动态存储供应，Kubernetes集群的管理员将不得不通过手工的方式类创建新的存储卷。通过动态存储卷，Kubernetes将能够按照用户的需要，自动创建其需要的存储。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes之16个入门概念</title>
+      <link>https://www.k8sz.com/post/kubernetes-concept/</link>
+      <pubDate>Fri, 25 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-concept/</guid>
+      <description>&lt;p&gt;kubernetes是Google开源的容器集群管理系统，是Google多年⼤规模容器管理技术Borg的开源版本，主要功能包括:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;基于容器的应用部署、维护和滚动升级&lt;/li&gt;
+&lt;li&gt;负载均衡和服务发现&lt;/li&gt;
+&lt;li&gt;跨机器和跨地区的集群调度&lt;/li&gt;
+&lt;li&gt;自动伸缩&lt;/li&gt;
+&lt;li&gt;无状态服务和有状态服务&lt;/li&gt;
+&lt;li&gt;广泛的Volume支持&lt;/li&gt;
+&lt;li&gt;插件机制保证扩展性&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Kubernetes发展非常迅速，已经成为容器编排领域的领导者，接下来我们将讲解Kubernetes中涉及到的一些主要概念。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes之使用Kustomize配置应用</title>
+      <link>https://www.k8sz.com/post/kubernetes-kustomize/</link>
+      <pubDate>Fri, 25 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-kustomize/</guid>
+      <description>&lt;p&gt;如果你经常使用 Kubernetes，那么你肯定就有定制资源清单文件的需求，但是貌似现在大家都比较喜欢使用 Helm，Helm 很好用，但也有很多缺点，比如需要一个 tiller 服务端，需要超高的权限，最重要的是如果你要想自己做一个 Helm Chart 包的话，则不是那么容易的，需要你了解一些 go template 的相关知识，它抛弃了我们在 Docker 和 Kubernetes 上面学到的一些逻辑，今天我们将为大家介绍另外一种名为&lt;code&gt;Kustomize&lt;/code&gt;的替代工具。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux之vim技巧</title>
+      <link>https://www.k8sz.com/post/linux-vim/</link>
+      <pubDate>Tue, 22 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/linux-vim/</guid>
+      <description>&lt;p&gt;Vim是一个类似于Vi的著名的功能强大、高度可定制的文本编辑器，在Vi的基础上改进和增加了很多特性。VIM是自由软件。
+本篇文章聚焦的是研发线上最常用的一些功能。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux之常用命令</title>
+      <link>https://www.k8sz.com/post/linux-command/</link>
+      <pubDate>Tue, 22 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/linux-command/</guid>
+      <description>&lt;p&gt;Linux这么多命令，通常会让初学者望而生畏。
+内容：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;✔ 目录操作&lt;/li&gt;
+&lt;li&gt;✔ 文本处理&lt;/li&gt;
+&lt;li&gt;✔ 压缩&lt;/li&gt;
+&lt;li&gt;✔ 日常运维&lt;/li&gt;
+&lt;li&gt;✔ 系统状态概览&lt;/li&gt;
+&lt;li&gt;✔ 工作常用&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>HelmV2迁移到V3版本</title>
+      <link>https://www.k8sz.com/post/helm2-to-v3/</link>
+      <pubDate>Fri, 18 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/helm2-to-v3/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://v3.helm.sh/&#34;&gt;Helm V3 版本&lt;/a&gt;已经发布了第三个 Beta 版本了，由于 V2 和 V3 版本之间的架构变化较大，所以如果我们现在正在使用 V2 版本的话，要迁移到 V3 版本了就有点小麻烦，其中最重要的当然就是数据迁移的问题，为了解决这个版本迁移问题，官方提供了一个名为 &lt;a href=&#34;https://github.com/helm/helm-2to3&#34;&gt;helm-2to3&lt;/a&gt; 的插件可以来简化我们的迁移工作。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes之Jenkins 流水线语法</title>
+      <link>https://www.k8sz.com/post/kubernetes-jenkinsfile/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-jenkinsfile/</guid>
+      <description>&lt;p&gt;声明式和脚本化的流水线从根本上是不同的。 声明式流水线的是 Jenkins 流水线更近的特性:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;相比脚本化的流水线语法，它提供更丰富的语法特性,&lt;/li&gt;
+&lt;li&gt;是为了使编写和读取流水线代码更容易而设计的。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes之NginxIngress HTTPS自动化</title>
+      <link>https://www.k8sz.com/post/kubernetes-ingress-https/</link>
+      <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-ingress-https/</guid>
+      <description>&lt;p&gt;cert-manager是本地&lt;a href=&#34;https://kubernetes.io/&#34;&gt;Kubernetes&lt;/a&gt;证书管理控制器。它可以帮助从各种来源颁发证书，例如 &lt;a href=&#34;https://letsencrypt.org/&#34;&gt;Let&amp;rsquo;s Encrypt&lt;/a&gt;，&lt;a href=&#34;https://www.vaultproject.io/&#34;&gt;HashiCorp Vault&lt;/a&gt;，&lt;a href=&#34;https://www.venafi.com/&#34;&gt;Venafi&lt;/a&gt;，简单签名密钥对或自签名&lt;/p&gt;
+
+&lt;p&gt;本文主要说明如何在kubernetes安装和设置cert-manager。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes之集群数据备份</title>
+      <link>https://www.k8sz.com/post/kubernetes-data-backup/</link>
+      <pubDate>Tue, 17 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-data-backup/</guid>
+      <description>&lt;p&gt;Etcd是Kubernetes集群中的一个十分重要的组件，用于保存集群所有的网络配置和对象的状态信息&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;网络插件flannel、对于其它网络插件也需要用到etcd存储网络的配置信息&lt;/li&gt;
+&lt;li&gt;kubernetes本身，包括各种对象的状态和元信息配置&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;数据备份重中之重，本文主要介绍备份kubernetes etcd数据和kubernetes所使用的数据&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes之Jenkins x安装</title>
+      <link>https://www.k8sz.com/post/kubernetes-jx-install/</link>
+      <pubDate>Mon, 16 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-jx-install/</guid>
+      <description>&lt;p&gt;jx是云原生CICD，devops的一个最佳实践之一，目前在快速的发展成熟中。&lt;/p&gt;
+
+&lt;p&gt;本文主要介绍如何在现有kuberneter 上安装Jenkins x，&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes之Jenkins x主要组件</title>
+      <link>https://www.k8sz.com/post/kubernetes-jx-component/</link>
+      <pubDate>Fri, 06 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-jx-component/</guid>
+      <description>&lt;p&gt;Jenkins X 是一个高度集成化的CI/CD平台，基于Jenkins和Kubernetes实现，旨在解决微服务体系架构下的云原生应用的持续交付的问题，简化整个云原生应用的开发、运行和部署过程。&lt;/p&gt;
+
+&lt;p&gt;jx是云原生CICD，devops的一个最佳实践之一，目前在快速的发展成熟中,这里介绍jx用到的一些相关组件&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux之git常用命令</title>
+      <link>https://www.k8sz.com/post/linux-git-command/</link>
+      <pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/linux-git-command/</guid>
+      <description>&lt;p&gt;git是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。  Git 是 Linus Torvalds为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件&lt;/p&gt;
+
+&lt;p&gt;本文主要介绍git一些常用命令&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes之prometheus简介</title>
+      <link>https://www.k8sz.com/post/kubernetes-prometheus-intro/</link>
+      <pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-prometheus-intro/</guid>
+      <description>&lt;p&gt;kubernetes作为当下最炙手可热的容器编排平台，在给应用部署运维带来便捷的同时，也给应用及性能监控带来了新的挑战。&lt;/p&gt;
+
+&lt;p&gt;本文给大家分享一款十分火热的开源监控工具Prometheus，让我们一起来看它是如何兼顾传统的应用监控、主机性能监控和Kubernetes监控的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes CI/CD之drone安装</title>
+      <link>https://www.k8sz.com/post/kubernetes-drone-install/</link>
+      <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-drone-install/</guid>
+      <description>&lt;p&gt;Drone是一种基于容器技术的持续交付系统。使用简单的YAML配置文件来定义和执行Docker容器中定义的Pipeline，Drone主要由两个部分组成：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Server端负责身份认证，仓库配置，用户，Secrets以及Webhook相关配置&lt;/li&gt;
+&lt;li&gt;Agent端端用于接受构建的作业和真正用于运行的 Pipeline 工作流&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Server 和 Agent 都是非常轻量级的服务，大概只使用 10~15MB 内存&lt;/p&gt;
+
+&lt;p&gt;本文将介绍在kubernetes 集群基于Drone搭建一个CI/CD服务。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes之gogs安装</title>
+      <link>https://www.k8sz.com/post/kubernetesgogs/</link>
+      <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetesgogs/</guid>
+      <description>&lt;p&gt;Gogs 是一款极易搭建的自助 Git 服务。
+Gogs 的目标是打造一个最简单、最快速和最轻松的方式搭建自助 Git 服务。使用 Go 语言开发使得 Gogs 能够通过独立的二进制分发，并且支持 Go 语言支持的 所有平台，包括 Linux、Mac OS X、Windows 以及 ARM 平台。&lt;/p&gt;
+
+&lt;p&gt;本文介绍在kubernetes安装gogs git服务&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes之Helm安装</title>
+      <link>https://www.k8sz.com/post/kuberneteshelm/</link>
+      <pubDate>Sat, 17 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kuberneteshelm/</guid>
+      <description>&lt;p&gt;Helm可帮助您管理Kubernetes应用程序 - Helm Charts可帮助您定义，安装和升级最复杂的Kubernetes应用程序。Helm就相当于kubernetes环境下的yum包管理工具。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes之使用kubeadm安装1.15.4</title>
+      <link>https://www.k8sz.com/post/kuberneteskubeadm/</link>
+      <pubDate>Sat, 17 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kuberneteskubeadm/</guid>
+      <description>&lt;p&gt;Kubeadm 是一个工具，它提供了 kubeadm init 以及 kubeadm join 这两个命令作为快速创建 kubernetes 集群的最佳实践。
+kubeadm 通过执行必要的操作来启动和运行一个最小可用的集群。它被故意设计为只关心启动集群，而不是之前的节点准备工作。同样的，诸如安装各种各样值得拥有的插件，例如 Kubernetes Dashboard、监控解决方案以及特定云提供商的插件，这些都不在它负责的范围。
+相反，我们期望由一个基于 kubeadm 从更高层设计的更加合适的工具来做这些事情；并且，理想情况下，使用 kubeadm 作为所有部署的基础将会使得创建一个符合期望的集群变得容易。&lt;/p&gt;
+
+&lt;p&gt;以下是简述使用kubeadm搭建一个集群的过程&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes之LDAP安装</title>
+      <link>https://www.k8sz.com/post/kubernetesldap/</link>
+      <pubDate>Fri, 16 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetesldap/</guid>
+      <description>&lt;p&gt;轻型目录访问协议（英文：Lightweight Directory Access Protocol 缩写: LDAP）是一个开放的，中立的，工业标准的应用协议，通过IP协议提供访问控制和维护分布式信息的目录信息。
+可以这样讲：市面上只要你能够想像得到的所有工具软件，全部都支持LDAP协议。比如说你公司要安装一个项目管理工具，那么这个工具几乎必然支持LDAP协议，你公司要安装一个bug管理工具，这工具必然也支持LDAP协议，你公司要安装一套软件版本管理工具，这工具也必然支持LDAP协议。LDAP协议的好处就是你公司的所有员工在所有这些工具里共享同一套用户名和密码，来人的时候新增一个用户就能自动访问所有系统，走人的时候一键删除就取消了他对所有系统的访问权限，这就是LDAP。&lt;/p&gt;
+
+&lt;p&gt;本文将介绍如何使用Helm在kubernetes 集群上搭建一个OpenLDAP服务。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes 开篇</title>
+      <link>https://www.k8sz.com/post/kubernetesopenings/</link>
+      <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetesopenings/</guid>
+      <description>&lt;p&gt;Kubernetes是一个可移植，可扩展的开源平台，用于管理容器化工作负载和服务，有助于声明性配置和自动化。作为一个从业运维工作的人员，得益与容器Docker和容器编排Kubernetes的出现，解决了许多运维中出现的痛点，提高运维效率。Kubernetes是如何解决运维中出现的痛点的呢？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>不要站在幸福里找幸福</title>
+      <link>https://www.k8sz.com/post/happiness/</link>
+      <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/happiness/</guid>
+      <description>&lt;p&gt;生活里，我们都有一个错觉：幸福总是别人的，唯有烦恼属于自己！
+于是我们一天天感受着所谓的烦恼一
+于是，我们一天天感受着所谓的烦恼，一天天寻找着，其实就在身边的幸福！
+于是我们一天天感受着所谓的烦恼一
+曾经有这样一项有趣的调查：世界上什么人最幸福？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>全文仅42个字道尽人生六大悔事</title>
+      <link>https://www.k8sz.com/post/sixregrets/</link>
+      <pubDate>Wed, 14 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/sixregrets/</guid>
+      <description>&lt;p&gt;一辈子那么长，谁的心里没有几件后悔的事。北宋名相寇准有一篇传世奇文，全文短短六句话，四十二个字，却说尽了人生六大悔事，看完后不禁潸然泪下。&lt;/p&gt;
+
+&lt;p&gt;晚清第一名臣曾国藩，对这篇文章推崇备至，将他奉为经典，时刻用于自省。&lt;/p&gt;
+
+&lt;p&gt;这六大悔事，看看你占了几样？&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

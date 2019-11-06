@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nexus on ZB</title>
+    <link>https://www.k8sz.com/tags/nexus/</link>
+    <description>Recent content in Nexus on ZB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 14 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.k8sz.com/tags/nexus/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>kubernetes之Jenkins 流水线语法</title>
+      <link>https://www.k8sz.com/post/kubernetes-jenkinsfile/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-jenkinsfile/</guid>
+      <description>&lt;p&gt;声明式和脚本化的流水线从根本上是不同的。 声明式流水线的是 Jenkins 流水线更近的特性:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;相比脚本化的流水线语法，它提供更丰富的语法特性,&lt;/li&gt;
+&lt;li&gt;是为了使编写和读取流水线代码更容易而设计的。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes之Jenkins x主要组件</title>
+      <link>https://www.k8sz.com/post/kubernetes-jx-component/</link>
+      <pubDate>Fri, 06 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-jx-component/</guid>
+      <description>&lt;p&gt;Jenkins X 是一个高度集成化的CI/CD平台，基于Jenkins和Kubernetes实现，旨在解决微服务体系架构下的云原生应用的持续交付的问题，简化整个云原生应用的开发、运行和部署过程。&lt;/p&gt;
+
+&lt;p&gt;jx是云原生CICD，devops的一个最佳实践之一，目前在快速的发展成熟中,这里介绍jx用到的一些相关组件&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker on ZB</title>
+    <link>https://www.k8sz.com/tags/docker/</link>
+    <description>Recent content in docker on ZB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 16 Sep 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.k8sz.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>kubernetes之Jenkins x安装</title>
+      <link>https://www.k8sz.com/post/kubernetes-jx-install/</link>
+      <pubDate>Mon, 16 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-jx-install/</guid>
+      <description>&lt;p&gt;jx是云原生CICD，devops的一个最佳实践之一，目前在快速的发展成熟中。&lt;/p&gt;
+
+&lt;p&gt;本文主要介绍如何在现有kuberneter 上安装Jenkins x，&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes CI/CD之drone安装</title>
+      <link>https://www.k8sz.com/post/kubernetes-drone-install/</link>
+      <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-drone-install/</guid>
+      <description>&lt;p&gt;Drone是一种基于容器技术的持续交付系统。使用简单的YAML配置文件来定义和执行Docker容器中定义的Pipeline，Drone主要由两个部分组成：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Server端负责身份认证，仓库配置，用户，Secrets以及Webhook相关配置&lt;/li&gt;
+&lt;li&gt;Agent端端用于接受构建的作业和真正用于运行的 Pipeline 工作流&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Server 和 Agent 都是非常轻量级的服务，大概只使用 10~15MB 内存&lt;/p&gt;
+
+&lt;p&gt;本文将介绍在kubernetes 集群基于Drone搭建一个CI/CD服务。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes之gogs安装</title>
+      <link>https://www.k8sz.com/post/kubernetesgogs/</link>
+      <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetesgogs/</guid>
+      <description>&lt;p&gt;Gogs 是一款极易搭建的自助 Git 服务。
+Gogs 的目标是打造一个最简单、最快速和最轻松的方式搭建自助 Git 服务。使用 Go 语言开发使得 Gogs 能够通过独立的二进制分发，并且支持 Go 语言支持的 所有平台，包括 Linux、Mac OS X、Windows 以及 ARM 平台。&lt;/p&gt;
+
+&lt;p&gt;本文介绍在kubernetes安装gogs git服务&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes之Helm安装</title>
+      <link>https://www.k8sz.com/post/kuberneteshelm/</link>
+      <pubDate>Sat, 17 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kuberneteshelm/</guid>
+      <description>&lt;p&gt;Helm可帮助您管理Kubernetes应用程序 - Helm Charts可帮助您定义，安装和升级最复杂的Kubernetes应用程序。Helm就相当于kubernetes环境下的yum包管理工具。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes之LDAP安装</title>
+      <link>https://www.k8sz.com/post/kubernetesldap/</link>
+      <pubDate>Fri, 16 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetesldap/</guid>
+      <description>&lt;p&gt;轻型目录访问协议（英文：Lightweight Directory Access Protocol 缩写: LDAP）是一个开放的，中立的，工业标准的应用协议，通过IP协议提供访问控制和维护分布式信息的目录信息。
+可以这样讲：市面上只要你能够想像得到的所有工具软件，全部都支持LDAP协议。比如说你公司要安装一个项目管理工具，那么这个工具几乎必然支持LDAP协议，你公司要安装一个bug管理工具，这工具必然也支持LDAP协议，你公司要安装一套软件版本管理工具，这工具也必然支持LDAP协议。LDAP协议的好处就是你公司的所有员工在所有这些工具里共享同一套用户名和密码，来人的时候新增一个用户就能自动访问所有系统，走人的时候一键删除就取消了他对所有系统的访问权限，这就是LDAP。&lt;/p&gt;
+
+&lt;p&gt;本文将介绍如何使用Helm在kubernetes 集群上搭建一个OpenLDAP服务。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

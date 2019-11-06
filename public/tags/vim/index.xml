@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vim on ZB</title>
+    <link>https://www.k8sz.com/tags/vim/</link>
+    <description>Recent content in vim on ZB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 22 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.k8sz.com/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linux之vim技巧</title>
+      <link>https://www.k8sz.com/post/linux-vim/</link>
+      <pubDate>Tue, 22 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/linux-vim/</guid>
+      <description>&lt;p&gt;Vim是一个类似于Vi的著名的功能强大、高度可定制的文本编辑器，在Vi的基础上改进和增加了很多特性。VIM是自由软件。
+本篇文章聚焦的是研发线上最常用的一些功能。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

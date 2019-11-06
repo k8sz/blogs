@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+
+  <title>kubernetes CI/CD之drone安装-https://www.k8sz.com/,ZB的博客,Kubernetes,Docker,istio,Golang,Cloud Native</title>
+  <meta property="og:title" content="kubernetes CI/CD之drone安装" />
+  <meta name="twitter:title" content="kubernetes CI/CD之drone安装" />
+
+  <meta name="description" content="基于gogs">
+  <meta property="og:description" content="基于gogs">
+  <meta name="twitter:description" content="基于gogs">
+  <meta name="author" content=""/>
+  <link href='https://image.77s.vip/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://image.77s.vip/favicon.png" />
+  <meta name="twitter:image" content="https://image.77s.vip/favicon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="https://www.k8sz.com/post/kubernetes-drone-install/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ZB" />
+
+  <meta name="generator" content="Hugo 0.55.6" />
+  <link rel="canonical" href="https://www.k8sz.com/post/kubernetes-drone-install/" />
+  <link rel="alternate" href="https://www.k8sz.com/index.xml" type="application/rss+xml" title="ZB">
+
+  
+  
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700%7COpen+Sans:400,700" rel="stylesheet">
+  
+
+  <link rel="stylesheet" href='https://www.k8sz.com/css/bundle.min.d236889182ad0dba3ea8cf427c8c43c658a4b0d39ab889ff934e277a03537814.css' integrity='sha256-0jaIkYKtDbo&#43;qM9CfIxDxliksNOauIn/k04negNTeBQ='>
+
+  
+    
+    <!--[if lt IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <![endif]-->
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?96a7bf5b2259aa8174c0660477c03714";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-146440849-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">切换导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://www.k8sz.com/">ZB</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="首页" href="https://www.k8sz.com/">首页</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Docker" href="https://www.k8sz.com/tags/docker">Docker</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Kubernetes" href="https://www.k8sz.com/tags/kubernetes">Kubernetes</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="DevOps" href="https://www.k8sz.com/tags/devops">DevOps</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="励志人生" href="https://www.k8sz.com/tags/motivational">励志人生</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">book</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://www.k8sz.com/book/">kubernetes</a>
+                
+              </div>
+            </li>
+          
+        
+
+        
+
+        
+
+        
+          <li>
+            <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+              <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+            </a>
+          </li>
+          
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+
+  <div id="modalSearch" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">搜索</h4>
+        </div>
+        <div class="modal-body">
+            
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="Search for titles or URIs..." name="search" autocomplete="off" />
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="https://www.k8sz.com/js/algoliasearch.min.js"></script>
+<script src="https://www.k8sz.com/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("OGF3JK7MAT", "8ca8105cef83b57d5cf1122941280707");
+var index = client.initIndex('prod_k8sz');
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            return '<span>' + '<a href="https://www.k8sz.com/post/' + suggestion.slug + '">' +
+            suggestion._highlightResult.title.value + '</a></span>';
+        }
+    }
+});
+</script>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    
+  
+  
+  
+
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 data-img-src-1="https://www.k8sz.com/img/great-wall-01.jpg" ></div>
+  
+
+  <header class="header-section has-img">
+    
+      <div class="intro-header big-img">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>kubernetes CI/CD之drone安装</h1>
+                  
+                    
+                      <h2 class="post-subheading">基于gogs</h2>
+                    
+                  
+                  
+                    <span class="post-meta">
+  
+    发表于 August 27, 2019
+  
+  
+</span>
+
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="img-desc" style="display: inline;"></span>
+      </div>
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>kubernetes CI/CD之drone安装</h1>
+                
+                  
+                    <h2 class="post-subheading">基于gogs</h2>
+                  
+                
+                
+                  <span class="post-meta">
+  
+    发表于 August 27, 2019
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+
+
+
+<div class="container" role="main">
+  <div class="row">
+
+    
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div>
+            
+            
+            <h5 id="tags" style="margin-top: 30px;">标签:
+              
+                  <a href="https://www.k8sz.com/tags/kubernetes/">kubernetes</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/ldap/">ldap</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/docker/">docker</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/kubectl/">kubectl</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/yaml/">yaml</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/gogs/">gogs</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/devops/">devops</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/ci/cd/">ci/cd</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/drone/">drone</a> &nbsp;
+              
+            </h5>
+            
+        </div>
+  
+        <article role="main" class="blog-post" itemprop="articleBody" id="content">
+          
+            
+<aside class="toc">
+  <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#安装">安装</a>
+<ul>
+<li><a href="#gogs安装">gogs安装</a></li>
+<li><a href="#drone安装">Drone安装</a></li>
+</ul></li>
+<li><a href="#结语">结语</a></li>
+</ul></li>
+</ul>
+</nav>
+</aside>
+
+          
+  
+          
+          
+          
+  
+          
+          
+          
+  
+
+          
+          
+          
+          <p>Drone是一种基于容器技术的持续交付系统。使用简单的YAML配置文件来定义和执行Docker容器中定义的Pipeline，Drone主要由两个部分组成：</p>
+
+<ul>
+<li>Server端负责身份认证，仓库配置，用户，Secrets以及Webhook相关配置</li>
+<li>Agent端端用于接受构建的作业和真正用于运行的 Pipeline 工作流</li>
+</ul>
+
+<p>Server 和 Agent 都是非常轻量级的服务，大概只使用 10~15MB 内存</p>
+
+<p>本文将介绍在kubernetes 集群基于Drone搭建一个CI/CD服务。</p>
+
+<h2 id="安装">安装</h2>
+
+<h3 id="gogs安装">gogs安装</h3>
+
+<p>参考<a href="https://k8sz.gitee.io/post/kubernetesgogs/">kubernetes之gogs安装</a></p>
+
+<h3 id="drone安装">Drone安装</h3>
+
+<p>编写drone-pvc.yaml文件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: dronepvc
+  namespace: default
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: alicloud-disk-available</code></pre></div>
+<p>在kubernet集群运行drone-pvc.yaml文件建立drone所需的pvc</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f drone-pvc.yaml
+<span style="color:#ff79c6">[</span>user@S001 basics<span style="color:#ff79c6">]</span><span style="color:#6272a4"># kubectl get pvc</span>
+NAME       STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS              AGE
+dronepvc   Bound    pvc-7a832ccb-2ee2-4a7b-8cf0-1036357d95b4   5Gi        RWO            alicloud-disk-available   21h</code></pre></div>
+<p>编写drone-rbac.yaml文件,针对drone server端和agent端的rbac的授权</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: drone-pipeline
+  namespace: default
+  labels:
+    app: drone
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: drone
+  labels:
+    app: drone
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: drone-pipeline
+  labels:
+    app: drone
+rules:
+  - apiGroups:
+      - extensions
+    resources:
+      - deployments
+    verbs:
+      - get
+      - list
+      - watch
+      - patch
+      - update
+  - apiGroups:
+      - <span style="color:#f1fa8c">&#34;&#34;</span>
+    resources:
+      - namespaces
+      - configmaps
+      - secrets
+      - pods
+      - services
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - <span style="color:#f1fa8c">&#34;&#34;</span>
+    resources:
+      - pods/log
+    verbs:
+      - get
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: drone-pipeline
+  labels:
+    app: drone
+subjects:
+  - kind: ServiceAccount
+    name: drone-pipeline
+    namespace: default
+roleRef:
+  kind: ClusterRole
+  name: drone-pipeline
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: drone
+  labels:
+    app: drone
+rules:
+  - apiGroups:
+      - batch
+    resources:
+      - jobs
+    verbs:
+      - <span style="color:#f1fa8c">&#34;*&#34;</span>
+  - apiGroups:
+      - extensions
+    resources:
+      - deployments
+    verbs:
+      - get
+      - list
+      - patch
+      - update
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: drone
+  labels:
+    app: drone
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: drone
+subjects:
+- kind: ServiceAccount
+  name: drone
+  namespace: default</code></pre></div>
+<p>在kubernet集群运行drone-rbac.yaml进行授权</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f drone-rbac.yaml</code></pre></div>
+<p>编写drone-deployment.yaml文件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: drone
+  annotations:
+  labels:
+    app: drone
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: <span style="color:#bd93f9">80</span>
+    targetPort: <span style="color:#bd93f9">80</span>
+  selector:
+    app: drone
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: drone-server
+  labels:
+    app: drone
+spec:
+  replicas: <span style="color:#bd93f9">1</span>
+  template:
+    metadata:
+      labels:
+        app: drone
+    spec:
+      serviceAccountName: drone
+      containers:
+      - name: server
+        image: <span style="color:#f1fa8c">&#34;docker.io/drone/drone:1.2&#34;</span>
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: DRONE_PRIVATE_MODE
+            value: <span style="color:#f1fa8c">&#34;true&#34;</span>
+          - name: DRONE_TLS_AUTOCERT
+            value: <span style="color:#f1fa8c">&#34;true&#34;</span>
+          - name: DRONE_KUBERNETES_ENABLED
+            value: <span style="color:#f1fa8c">&#34;true&#34;</span>
+          - name: DRONE_KUBERNETES_NAMESPACE
+            value: default
+          - name: DRONE_GOGS_SERVER
+            value: <span style="color:#f1fa8c">&#34;http://gogs.basics:3000&#34;</span>
+          - name: DRONE_GIT_ALWAYS_AUTH
+            value: <span style="color:#f1fa8c">&#34;false&#34;</span>
+          - name: DRONE_SERVER_HOST
+            value: <span style="color:#f1fa8c">&#34;drone&#34;</span>
+          - name: DRONE_RPC_PROTO
+            value: <span style="color:#f1fa8c">&#34;http&#34;</span>
+          - name: DRONE_RPC_HOST
+            value: drone.default:<span style="color:#bd93f9">80</span>
+          - name: DRONE_SERVER_PROTO
+            value: http
+          - name: DRONE_RPC_SECRET
+            value: <span style="color:#f1fa8c">&#34;b0a7e0969f6736a09a73c1e4933809de&#34;</span>
+          - name: DRONE_DATABASE_DATASOURCE
+            value: <span style="color:#f1fa8c">&#34;/var/lib/drone/drone.sqlite&#34;</span>
+          - name: DRONE_DATABASE_DRIVER
+            value: <span style="color:#f1fa8c">&#34;sqlite3&#34;</span>
+          - name: DRONE_LOGS_DEBUG
+            value: <span style="color:#f1fa8c">&#34;false&#34;</span>
+          - name: DRONE_USER_CREATE
+            value: username:root,admin:<span style="color:#ff79c6">true</span>
+        ports:
+        - name: http
+          containerPort: <span style="color:#bd93f9">80</span>
+          protocol: TCP
+        - name: https
+          containerPort: <span style="color:#bd93f9">443</span>
+          protocol: TCP
+        - name: grpc
+          containerPort: <span style="color:#bd93f9">9000</span>
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /
+            port: http       
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/drone
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: dronepvc</code></pre></div>
+<p>这里需要注意POD的参数配置，详情请参考<a href="https://readme.drone.io/reference/">官方文档</a>
+在kubernet集群运行drone-deployment.yaml进行部署</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f drone-deployment.yaml
+<span style="color:#ff79c6">[</span>user@S001 ~<span style="color:#ff79c6">]</span><span style="color:#6272a4"># kubectl get pods -l app=drone</span>
+NAME                           READY   STATUS    RESTARTS   AGE
+drone-server-5f5888d48-7t5lr   <span style="color:#bd93f9">1</span>/1     Running   <span style="color:#bd93f9">0</span>          10s</code></pre></div>
+<p>编写istio ingressgatewqy</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: drone-gateway
+  namespace: default
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port: 
+      number: <span style="color:#bd93f9">80</span>
+      name: http-drone
+      protocol: HTTP
+    hosts:
+    - <span style="color:#f1fa8c">&#34;drone.zb.vip&#34;</span>
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: drone-vs
+  namespace: default
+spec:
+  hosts:
+  - <span style="color:#f1fa8c">&#34;drone.zb.vip&#34;</span>
+  gateways:
+  - drone-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: drone
+        port: 
+          number: <span style="color:#bd93f9">80</span>
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: drone
+  namespace: default
+spec:
+  host: drone
+  trafficPolicy:
+    tls:
+      mode: DISABLE</code></pre></div>
+<p>在kubernetes集群中运行</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f drone-gw.yaml</code></pre></div>
+<p>最后在DNS解释添加drone.zb.com,并在浏览器中访问drone.zb.com
+<img src="https://www.k8sz.com/img/k8s/drone001.png" alt="drone" />
+</script>
+登陆到drone，可以自动或者手动同步gogs用户下的git仓库，选中需要操作的git仓库，点击ACTIVATE REPOSITORY激活</p>
+
+<h2 id="结语">结语</h2>
+
+
+
+
+          
+
+ 
+          
+            <div class="entry-shang text-center">
+    <p>「真诚赞赏，手留余香」</p>
+    <button class="zs show-zs btn btn-bred">赞赏</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+    <div class="zs-modal-head">
+        <button type="button" class="close">×</button>
+        <span class="author"><img src="https://www.k8sz.com/img/avatar.jpeg"/>ZB</span>
+        <p class="tip"><i></i><span>请我喝杯奶茶？</span></p>
+    </div>
+    <div class="zs-modal-body">
+
+        <div>
+           <img src="https://www.k8sz.com/img/zhuansuan.jpg" id="pay-image"/>
+        </div>
+
+    </div>
+    <div class="zs-modal-footer">
+        <span class="zs-wechat"><img src="https://www.k8sz.com/img/wechat-btn.png"/></span>
+    </div>
+</div>
+
+          
+
+          
+            <div class="social-share" data-initialized="true" style="margin-bottom: 20px;margin-top:20px;">
+    <center>
+    <font style="font-size:18px;color:darkcyan;">分享到：</font>
+    <a href="#" class="social-share-icon icon-weibo"></a>
+    <a href="#" class="social-share-icon icon-wechat"></a>
+
+    <a href="#" class="social-share-icon icon-linkedin"></a>
+
+
+    <a href="#" class="social-share-icon icon-qzone"></a>
+    </center>
+</div>
+ 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+          
+        </article>
+  
+        
+          
+
+<h3>相关文章</h3>
+<ul style="margin-bottom: 25px;">
+    
+    <li><a href="https://www.k8sz.com/post/kubernetesgogs/">kubernetes之gogs安装</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/kubernetesldap/">kubernetes之LDAP安装</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/kuberneteskubeadm/">kubernetes之使用kubeadm安装1.15.4</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/kuberneteshelm/">kubernetes之Helm安装</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/kubernetesopenings/">Kubernetes 开篇</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/sixregrets/">全文仅42个字道尽人生六大悔事</a></li>
+    
+</ul>
+
+        
+  
+        
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://www.k8sz.com/post/kubernetesgogs/" data-toggle="tooltip" data-placement="top" title="kubernetes之gogs安装">&larr; 前一篇</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://www.k8sz.com/post/kubernetes-prometheus-intro/" data-toggle="tooltip" data-placement="top" title="kubernetes之prometheus简介">后一篇 &rarr;</a>
+            </li>
+          
+        </ul>
+        
+
+        
+
+
+      </div>
+    
+    
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;
+          2019
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://www.k8sz.com/">ZB</a>
+            &nbsp;&bull;&nbsp;
+            <a href="https://www.k8sz.com/sitemap.xml">网站地图</a>
+            &nbsp;&bull;&nbsp;
+            <a href="https://www.k8sz.com/page/archive/">文章归档</a>
+            &nbsp;&bull;&nbsp;
+          
+        </p>
+
+        
+        <p class="credits theme-by text-muted">
+
+          由 <a href="http://gohugo.io">Hugo v0.55.6</a> 强力驱动 &nbsp;&bull;&nbsp; 主题 <a href="https://www.k8sz.com/">ZB的博客</a> 移植自 <a href="https://github.com/rootsongjc/beautifulhugo">Beautiful Hugo</a>
+
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src='https://www.k8sz.com/js/bundle.min.8242ab5c3c016acc49d8c7717b5c1a9f24511d0b9e5d1c0e44f2b907c76b5987.js' integrity='sha256-gkKrXDwBasxJ2Mdxe1wanyRRHQueXRwORPK5B8drWYc='></script>
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146440849-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-146440849-1');
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+<script type="text/javascript">
+ 
+var a_idx = 0;
+jQuery(document).ready(function($) {
+    $("body").click(function(e) {
+        var a = new Array("Docker", "Kubernetes", "Prometheus", "Envoy", "Istio", "Service Mesh", "Cloud Native", "Golang", "DevOps");
+        var $i = $("<span />").text(a[a_idx]);
+        a_idx = (a_idx + 1) % a.length;
+        var x = e.pageX,
+        y = e.pageY;
+        function randomColor() {
+          var flakeColor = new Array("#FFDA65", "#00BFFF", "#BA55D3", "#FFA07A", "#87CEEB", "#FFB6C1");
+          var snowColor = flakeColor[Math.floor(flakeColor.length * Math.random())];
+          return snowColor;
+        }
+        $i.css({
+            "z-index": 999999999999999999999999999999999999999999999999999999999999999999999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": randomColor()
+        });
+        $("body").append($i);
+        $i.animate({
+            "top": y - 180,
+            "opacity": 0
+        },
+        1500,
+        function() {
+            $i.remove();
+        });
+    });
+});
+</script>
+
+
+<script type="text/javascript" src="https://www.k8sz.com/js/lightbox.js"></script>
+
+
+<script src="https://cdn.plyr.io/3.4.7/plyr.js"></script>
+<script>const player = new Plyr('#player');</script>
+
+
+  </body>
+</html>
+

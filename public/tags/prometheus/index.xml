@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>prometheus on ZB</title>
+    <link>https://www.k8sz.com/tags/prometheus/</link>
+    <description>Recent content in prometheus on ZB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 28 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.k8sz.com/tags/prometheus/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>kubernetes之prometheus简介</title>
+      <link>https://www.k8sz.com/post/kubernetes-prometheus-intro/</link>
+      <pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-prometheus-intro/</guid>
+      <description>&lt;p&gt;kubernetes作为当下最炙手可热的容器编排平台，在给应用部署运维带来便捷的同时，也给应用及性能监控带来了新的挑战。&lt;/p&gt;
+
+&lt;p&gt;本文给大家分享一款十分火热的开源监控工具Prometheus，让我们一起来看它是如何兼顾传统的应用监控、主机性能监控和Kubernetes监控的。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

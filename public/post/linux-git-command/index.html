@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+
+  <title>Linux之git常用命令-https://www.k8sz.com/,ZB的博客,Kubernetes,Docker,istio,Golang,Cloud Native</title>
+  <meta property="og:title" content="Linux之git常用命令" />
+  <meta name="twitter:title" content="Linux之git常用命令" />
+
+  <meta name="description" content="Linux基础篇">
+  <meta property="og:description" content="Linux基础篇">
+  <meta name="twitter:description" content="Linux基础篇">
+  <meta name="author" content=""/>
+  <link href='https://image.77s.vip/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://image.77s.vip/favicon.png" />
+  <meta name="twitter:image" content="https://image.77s.vip/favicon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="https://www.k8sz.com/post/linux-git-command/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ZB" />
+
+  <meta name="generator" content="Hugo 0.55.6" />
+  <link rel="canonical" href="https://www.k8sz.com/post/linux-git-command/" />
+  <link rel="alternate" href="https://www.k8sz.com/index.xml" type="application/rss+xml" title="ZB">
+
+  
+  
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700%7COpen+Sans:400,700" rel="stylesheet">
+  
+
+  <link rel="stylesheet" href='https://www.k8sz.com/css/bundle.min.d236889182ad0dba3ea8cf427c8c43c658a4b0d39ab889ff934e277a03537814.css' integrity='sha256-0jaIkYKtDbo&#43;qM9CfIxDxliksNOauIn/k04negNTeBQ='>
+
+  
+    
+    <!--[if lt IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <![endif]-->
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?96a7bf5b2259aa8174c0660477c03714";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-146440849-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">切换导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://www.k8sz.com/">ZB</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="首页" href="https://www.k8sz.com/">首页</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Docker" href="https://www.k8sz.com/tags/docker">Docker</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Kubernetes" href="https://www.k8sz.com/tags/kubernetes">Kubernetes</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="DevOps" href="https://www.k8sz.com/tags/devops">DevOps</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="励志人生" href="https://www.k8sz.com/tags/motivational">励志人生</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">book</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://www.k8sz.com/book/">kubernetes</a>
+                
+              </div>
+            </li>
+          
+        
+
+        
+
+        
+
+        
+          <li>
+            <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+              <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+            </a>
+          </li>
+          
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+
+  <div id="modalSearch" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">搜索</h4>
+        </div>
+        <div class="modal-body">
+            
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="Search for titles or URIs..." name="search" autocomplete="off" />
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="https://www.k8sz.com/js/algoliasearch.min.js"></script>
+<script src="https://www.k8sz.com/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("OGF3JK7MAT", "8ca8105cef83b57d5cf1122941280707");
+var index = client.initIndex('prod_k8sz');
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            return '<span>' + '<a href="https://www.k8sz.com/post/' + suggestion.slug + '">' +
+            suggestion._highlightResult.title.value + '</a></span>';
+        }
+    }
+});
+</script>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    
+  
+  
+  
+
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 data-img-src-1="https://www.k8sz.com/img/k8s/k8s001.jpg" ></div>
+  
+
+  <header class="header-section has-img">
+    
+      <div class="intro-header big-img">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>Linux之git常用命令</h1>
+                  
+                    
+                      <h2 class="post-subheading">Linux基础篇</h2>
+                    
+                  
+                  
+                    <span class="post-meta">
+  
+    发表于 August 28, 2019
+  
+  
+</span>
+
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="img-desc" style="display: inline;"></span>
+      </div>
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>Linux之git常用命令</h1>
+                
+                  
+                    <h2 class="post-subheading">Linux基础篇</h2>
+                  
+                
+                
+                  <span class="post-meta">
+  
+    发表于 August 28, 2019
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+
+
+
+<div class="container" role="main">
+  <div class="row">
+
+    
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div>
+            
+            
+            <h5 id="tags" style="margin-top: 30px;">标签:
+              
+                  <a href="https://www.k8sz.com/tags/linux/">linux</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/git/">git</a> &nbsp;
+              
+            </h5>
+            
+        </div>
+  
+        <article role="main" class="blog-post" itemprop="articleBody" id="content">
+          
+            
+<aside class="toc">
+  <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#仓库">仓库</a></li>
+<li><a href="#配置">配置</a></li>
+<li><a href="#增加-删除文件">增加/删除文件</a></li>
+<li><a href="#代码提交">代码提交</a></li>
+<li><a href="#分支">分支</a></li>
+<li><a href="#标签">标签</a></li>
+<li><a href="#信息查看">信息查看</a></li>
+<li><a href="#远程同步">远程同步</a></li>
+<li><a href="#撤销">撤销</a></li>
+<li><a href="#其他">其他</a></li>
+<li><a href="#结语">结语</a></li>
+</ul></li>
+</ul>
+</nav>
+</aside>
+
+          
+  
+          
+          
+          
+  
+          
+          
+          
+  
+
+          
+          
+          
+          <p>git是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。  Git 是 Linus Torvalds为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件</p>
+
+<p>本文主要介绍git一些常用命令</p>
+
+<h2 id="仓库">仓库</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># 在当前目录新建一个Git代码库</span>
+$ git init
+<span style="color:#6272a4"># 新建一个目录，将其初始化为Git代码库</span>
+$ git init <span style="color:#ff79c6">[</span>project-name<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 下载一个项目和它的整个代码历史</span>
+$ git clone <span style="color:#ff79c6">[</span>url<span style="color:#ff79c6">]</span></code></pre></div>
+<h2 id="配置">配置</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># 显示当前的Git配置</span>
+$ git config --list
+<span style="color:#6272a4"># 编辑Git配置文件</span>
+$ git config -e <span style="color:#ff79c6">[</span>--global<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 设置提交代码时的用户信息</span>
+$ git config <span style="color:#ff79c6">[</span>--global<span style="color:#ff79c6">]</span> user.name <span style="color:#f1fa8c">&#34;[name]&#34;</span>
+$ git config <span style="color:#ff79c6">[</span>--global<span style="color:#ff79c6">]</span> user.email <span style="color:#f1fa8c">&#34;[email address]&#34;</span></code></pre></div>
+<h2 id="增加-删除文件">增加/删除文件</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># 添加指定文件到暂存区</span>
+$ git add <span style="color:#ff79c6">[</span>file1<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">[</span>file2<span style="color:#ff79c6">]</span> ...
+<span style="color:#6272a4"># 添加指定目录到暂存区，包括子目录</span>
+$ git add <span style="color:#ff79c6">[</span>dir<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 添加当前目录的所有文件到暂存区</span>
+$ git add .
+<span style="color:#6272a4"># 添加每个变化前，都会要求确认</span>
+<span style="color:#6272a4"># 对于同一个文件的多处变化，可以实现分次提交</span>
+$ git add -p
+<span style="color:#6272a4"># 删除工作区文件，并且将这次删除放入暂存区</span>
+$ git rm <span style="color:#ff79c6">[</span>file1<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">[</span>file2<span style="color:#ff79c6">]</span> ...
+<span style="color:#6272a4"># 停止追踪指定文件，但该文件会保留在工作区</span>
+$ git rm --cached <span style="color:#ff79c6">[</span>file<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 改名文件，并且将这个改名放入暂存区</span>
+$ git mv <span style="color:#ff79c6">[</span>file-original<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">[</span>file-renamed<span style="color:#ff79c6">]</span></code></pre></div>
+<h2 id="代码提交">代码提交</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># 提交暂存区到仓库区</span>
+$ git commit -m <span style="color:#ff79c6">[</span>message<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 提交暂存区的指定文件到仓库区</span>
+$ git commit <span style="color:#ff79c6">[</span>file1<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">[</span>file2<span style="color:#ff79c6">]</span> ... -m <span style="color:#ff79c6">[</span>message<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 提交工作区自上次commit之后的变化，直接到仓库区</span>
+$ git commit -a
+<span style="color:#6272a4"># 提交时显示所有diff信息</span>
+$ git commit -v
+<span style="color:#6272a4"># 使用一次新的commit，替代上一次提交</span>
+<span style="color:#6272a4"># 如果代码没有任何新变化，则用来改写上一次commit的提交信息</span>
+$ git commit --amend -m <span style="color:#ff79c6">[</span>message<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 重做上一次commit，并包括指定文件的新变化</span>
+$ git commit --amend <span style="color:#ff79c6">[</span>file1<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">[</span>file2<span style="color:#ff79c6">]</span> ...</code></pre></div>
+<h2 id="分支">分支</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># 列出所有本地分支</span>
+$ git branch
+<span style="color:#6272a4"># 列出所有远程分支</span>
+$ git branch -r
+<span style="color:#6272a4"># 列出所有本地分支和远程分支</span>
+$ git branch -a
+<span style="color:#6272a4"># 新建一个分支，但依然停留在当前分支</span>
+$ git branch <span style="color:#ff79c6">[</span>branch-name<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 新建一个分支，并切换到该分支</span>
+$ git checkout -b <span style="color:#ff79c6">[</span>branch<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 新建一个分支，指向指定commit</span>
+$ git branch <span style="color:#ff79c6">[</span>branch<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">[</span>commit<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 新建一个分支，与指定的远程分支建立追踪关系</span>
+$ git branch --track <span style="color:#ff79c6">[</span>branch<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">[</span>remote-branch<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 切换到指定分支，并更新工作区</span>
+$ git checkout <span style="color:#ff79c6">[</span>branch-name<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 切换到上一个分支</span>
+$ git checkout -
+<span style="color:#6272a4"># 建立追踪关系，在现有分支与指定的远程分支之间</span>
+$ git branch --set-upstream <span style="color:#ff79c6">[</span>branch<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">[</span>remote-branch<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 合并指定分支到当前分支</span>
+$ git merge <span style="color:#ff79c6">[</span>branch<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 选择一个commit，合并进当前分支</span>
+$ git cherry-pick <span style="color:#ff79c6">[</span>commit<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 删除分支</span>
+$ git branch -d <span style="color:#ff79c6">[</span>branch-name<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 删除远程分支</span>
+$ git push origin --delete <span style="color:#ff79c6">[</span>branch-name<span style="color:#ff79c6">]</span>
+$ git branch -dr <span style="color:#ff79c6">[</span>remote/branch<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 同步指定文件</span>
+$ git checkout B sta/* a.yaml</code></pre></div>
+<h2 id="标签">标签</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># 列出所有tag</span>
+$ git tag
+<span style="color:#6272a4"># 新建一个tag在当前commit</span>
+$ git tag <span style="color:#ff79c6">[</span>tag<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 新建一个tag在指定commit</span>
+$ git tag <span style="color:#ff79c6">[</span>tag<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">[</span>commit<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 删除本地tag</span>
+$ git tag -d <span style="color:#ff79c6">[</span>tag<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 删除远程tag</span>
+$ git push origin :refs/tags/<span style="color:#ff79c6">[</span>tagName<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 查看tag信息</span>
+$ git show <span style="color:#ff79c6">[</span>tag<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 提交指定tag</span>
+$ git push <span style="color:#ff79c6">[</span>remote<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">[</span>tag<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 提交所有tag</span>
+$ git push <span style="color:#ff79c6">[</span>remote<span style="color:#ff79c6">]</span> --tags
+<span style="color:#6272a4"># 新建一个分支，指向某个tag</span>
+$ git checkout -b <span style="color:#ff79c6">[</span>branch<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">[</span>tag<span style="color:#ff79c6">]</span></code></pre></div>
+<h2 id="信息查看">信息查看</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># 显示有变更的文件</span>
+$ git status
+<span style="color:#6272a4"># 显示当前分支的版本历史</span>
+$ git log
+<span style="color:#6272a4"># 显示commit历史，以及每次commit发生变更的文件</span>
+$ git log --stat
+<span style="color:#6272a4"># 搜索提交历史，根据关键词</span>
+$ git log -S <span style="color:#ff79c6">[</span>keyword<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 显示某个commit之后的所有变动，每个commit占据一行</span>
+$ git log <span style="color:#ff79c6">[</span>tag<span style="color:#ff79c6">]</span> HEAD --pretty<span style="color:#ff79c6">=</span>format:%s
+<span style="color:#6272a4"># 显示某个commit之后的所有变动，其&#34;提交说明&#34;必须符合搜索条件</span>
+$ git log <span style="color:#ff79c6">[</span>tag<span style="color:#ff79c6">]</span> HEAD --grep feature
+<span style="color:#6272a4"># 显示某个文件的版本历史，包括文件改名</span>
+$ git log --follow <span style="color:#ff79c6">[</span>file<span style="color:#ff79c6">]</span>
+$ git whatchanged <span style="color:#ff79c6">[</span>file<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 显示指定文件相关的每一次diff</span>
+$ git log -p <span style="color:#ff79c6">[</span>file<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 显示过去5次提交</span>
+$ git log -5 --pretty --oneline
+<span style="color:#6272a4"># 显示所有提交过的用户，按提交次数排序</span>
+$ git shortlog -sn
+<span style="color:#6272a4"># 显示指定文件是什么人在什么时间修改过</span>
+$ git blame <span style="color:#ff79c6">[</span>file<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 显示暂存区和工作区的差异</span>
+$ git diff
+<span style="color:#6272a4"># 显示暂存区和上一个commit的差异</span>
+$ git diff --cached <span style="color:#ff79c6">[</span>file<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 显示工作区与当前分支最新commit之间的差异</span>
+$ git diff HEAD
+<span style="color:#6272a4"># 显示两次提交之间的差异</span>
+$ git diff <span style="color:#ff79c6">[</span>first-branch<span style="color:#ff79c6">]</span>...<span style="color:#ff79c6">[</span>second-branch<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 显示今天你写了多少行代码</span>
+$ git diff --shortstat <span style="color:#f1fa8c">&#34;@{0 day ago}&#34;</span>
+<span style="color:#6272a4"># 显示某次提交的元数据和内容变化</span>
+$ git show <span style="color:#ff79c6">[</span>commit<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 显示某次提交发生变化的文件</span>
+$ git show --name-only <span style="color:#ff79c6">[</span>commit<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 显示某次提交时，某个文件的内容</span>
+$ git show <span style="color:#ff79c6">[</span>commit<span style="color:#ff79c6">]</span>:<span style="color:#ff79c6">[</span>filename<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 显示当前分支的最近几次提交</span>
+$ git reflog</code></pre></div>
+<h2 id="远程同步">远程同步</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># 下载远程仓库的所有变动</span>
+$ git fetch <span style="color:#ff79c6">[</span>remote<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 显示所有远程仓库</span>
+$ git remote -v
+<span style="color:#6272a4"># 显示某个远程仓库的信息</span>
+$ git remote show <span style="color:#ff79c6">[</span>remote<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 增加一个新的远程仓库，并命名</span>
+$ git remote add <span style="color:#ff79c6">[</span>shortname<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">[</span>url<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 取回远程仓库的变化，并与本地分支合并</span>
+$ git pull <span style="color:#ff79c6">[</span>remote<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">[</span>branch<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 上传本地指定分支到远程仓库,第一次推送加-u</span>
+$ git push <span style="color:#ff79c6">[</span>remote<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">[</span>branch<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 强行推送当前分支到远程仓库，即使有冲突</span>
+$ git push <span style="color:#ff79c6">[</span>remote<span style="color:#ff79c6">]</span> --force
+<span style="color:#6272a4"># 推送所有分支到远程仓库</span>
+$ git push <span style="color:#ff79c6">[</span>remote<span style="color:#ff79c6">]</span> --all</code></pre></div>
+<h2 id="撤销">撤销</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># 恢复暂存区的指定文件到工作区</span>
+$ git checkout <span style="color:#ff79c6">[</span>file<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 恢复某个commit的指定文件到暂存区和工作区</span>
+$ git checkout <span style="color:#ff79c6">[</span>commit<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">[</span>file<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 恢复暂存区的所有文件到工作区</span>
+$ git checkout .
+<span style="color:#6272a4"># 重置暂存区的指定文件，与上一次commit保持一致，但工作区不变</span>
+$ git reset <span style="color:#ff79c6">[</span>file<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 重置暂存区与工作区，与上一次commit保持一致</span>
+$ git reset --hard
+<span style="color:#6272a4"># 重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变</span>
+$ git reset <span style="color:#ff79c6">[</span>commit<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致</span>
+$ git reset --hard <span style="color:#ff79c6">[</span>commit<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 重置当前HEAD为指定commit，但保持暂存区和工作区不变</span>
+$ git reset --keep <span style="color:#ff79c6">[</span>commit<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 新建一个commit，用来撤销指定commit</span>
+<span style="color:#6272a4"># 后者的所有变化都将被前者抵消，并且应用到当前分支</span>
+$ git revert <span style="color:#ff79c6">[</span>commit<span style="color:#ff79c6">]</span>
+<span style="color:#6272a4"># 暂时将未提交的变化移除，稍后再移入</span>
+$ git stash
+$ git stash pop</code></pre></div>
+<h2 id="其他">其他</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># 生成一个可供发布的压缩包</span>
+$ git archive</code></pre></div>
+<h2 id="结语">结语</h2>
+
+<ul>
+<li>参考：<a href="https://gitee.com/all-about-git">https://gitee.com/all-about-git</a></li>
+</ul>
+
+
+
+
+          
+
+ 
+          
+            <div class="entry-shang text-center">
+    <p>「真诚赞赏，手留余香」</p>
+    <button class="zs show-zs btn btn-bred">赞赏</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+    <div class="zs-modal-head">
+        <button type="button" class="close">×</button>
+        <span class="author"><img src="https://www.k8sz.com/img/avatar.jpeg"/>ZB</span>
+        <p class="tip"><i></i><span>请我喝杯奶茶？</span></p>
+    </div>
+    <div class="zs-modal-body">
+
+        <div>
+           <img src="https://www.k8sz.com/img/zhuansuan.jpg" id="pay-image"/>
+        </div>
+
+    </div>
+    <div class="zs-modal-footer">
+        <span class="zs-wechat"><img src="https://www.k8sz.com/img/wechat-btn.png"/></span>
+    </div>
+</div>
+
+          
+
+          
+            <div class="social-share" data-initialized="true" style="margin-bottom: 20px;margin-top:20px;">
+    <center>
+    <font style="font-size:18px;color:darkcyan;">分享到：</font>
+    <a href="#" class="social-share-icon icon-weibo"></a>
+    <a href="#" class="social-share-icon icon-wechat"></a>
+
+    <a href="#" class="social-share-icon icon-linkedin"></a>
+
+
+    <a href="#" class="social-share-icon icon-qzone"></a>
+    </center>
+</div>
+ 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+          
+        </article>
+  
+        
+          
+
+<h3>相关文章</h3>
+<ul style="margin-bottom: 25px;">
+    
+    <li><a href="https://www.k8sz.com/post/kubernetesgogs/">kubernetes之gogs安装</a></li>
+    
+</ul>
+
+        
+  
+        
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://www.k8sz.com/post/kubernetes-prometheus-intro/" data-toggle="tooltip" data-placement="top" title="kubernetes之prometheus简介">&larr; 前一篇</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://www.k8sz.com/post/kubernetes-jx-component/" data-toggle="tooltip" data-placement="top" title="kubernetes之Jenkins x主要组件">后一篇 &rarr;</a>
+            </li>
+          
+        </ul>
+        
+
+        
+
+
+      </div>
+    
+    
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;
+          2019
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://www.k8sz.com/">ZB</a>
+            &nbsp;&bull;&nbsp;
+            <a href="https://www.k8sz.com/sitemap.xml">网站地图</a>
+            &nbsp;&bull;&nbsp;
+            <a href="https://www.k8sz.com/page/archive/">文章归档</a>
+            &nbsp;&bull;&nbsp;
+          
+        </p>
+
+        
+        <p class="credits theme-by text-muted">
+
+          由 <a href="http://gohugo.io">Hugo v0.55.6</a> 强力驱动 &nbsp;&bull;&nbsp; 主题 <a href="https://www.k8sz.com/">ZB的博客</a> 移植自 <a href="https://github.com/rootsongjc/beautifulhugo">Beautiful Hugo</a>
+
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src='https://www.k8sz.com/js/bundle.min.8242ab5c3c016acc49d8c7717b5c1a9f24511d0b9e5d1c0e44f2b907c76b5987.js' integrity='sha256-gkKrXDwBasxJ2Mdxe1wanyRRHQueXRwORPK5B8drWYc='></script>
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146440849-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-146440849-1');
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+<script type="text/javascript">
+ 
+var a_idx = 0;
+jQuery(document).ready(function($) {
+    $("body").click(function(e) {
+        var a = new Array("Docker", "Kubernetes", "Prometheus", "Envoy", "Istio", "Service Mesh", "Cloud Native", "Golang", "DevOps");
+        var $i = $("<span />").text(a[a_idx]);
+        a_idx = (a_idx + 1) % a.length;
+        var x = e.pageX,
+        y = e.pageY;
+        function randomColor() {
+          var flakeColor = new Array("#FFDA65", "#00BFFF", "#BA55D3", "#FFA07A", "#87CEEB", "#FFB6C1");
+          var snowColor = flakeColor[Math.floor(flakeColor.length * Math.random())];
+          return snowColor;
+        }
+        $i.css({
+            "z-index": 999999999999999999999999999999999999999999999999999999999999999999999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": randomColor()
+        });
+        $("body").append($i);
+        $i.animate({
+            "top": y - 180,
+            "opacity": 0
+        },
+        1500,
+        function() {
+            $i.remove();
+        });
+    });
+});
+</script>
+
+
+<script type="text/javascript" src="https://www.k8sz.com/js/lightbox.js"></script>
+
+
+<script src="https://cdn.plyr.io/3.4.7/plyr.js"></script>
+<script>const player = new Plyr('#player');</script>
+
+
+  </body>
+</html>
+

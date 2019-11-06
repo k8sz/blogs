@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>helm on ZB</title>
+    <link>https://www.k8sz.com/tags/helm/</link>
+    <description>Recent content in helm on ZB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 25 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.k8sz.com/tags/helm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kubernetes之使用Kustomize配置应用</title>
+      <link>https://www.k8sz.com/post/kubernetes-kustomize/</link>
+      <pubDate>Fri, 25 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-kustomize/</guid>
+      <description>&lt;p&gt;如果你经常使用 Kubernetes，那么你肯定就有定制资源清单文件的需求，但是貌似现在大家都比较喜欢使用 Helm，Helm 很好用，但也有很多缺点，比如需要一个 tiller 服务端，需要超高的权限，最重要的是如果你要想自己做一个 Helm Chart 包的话，则不是那么容易的，需要你了解一些 go template 的相关知识，它抛弃了我们在 Docker 和 Kubernetes 上面学到的一些逻辑，今天我们将为大家介绍另外一种名为&lt;code&gt;Kustomize&lt;/code&gt;的替代工具。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>HelmV2迁移到V3版本</title>
+      <link>https://www.k8sz.com/post/helm2-to-v3/</link>
+      <pubDate>Fri, 18 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/helm2-to-v3/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://v3.helm.sh/&#34;&gt;Helm V3 版本&lt;/a&gt;已经发布了第三个 Beta 版本了，由于 V2 和 V3 版本之间的架构变化较大，所以如果我们现在正在使用 V2 版本的话，要迁移到 V3 版本了就有点小麻烦，其中最重要的当然就是数据迁移的问题，为了解决这个版本迁移问题，官方提供了一个名为 &lt;a href=&#34;https://github.com/helm/helm-2to3&#34;&gt;helm-2to3&lt;/a&gt; 的插件可以来简化我们的迁移工作。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes之Jenkins 流水线语法</title>
+      <link>https://www.k8sz.com/post/kubernetes-jenkinsfile/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-jenkinsfile/</guid>
+      <description>&lt;p&gt;声明式和脚本化的流水线从根本上是不同的。 声明式流水线的是 Jenkins 流水线更近的特性:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;相比脚本化的流水线语法，它提供更丰富的语法特性,&lt;/li&gt;
+&lt;li&gt;是为了使编写和读取流水线代码更容易而设计的。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes之Jenkins x主要组件</title>
+      <link>https://www.k8sz.com/post/kubernetes-jx-component/</link>
+      <pubDate>Fri, 06 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-jx-component/</guid>
+      <description>&lt;p&gt;Jenkins X 是一个高度集成化的CI/CD平台，基于Jenkins和Kubernetes实现，旨在解决微服务体系架构下的云原生应用的持续交付的问题，简化整个云原生应用的开发、运行和部署过程。&lt;/p&gt;
+
+&lt;p&gt;jx是云原生CICD，devops的一个最佳实践之一，目前在快速的发展成熟中,这里介绍jx用到的一些相关组件&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes之Helm安装</title>
+      <link>https://www.k8sz.com/post/kuberneteshelm/</link>
+      <pubDate>Sat, 17 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kuberneteshelm/</guid>
+      <description>&lt;p&gt;Helm可帮助您管理Kubernetes应用程序 - Helm Charts可帮助您定义，安装和升级最复杂的Kubernetes应用程序。Helm就相当于kubernetes环境下的yum包管理工具。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+
+  <title>kubernetes之Jenkins 流水线语法-https://www.k8sz.com/,ZB的博客,Kubernetes,Docker,istio,Golang,Cloud Native</title>
+  <meta property="og:title" content="kubernetes之Jenkins 流水线语法" />
+  <meta name="twitter:title" content="kubernetes之Jenkins 流水线语法" />
+
+  <meta name="description" content="基于kubernetes 的CI/CD">
+  <meta property="og:description" content="基于kubernetes 的CI/CD">
+  <meta name="twitter:description" content="基于kubernetes 的CI/CD">
+  <meta name="author" content=""/>
+  <link href='https://image.77s.vip/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://image.77s.vip/favicon.png" />
+  <meta name="twitter:image" content="https://image.77s.vip/favicon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="https://www.k8sz.com/post/kubernetes-jenkinsfile/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ZB" />
+
+  <meta name="generator" content="Hugo 0.55.6" />
+  <link rel="canonical" href="https://www.k8sz.com/post/kubernetes-jenkinsfile/" />
+  <link rel="alternate" href="https://www.k8sz.com/index.xml" type="application/rss+xml" title="ZB">
+
+  
+  
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700%7COpen+Sans:400,700" rel="stylesheet">
+  
+
+  <link rel="stylesheet" href='https://www.k8sz.com/css/bundle.min.d236889182ad0dba3ea8cf427c8c43c658a4b0d39ab889ff934e277a03537814.css' integrity='sha256-0jaIkYKtDbo&#43;qM9CfIxDxliksNOauIn/k04negNTeBQ='>
+
+  
+    
+    <!--[if lt IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <![endif]-->
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?96a7bf5b2259aa8174c0660477c03714";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-146440849-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">切换导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://www.k8sz.com/">ZB</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="首页" href="https://www.k8sz.com/">首页</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Docker" href="https://www.k8sz.com/tags/docker">Docker</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Kubernetes" href="https://www.k8sz.com/tags/kubernetes">Kubernetes</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="DevOps" href="https://www.k8sz.com/tags/devops">DevOps</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="励志人生" href="https://www.k8sz.com/tags/motivational">励志人生</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">book</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://www.k8sz.com/book/">kubernetes</a>
+                
+              </div>
+            </li>
+          
+        
+
+        
+
+        
+
+        
+          <li>
+            <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+              <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+            </a>
+          </li>
+          
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+
+  <div id="modalSearch" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">搜索</h4>
+        </div>
+        <div class="modal-body">
+            
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="Search for titles or URIs..." name="search" autocomplete="off" />
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="https://www.k8sz.com/js/algoliasearch.min.js"></script>
+<script src="https://www.k8sz.com/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("OGF3JK7MAT", "8ca8105cef83b57d5cf1122941280707");
+var index = client.initIndex('prod_k8sz');
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            return '<span>' + '<a href="https://www.k8sz.com/post/' + suggestion.slug + '">' +
+            suggestion._highlightResult.title.value + '</a></span>';
+        }
+    }
+});
+</script>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    
+  
+  
+  
+
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 data-img-src-1="https://www.k8sz.com/img/k8s/k8s001.jpg" ></div>
+  
+
+  <header class="header-section has-img">
+    
+      <div class="intro-header big-img">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>kubernetes之Jenkins 流水线语法</h1>
+                  
+                    
+                      <h2 class="post-subheading">基于kubernetes 的CI/CD</h2>
+                    
+                  
+                  
+                    <span class="post-meta">
+  
+    发表于 October 14, 2019
+  
+  
+</span>
+
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="img-desc" style="display: inline;"></span>
+      </div>
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>kubernetes之Jenkins 流水线语法</h1>
+                
+                  
+                    <h2 class="post-subheading">基于kubernetes 的CI/CD</h2>
+                  
+                
+                
+                  <span class="post-meta">
+  
+    发表于 October 14, 2019
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+
+
+
+<div class="container" role="main">
+  <div class="row">
+
+    
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div>
+            
+            
+            <h5 id="tags" style="margin-top: 30px;">标签:
+              
+                  <a href="https://www.k8sz.com/tags/kubernetes/">kubernetes</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/jenkins-x/">jenkins x</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/devops/">devops</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/jx/">jx</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/github/">github</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/chartmuseum/">Chartmuseum</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/monocular/">Monocular</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/nexus/">Nexus</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/draft/">Draft</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/skaffold/">skaffold</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/helm/">helm</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/jenkins/">jenkins</a> &nbsp;
+              
+            </h5>
+            
+        </div>
+  
+        <article role="main" class="blog-post" itemprop="articleBody" id="content">
+          
+            
+<aside class="toc">
+  <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#字符串插值">字符串插值</a></li>
+<li><a href="#使用环境变量">使用环境变量</a></li>
+<li><a href="#秘密文本">秘密文本</a></li>
+<li><a href="#处理失败">处理失败</a></li>
+<li><a href="#agent">agent</a></li>
+<li><a href="#可用选项">可用选项</a></li>
+<li><a href="#parameters-参数">parameters(参数)</a></li>
+<li><a href="#触发器-triggers">触发器(triggers)</a></li>
+<li><a href="#stage">stage</a></li>
+<li><a href="#input">input</a></li>
+<li><a href="#when">when</a></li>
+<li><a href="#parallel-并行">Parallel(并行)</a></li>
+<li><a href="#steps">Steps</a></li>
+<li><a href="#结语">结语</a></li>
+</ul></li>
+</ul>
+</nav>
+</aside>
+
+          
+  
+          
+          
+          
+  
+          
+          
+          
+  
+
+          
+          
+          
+          <p>声明式和脚本化的流水线从根本上是不同的。 声明式流水线的是 Jenkins 流水线更近的特性:</p>
+
+<ul>
+<li>相比脚本化的流水线语法，它提供更丰富的语法特性,</li>
+<li>是为了使编写和读取流水线代码更容易而设计的。</li>
+</ul>
+
+<h2 id="字符串插值">字符串插值</h2>
+
+<p>Jenkins Pipeline使用与Groovy相同的语法进行字符串插值。Groovy的字符串插值支持可能会让很多语言新手感到困惑。虽然Groovy支持使用单引号或双引号来声明一个字符串，例如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">def singlyQuoted = &#39;Hello&#39;
+def doublyQuoted = &#34;World&#34;</code></pre></div>
+<p>只有后一个字符串将支持基于美元符号（$）的字符串插值，例如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">def username = &#39;Jenkins&#39;
+echo &#39;Hello Mr. ${username}&#39;
+echo &#34;I said, Hello Mr. ${username}&#34;</code></pre></div>
+<p>会导致：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">Hello Mr. ${username}
+I said, Hello Mr. Jenkins</code></pre></div>
+<h2 id="使用环境变量">使用环境变量</h2>
+
+<p>Jenkins管道通过全局变量显示环境变量，全局变量env可在任何位置使用Jenkinsfile。在Jenkins Pipeline中可访问的环境变量的完整列表记录在 localhost:8080/pipeline-syntax/globals#env中，假设Jenkins主要运行localhost:8080，并包括：</p>
+
+<p>BUILD_ID 当前版本ID与Jenkins版本1.597 +中创建的BUILD_NUMBER相同</p>
+
+<p>JOB_NAME 此版本的项目名称，例如“foo”或“foo / bar”。</p>
+
+<p>引用或使用这些环境变量可以像访问Groovy Map中的任何键一样完成 ，例如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">Jenkinsfile（声明式管道）
+pipeline {
+    agent any
+    stages {
+        stage(&#39;Example&#39;) {
+            steps {
+                echo &#34;Running ${env.BUILD_ID} on ${env.JENKINS_URL}&#34;
+            }
+        }
+    }
+}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">env.MYTOOL_VERSION = &#39;1.33&#39;
+node {
+  sh &#39;/usr/local/mytool-$MYTOOL_VERSION/bin/start&#39;
+}
+``
+设置环境变量
+
+根据是使用声明式管道还是脚本式管道，在Jenkins管道中设置环境变量的方式会有所不同。
+
+声明性管道支持环境 指令，而脚本管道的用户必须使用该withEnv步骤。
+​```Jenkinsfile
+Jenkinsfile（声明式管道）
+pipeline {
+    agent any
+    environment {            ①
+        CC = &#39;clang&#39;
+    }
+    stages {
+        stage(&#39;Example&#39;) {
+            environment {               ②
+                DEBUG_FLAGS = &#39;-g&#39;
+            }
+            steps {
+                sh &#39;printenv&#39;
+            }
+        }
+    }
+}</code></pre></div>
+<p>这里写图片描述
+用于秘密文本，用户名和密码以及秘密文件</p>
+
+<p>Jenkins的声明式Pipeline语法具有credentials()辅助方法（在environment指令中使用），该方法支持 秘密文本，用户名和密码以及秘密文件凭证。如果您想处理其他类型的凭证，请参阅对于其他凭证类型部分（如下）。</p>
+
+<h2 id="秘密文本">秘密文本</h2>
+
+<p>以下管道代码显示了如何使用环境变量创建管道以用于秘密文本凭证的示例。</p>
+
+<p>在此示例中，将两个秘密文本凭证分配给单独的环境变量以访问Amazon Web Services（AWS）。这些凭证将在Jenkins中以其各自的凭证ID
+jenkins-aws-secret-key-id和jenkins-aws-secret-access-key</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">Jenkinsfile（声明式管道）
+pipeline {
+    agent {
+        // Define agent details here
+    }
+    environment {
+        AWS_ACCESS_KEY_ID     = credentials(&#39;jenkins-aws-secret-key-id&#39;)
+        AWS_SECRET_ACCESS_KEY = credentials(&#39;jenkins-aws-secret-access-key&#39;)
+    }
+    stages {
+        stage(&#39;Example stage 1&#39;) {
+            steps {
+                //        ①
+            }
+        }
+        stage(&#39;Example stage 2&#39;) {
+            steps {
+                //                ②
+            }
+        }
+    }
+}</code></pre></div>
+<p>这里写图片描述
+处理参数</p>
+
+<p>声明式流水线支持即用即设的参数, 允许流水线通过参数在运行时接受用户指定的参数。使用脚本管道配置参数的properties步骤可以在代码片段生成器中找到。</p>
+
+<p>如果您使用‘带参数的构建’选项将管道配置为接受参数， 则可以将这些参数作为params变量子类进行访问。</p>
+
+<p>假设‘Greeting’的字符串参数已在配置中Jenkinsfile， 它可以通过${params.Greeting}来访问该参数</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">Jenkinsfile（声明式管道）
+pipeline {
+    agent any
+    parameters {
+        string(name: &#39;Greeting&#39;, defaultValue: &#39;Hello&#39;, description: &#39;How should I greet the world?&#39;)
+    }
+    stages {
+        stage(&#39;Example&#39;) {
+            steps {
+                echo &#34;${params.Greeting} World!&#34;
+            }
+        }
+    }
+}</code></pre></div>
+<h2 id="处理失败">处理失败</h2>
+
+<p>声明式流水线通过其post部分支持健壮的失败处理，允许声明多个不同的“post条件”。 例如: always, unstable, success, failure和changed。管道语法部分提供了更多关于如何使用各种post条件的详细信息。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">Jenkinsfile（声明式管道）
+pipeline {
+    agent any
+    stages {
+        stage(&#39;Test&#39;) {
+            steps {
+                sh &#39;make check&#39;
+            }
+        }
+    }
+    post {
+        always {
+            junit &#39;**/target/*.xml&#39;
+        }
+        failure {
+            mail to: team@example.com, subject: &#39;The Pipeline failed :(&#39;
+        }
+    }
+}</code></pre></div>
+<h2 id="agent">agent</h2>
+
+<p>该agent部分指定整个管道或特定阶段将在Jenkins环境中执行的位置，具体取决于该agent部分的放置位置。该部分必须在pipeline块的顶层定义 ，但stage级别使用是可选的。
+说明  选项
+必须  是
+参数  详情如下
+允许  在顶层管道块和每个stage块中
+参数</p>
+
+<p>为了支持广泛的用例对管道作者来说，agent部分支持一些不同类型的参数。这些参数可以应用于管道块的顶层，也可以应用于每个stage指令。
+any</p>
+
+<p>在任何可用的agent上执行管道或stage。例如:agent any
+none</p>
+
+<p>当在管道块的顶层应用时，不会为整个管道运行分配全局代理，每个stage都需要包含它自己的agent部分。例如:agent none
+常用选项</p>
+
+<p>这些选项可以应用两个或多个agent实现。除非明确说明，否则不需要它们。
+label</p>
+
+<p>一个字符串。用于运行管道或单个stage的标签。</p>
+
+<p>此选项对于node、docker和dockerfile是有效的，并且对于node是必需的。
+customWorkspace</p>
+
+<p>一个字符串。运行管道或单独的stage，该agent应用于这个自定义工作区，而不是默认的。它可以是相对路径，在这种情况下，自定义工作区将位于node的工作区根之下，或者是绝对路径。例如:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">agent {
+    node {
+        label &#39;my-defined-label&#39;
+        customWorkspace &#39;/some/other/path&#39;
+    }
+}</code></pre></div>
+<p>这个选项对于docker和dockerfile是有效的，并且只有在单独的stage使用agent时才有效果。
+post</p>
+
+<p>post部分定义了一个或多个附加步骤，这些步骤在管道或stage的运行完成时运行(取决于管道内的post部分的位置)。post可以支持下列后置条件块:always、changed、fixed、regression、aborted、failure、success、unstable和cleanup。这些条件块允许根据管道或阶段的完成状态，在每个条件中执行步骤。条件块按照下面所示的顺序执行。
+说明  选项
+必须  否
+参数  None
+允许  在顶层管道块和每个stage块中</p>
+
+<p>条件
+always
+不管管道或stage的运行完成状态如何，在post部分运行这些步骤。
+changed
+如果当前管道或阶段的运行与之前的运行有不同的完成状态，则只运行post中的步骤。
+fixed
+如果当前管道或阶段的运行成功，且前一次运行失败或不稳定，则只运行post中的步骤。
+regression
+如果当前管道或阶段的运行状态为失败、不稳定或中止，且前一次运行成功，则只运行post中的步骤。
+aborted
+只有在当前管道或阶段的运行有“中止”状态时才运行post中的步骤，通常是由于管道被手动中止。这通常用web UI中的灰色表示。
+failure
+只有在当前管道或阶段的运行有“失败”状态时才运行post中的步骤，通常在web UI中表示为红色。
+success
+只有当当前管道或阶段的运行具有“成功”状态时，才运行post中的步骤，通常在web UI中以蓝色或绿色表示。
+unstable
+如果当前管道或阶段的运行状态为“不稳定”状态，通常是由测试失败、代码违规等引起的，那么只在post中运行这些步骤。
+cleanup
+不管管道或阶段的状态如何，在所有其他的post条件被评估之后，运行这个post条件下的步骤。</p>
+
+<p>例子</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent any
+    stages {
+        stage(&#39;Example&#39;) {
+            steps {
+                echo &#39;Hello World&#39;
+            }
+        }
+    }
+    post {      ①
+        always {          ②
+            echo &#39;I will always say Hello again!&#39;
+        }
+    }
+}</code></pre></div>
+<p>按照惯例，post部分应该放在管道的末端。
+Post-条件块包含与步骤部分相同的步骤。
+stages</p>
+
+<p>包含一个或多个阶段指令的序列，阶段部分是管道所描述的大部分“工作”的位置。至少建议阶段至少包含一个阶段指令，用于连续交付过程的每个离散部分，例如构建、测试和部署。
+说明  选项
+必须  是
+参数  None
+允许  只有一次，在管道内部。</p>
+
+<p>例子</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent any
+    stages {      ①
+        stage(&#39;Example&#39;) {
+            steps {
+                echo &#39;Hello World&#39;
+            }
+        }
+    }
+}</code></pre></div>
+<p>阶段部分通常会遵循代理、选项等指示。
+steps</p>
+
+<p>steps部分定义了在给定的stage指令中执行的一系列的一个或多个步骤。
+例子</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent any
+    stages {    ①
+        stage(&#39;Example&#39;) {
+            steps { 
+                echo &#39;Hello World&#39;
+            }
+        }
+    }
+}</code></pre></div>
+<p>步骤部分必须包含一个或多个步骤。
+选项</p>
+
+<p>options指令允许从管道内部配置特定于管道的选项。管道提供了许多这样的选项，比如buildDiscarder，但也可以由插件提供，比如timestamps。
+说明  选项
+必须  否
+参数  None
+允许  只有一次，在管道内部。</p>
+
+<h2 id="可用选项">可用选项</h2>
+
+<p>buildDiscarder
+为最近的管道运行的特定数量保存artifacts和控制台输出。例如:options {buildder (logRotator(numToKeepStr: &lsquo;1&rsquo;)})</p>
+
+<p>disableConcurrentBuilds
+不允许同时执行管道。可以用于防止同时访问共享资源等。例如:options { disableConcurrentBuilds() }</p>
+
+<p>overrideIndexTriggers
+允许重写分支索引触发器的默认处理。如果分支索引触发器在多分支或组织标签中禁用，options { overrideIndexTriggers(true) }将只允许他们从事这项工作。否则, options { overrideIndexTriggers(false) }只会禁用该作业的分支索引触发器。</p>
+
+<p>skipDefaultCheckout
+在代理指令中，跳过从源代码控制中检出代码。例如:options { skipDefaultCheckout() }</p>
+
+<p>skipStagesAfterUnstable
+跳过阶段一旦构建状态变得不稳定。例如:options { skipStagesAfterUnstable() }</p>
+
+<p>checkoutToSubdirectory
+在工作空间的子目录中执行自动源代码控制签出。例如:options { checkoutToSubdirectory(&lsquo;foo&rsquo;) }</p>
+
+<p>newContainerPerStage
+与docker或dockerfile顶层agent一起使用。当指定时，每个阶段将在同一个节点上的一个新的容器实例中运行，而不是在同一个容器实例中运行的所有阶段。</p>
+
+<p>timeout
+设置管道运行的超时时间，在此之后，Jenkins将中止管道。例如:options { timeout(time: 1, unit: &lsquo;HOURS&rsquo;) }</p>
+
+<p>retry
+在失败时，重新尝试整个管道的指定次数。例如:options { retry(3) }</p>
+
+<p>timestamps
+准备由流水线生成的所有控制台输出，并在该行发出的时间运行。例如：options { timestamps() }
+例子</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent any
+    options {
+        timeout(time: 1, unit: &#39;HOURS&#39;)     ①
+    }
+    stages {
+        stage(&#39;Example&#39;) {
+            steps {
+                echo &#39;Hello World&#39;
+            }
+        }
+    }
+}</code></pre></div>
+<p>指定一个小时的全局执行超时，之后Jenkins将中止管道运行。
+stage选项</p>
+
+<p>stage的选项指令类似于管道根上的options指令。但是，stage层次选项只能包含retry、timeout或timestamps等步骤，或与阶段相关的声明性选项，如skipDefaultCheckout。</p>
+
+<p>在一个阶段中，选项指令中的步骤在进入代理之前被调用，或者在条件出现时进行检查。</p>
+
+<p>可用的Stage选项</p>
+
+<p>skipDefaultCheckout
+在代理指令中，跳过从源代码控制中检出代码。例如:options { skipDefaultCheckout() }</p>
+
+<p>timeout
+设置此阶段的超时时间，在此之后，Jenkins将中止该阶段。例如:options { timeout(time: 1, unit: &lsquo;HOURS&rsquo;) }</p>
+
+<p>retry
+在失败时，重试此阶段指定次数。例如:options { retry(3) }</p>
+
+<p>timestamps
+在该阶段中生成所有控制台输出，并在其中输出该线路的时间。例如：options { timestamps() }</p>
+
+<p>例子</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent any
+    stages {
+        stage(&#39;Example&#39;) {
+            options {
+                timeout(time: 1, unit: &#39;HOURS&#39;) 
+            }
+            steps {
+                echo &#39;Hello World&#39;
+            }
+        }
+    }
+}</code></pre></div>
+<h2 id="parameters-参数">parameters(参数)</h2>
+
+<p>参数指令提供了一个用户在触发管道时应该提供的参数列表。这些用户指定参数的值可通过params对象提供给管道步骤，请参见示例以了解其具体使用情况。
+说明  选项
+必须  否
+参数  None
+允许  只有一次，在管道内部。</p>
+
+<p>可用的参数</p>
+
+<p>string
+字符串类型的参数，例如:parameters { string(name: &lsquo;DEPLOY_ENV&rsquo;, defaultValue: &lsquo;staging&rsquo;, description: &ldquo;) }</p>
+
+<p>booleanParam
+一个boolean参数, 例如: parameters { booleanParam(name: &lsquo;DEBUG_BUILD&rsquo;, defaultValue: true, description: &ldquo;) }</p>
+
+<p>例子:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent any
+    parameters {
+        string(name: &#39;PERSON&#39;, defaultValue: &#39;Mr Jenkins&#39;, description: &#39;Who should I say hello to?&#39;)
+    }
+    stages {
+        stage(&#39;Example&#39;) {
+            steps {
+                echo &#34;Hello ${params.PERSON}&#34;
+            }
+        }
+    }
+}</code></pre></div>
+<h2 id="触发器-triggers">触发器(triggers)</h2>
+
+<p>triggers指令定义了重新触发管道的自动化方式。对于集成了源(如GitHub或BitBucket)的管道，可能不需要triggers，因为基于web的集成很可能已经存在。当前可用的触发器是cron、pollSCM和upstream。
+说明  选项
+必须  否
+参数  None
+允许  只有一次，在管道内部。</p>
+
+<p>cron
+接受一个cron样式的字符串来定义要重新触发管道的常规间隔，例如:triggers { cron(&lsquo;H */4 * * 1-5&rsquo;) }</p>
+
+<p>pollSCM
+接受一个cron样式的字符串来定义一个固定的间隔，在这个间隔中，Jenkins应该检查新的源代码更改。如果新的变化存在，管道将被重新触发。例如:triggers { pollSCM(&lsquo;H */4 * * 1-5&rsquo;) }</p>
+
+<p>upstream
+接受逗号分隔的工作字符串和阈值。当字符串中的任何作业以最小阈值结束时，管道将被重新触发。例如:triggers { upstream(upstreamProjects: &lsquo;job1,job2&rsquo;, threshold: hudson.model.Result.SUCCESS) }</p>
+
+<p>例子</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent any
+    triggers {
+        cron(&#39;H */4 * * 1-5&#39;)
+    }
+    stages {
+        stage(&#39;Example&#39;) {
+            steps {
+                echo &#39;Hello World&#39;
+            }
+        }
+    }
+}</code></pre></div>
+<h2 id="stage">stage</h2>
+
+<p>stage指令在stage部分中进行，应该包含一个步骤部分、一个可选的代理部分或其他特定于阶段的指令。实际上，管道所做的所有实际工作都将封装在一个或多个阶段指令中。
+说明  选项
+必须  至少一个
+参数  一个强制的参数，一个用于舞台名称的字符串。
+允许  阶段内的部分</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent any
+    stages {
+        stage(&#39;Example&#39;) {
+            steps {
+                echo &#39;Hello World&#39;
+            }
+        }
+    }
+}</code></pre></div>
+<h2 id="input">input</h2>
+
+<p>一个阶段的输入指令允许您使用输入步骤提示输入。在应用了任何选项之后，stage(舞台)将暂停，在进入stages的“代理或评估其条件”之前。如果输入被批准，这个阶段就会继续。作为输入提交的一部分提供的任何参数都将在环境中用于其他阶段。</p>
+
+<p>*配置选项</p>
+
+<p>mesage
+必需的。这将在用户提交input时呈现给用户。</p>
+
+<p>id
+此input的可选标识符。默认为阶段名称。</p>
+
+<p>ok
+input表单上的“ok”按钮的可选文本。</p>
+
+<p>submitter
+允许提交此input的用户或外部组名的可选逗号分隔列表。默认允许任何用户。</p>
+
+<p>submitterParameter
+一个环境变量的可选名称，如果存在，则用submitter名称设置。</p>
+
+<p>parameters
+一个可选的参数列表，以提示提交者提供。有关更多信息，请参见参数。</p>
+
+<p>例子</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent any
+    stages {
+        stage(&#39;Example&#39;) {
+            input {
+                message &#34;Should we continue?&#34;
+                ok &#34;Yes, we should.&#34;
+                submitter &#34;alice,bob&#34;
+                parameters {
+                    string(name: &#39;PERSON&#39;, defaultValue: &#39;Mr Jenkins&#39;, description: &#39;Who should I say hello to?&#39;)
+                }
+            }
+            steps {
+                echo &#34;Hello, ${PERSON}, nice to meet you.&#34;
+            }
+        }
+    }
+}</code></pre></div>
+<h2 id="when">when</h2>
+
+<p>when指令允许管道决定是否应该根据给定的条件执行阶段。when指令必须包含至少一个条件时。如果when指令包含多个条件时，所有子条件必须返回true，以便执行。这与子条件在allOf条件下嵌套的情况相同(参见下面的例子)。如果使用了anyOf条件，请注意，一旦找到第一个“true”条件，条件就会跳过其余的测试。</p>
+
+<p>使用嵌套条件可以构建更复杂的条件结构:not、allOf或anyOf。嵌套条件可以嵌套到任意深度。
+说明  选项
+必须  不
+参数  None
+允许  在一个阶段的指令</p>
+
+<p>内置的条件
+branch</p>
+
+<p>当正在构建的分支与给定的分支模式匹配时，执行这个阶段，例如:when {branch &lsquo;master&rsquo;}。注意，这只适用于多分支管道。
+buildingTag</p>
+
+<p>在构建构建标记时执行阶段。示例:when { buildingTag() }
+changelog</p>
+
+<p>如果构建的SCM changelog包含给定的正则表达式模式，则执行该阶段:when { changelog &lsquo;.*^\[DEPENDENCY\] .+$&rsquo; }
+changeset</p>
+
+<p>如果构建的SCM changeset包含一个或多个匹配给定字符串或glob的文件，则执行该阶段。例子:when { changeset &ldquo;*<em>/</em>.js&rdquo; }</p>
+
+<p>默认情况下，路径匹配是不区分大小写的，这可以用caseSensitive参数关闭，例如:when { changeset glob: &ldquo;ReadMe.*&ldquo;, caseSensitive: true }
+changeRequest</p>
+
+<p>如果当前的构建是为了“变更请求”(a.k.a. Pull request on GitHub和Bitbucket，在GitLab上合并请求或Gerrit的变更等)，执行阶段。当没有传递参数时，每个更改请求都会运行阶段，例如:when { changeRequest() }</p>
+
+<p>通过在更改请求中添加带有参数的filter属性，可以只在匹配的更改请求上运行该阶段。可能的属性包括id、target、branch、fork、url、title、author、authorDisplayName和authorEmail。每一个都对应一个CHANGE_*环境变量，例如:when { changeRequest target: &lsquo;master&rsquo; }</p>
+
+<p>可以在属性之后添加可选的参数比较器，以指定匹配的模式的值。EQUALS对于一个简单的字符串比较(默认)，GLOB对于ANT样式路径glob(例如，changeset), 或REGEXP正则表达式匹配。例如:when { changeRequest authorEmail: &ldquo;[\w_-.]+@example.com&rdquo;, comparator: &lsquo;REGEXP&rsquo; }
+environment</p>
+
+<p>当指定的环境变量设置为给定值时，执行阶段:when { environment name: &lsquo;DEPLOY_TO&rsquo;, value: &lsquo;production&rsquo; }
+equals</p>
+
+<p>当预期值等于实际值时执行阶段，例如:when { equals expected: 2, actual: currentBuild.number }
+expression</p>
+
+<p>当指定的Groovy表达式计算为true时执行阶段，例如:when { expression { return params.DEBUG_BUILD } }注意，当从表达式返回字符串时，必须将它们转换为布尔值或返回null，以使其值为false。简单地返回“0”或“false”仍将计算为“true”。
+tag</p>
+
+<p>如果TAG_NAME变量匹配给定的模式，则执行阶段。例子:when { tag &ldquo;release-*&rdquo; }。如果提供了一个空模式，那么如果TAG_NAME变量存在(与buildingTag()相同)，则阶段将执行。</p>
+
+<p>not
+当嵌套条件为假时执行阶段。必须包含一个条件。例如:when { not { branch &lsquo;master&rsquo; } }</p>
+
+<p>allOf
+当所有嵌套条件都为真时，执行阶段。必须包含至少一个条件。例如:when { allOf { branch &lsquo;master&rsquo;; environment name: &lsquo;DEPLOY_TO&rsquo;, value: &lsquo;production&rsquo; } }</p>
+
+<p>anyOf
+当至少一个嵌套条件为真时，执行阶段。必须包含至少一个条件。例如:when { anyOf { branch &lsquo;master&rsquo;; branch &lsquo;staging&rsquo; } }
+评估when进入阶段的代理</p>
+
+<p>默认情况下，如果定义了某个阶段的代理，则在进入该阶段的代理之后将对其进行评估。但是，可以通过在when块中指定beforeAgent选项来更改此选项。如果beforeAgent被设置为true，那么将首先对when条件进行评估，只有在条件计算为true时才会输入代理。</p>
+
+<p>例子</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent any
+    stages {
+        stage(&#39;Example Build&#39;) {
+            steps {
+                echo &#39;Hello World&#39;
+            }
+        }
+        stage(&#39;Example Deploy&#39;) {
+            when {
+                branch &#39;production&#39;
+            }
+            steps {
+                echo &#39;Deploying&#39;
+            }
+        }
+    }
+}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent any
+    stages {
+        stage(&#39;Example Build&#39;) {
+            steps {
+                echo &#39;Hello World&#39;
+            }
+        }
+        stage(&#39;Example Deploy&#39;) {
+            when {
+                branch &#39;production&#39;
+                environment name: &#39;DEPLOY_TO&#39;, value: &#39;production&#39;
+            }
+            steps {
+                echo &#39;Deploying&#39;
+            }
+        }
+    }
+}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent any
+    stages {
+        stage(&#39;Example Build&#39;) {
+            steps {
+                echo &#39;Hello World&#39;
+            }
+        }
+        stage(&#39;Example Deploy&#39;) {
+            when {
+                allOf {
+                    branch &#39;production&#39;
+                    environment name: &#39;DEPLOY_TO&#39;, value: &#39;production&#39;
+                }
+            }
+            steps {
+                echo &#39;Deploying&#39;
+            }
+        }
+    }
+}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent any
+    stages {
+        stage(&#39;Example Build&#39;) {
+            steps {
+                echo &#39;Hello World&#39;
+            }
+        }
+        stage(&#39;Example Deploy&#39;) {
+            when {
+                branch &#39;production&#39;
+                anyOf {
+                    environment name: &#39;DEPLOY_TO&#39;, value: &#39;production&#39;
+                    environment name: &#39;DEPLOY_TO&#39;, value: &#39;staging&#39;
+                }
+            }
+            steps {
+                echo &#39;Deploying&#39;
+            }
+        }
+    }
+}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent any
+    stages {
+        stage(&#39;Example Build&#39;) {
+            steps {
+                echo &#39;Hello World&#39;
+            }
+        }
+        stage(&#39;Example Deploy&#39;) {
+            when {
+                expression { BRANCH_NAME ==~ /(production|staging)/ }
+                anyOf {
+                    environment name: &#39;DEPLOY_TO&#39;, value: &#39;production&#39;
+                    environment name: &#39;DEPLOY_TO&#39;, value: &#39;staging&#39;
+                }
+            }
+            steps {
+                echo &#39;Deploying&#39;
+            }
+        }
+    }
+}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent none
+    stages {
+        stage(&#39;Example Build&#39;) {
+            steps {
+                echo &#39;Hello World&#39;
+            }
+        }
+        stage(&#39;Example Deploy&#39;) {
+            agent {
+                label &#34;some-label&#34;
+            }
+            when {
+                beforeAgent true
+                branch &#39;production&#39;
+            }
+            steps {
+                echo &#39;Deploying&#39;
+            }
+        }
+    }
+}</code></pre></div>
+<h2 id="parallel-并行">Parallel(并行)</h2>
+
+<p>声明式管道中的阶段可以声明它们内部的多个嵌套阶段，它们将并行执行。请注意，一个stage(舞台)必须只有一个steps或parallel的步骤。嵌套阶段本身不能包含进一步的并行阶段，但其他阶段的行为与其他stage(舞台)相同。任何包含并行的stage(舞台)都不能包含代理或工具，因为它们没有相关步骤。</p>
+
+<p>另外，当其中一个进程失败时，您可以强制所有的parallel阶段都被终止，并在包含parallel的stage(舞台)中添加failFast true。</p>
+
+<p>例子</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent any
+    stages {
+        stage(&#39;Non-Parallel Stage&#39;) {
+            steps {
+                echo &#39;This stage will be executed first.&#39;
+            }
+        }
+        stage(&#39;Parallel Stage&#39;) {
+            when {
+                branch &#39;master&#39;
+            }
+            failFast true
+            parallel {
+                stage(&#39;Branch A&#39;) {
+                    agent {
+                        label &#34;for-branch-a&#34;
+                    }
+                    steps {
+                        echo &#34;On Branch A&#34;
+                    }
+                }
+                stage(&#39;Branch B&#39;) {
+                    agent {
+                        label &#34;for-branch-b&#34;
+                    }
+                    steps {
+                        echo &#34;On Branch B&#34;
+                    }
+                }
+            }
+        }
+    }
+}</code></pre></div>
+<h2 id="steps">Steps</h2>
+
+<p>声明式管道可以使用管道步骤引用中记录的所有可用步骤，其中包含一个完整的步骤列表，其中添加了下面列出的步骤，这些步骤只在声明性管道中得到支持。
+script</p>
+
+<p>script步骤需要一个脚本化的管道，并在声明式管道中执行。对于大多数用例，在声明式管道中，script步骤应该是不必要的，但是它可以提供一个有用的“逃生出口”。应该将非平凡大小和/或复杂性的脚本块转移到共享库中。</p>
+
+<p>例子</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent any
+    stages {
+        stage(&#39;Example&#39;) {
+            steps {
+                echo &#39;Hello World&#39;
+
+                script {
+                    def browsers = [&#39;chrome&#39;, &#39;firefox&#39;]
+                    for (int i = 0; i &lt; browsers.size(); ++i) {
+                        echo &#34;Testing the ${browsers[i]} browser&#34;
+                    }
+                }
+            }
+        }
+    }
+}</code></pre></div>
+<p>脚本管道</p>
+
+<p>脚本化的管道，比如声明式管道，是建立在底层管道子系统之上的。不同于声明性的，脚本化的管道实际上是用Groovy构建的通用DSL[2]。Groovy语言提供的大部分功能都可以用于脚本化管道的用户，这意味着它可以是一个非常有表现力和灵活的工具，可以通过它编写持续的交付管道。
+Flow Control(流量控制)</p>
+
+<p>脚本化的管道从一个Jenkinsfile的顶部向下串行执行，就像Groovy或其他语言中的大多数传统脚本一样。因此，提供流控制取决于Groovy表达式，例如if/else条件，例如:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">Jenkinsfile (Scripted Pipeline)
+node {
+    stage(&#39;Example&#39;) {
+        if (env.BRANCH_NAME == &#39;master&#39;) {
+            echo &#39;I only execute on the master branch&#39;
+        } else {
+            echo &#39;I execute elsewhere&#39;
+        }
+    }
+}</code></pre></div>
+<p>另一种方法是使用Groovy的异常处理支持来管理脚本化的管道流控制。当步骤失败，无论什么原因，他们抛出一个异常。处理错误的行为必须使用Groovy中的try/catch/finally块，例如:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Jenkinsfile" data-lang="Jenkinsfile">Jenkinsfile (Scripted Pipeline)
+node {
+    stage(&#39;Example&#39;) {
+        try {
+            sh &#39;exit 1&#39;
+        }
+        catch (exc) {
+            echo &#39;Something failed, I should sound the klaxons!&#39;
+            throw
+        }
+    }
+}</code></pre></div>
+<h2 id="结语">结语</h2>
+
+<p>正如本章一开始所讨论的，管道最基本的部分是“步骤”。从根本上说，步骤告诉Jenkins应该做什么，并作为声明式和脚本化的管道语法的基本构建块。</p>
+
+<p>脚本化的管道不引入任何特定于其语法的步骤; 管道步骤引用包含管道和插件提供的步骤的完整列表。</p>
+
+          
+
+ 
+          
+            <div class="entry-shang text-center">
+    <p>「真诚赞赏，手留余香」</p>
+    <button class="zs show-zs btn btn-bred">赞赏</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+    <div class="zs-modal-head">
+        <button type="button" class="close">×</button>
+        <span class="author"><img src="https://www.k8sz.com/img/avatar.jpeg"/>ZB</span>
+        <p class="tip"><i></i><span>请我喝杯奶茶？</span></p>
+    </div>
+    <div class="zs-modal-body">
+
+        <div>
+           <img src="https://www.k8sz.com/img/zhuansuan.jpg" id="pay-image"/>
+        </div>
+
+    </div>
+    <div class="zs-modal-footer">
+        <span class="zs-wechat"><img src="https://www.k8sz.com/img/wechat-btn.png"/></span>
+    </div>
+</div>
+
+          
+
+          
+            <div class="social-share" data-initialized="true" style="margin-bottom: 20px;margin-top:20px;">
+    <center>
+    <font style="font-size:18px;color:darkcyan;">分享到：</font>
+    <a href="#" class="social-share-icon icon-weibo"></a>
+    <a href="#" class="social-share-icon icon-wechat"></a>
+
+    <a href="#" class="social-share-icon icon-linkedin"></a>
+
+
+    <a href="#" class="social-share-icon icon-qzone"></a>
+    </center>
+</div>
+ 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+          
+        </article>
+  
+        
+          
+
+<h3>相关文章</h3>
+<ul style="margin-bottom: 25px;">
+    
+    <li><a href="https://www.k8sz.com/post/kubernetes-jx-component/">kubernetes之Jenkins x主要组件</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/kubernetes-jx-install/">kubernetes之Jenkins x安装</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/kubernetes-prometheus-intro/">kubernetes之prometheus简介</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/kubernetes-drone-install/">kubernetes CI/CD之drone安装</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/kubernetesgogs/">kubernetes之gogs安装</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/kubernetesldap/">kubernetes之LDAP安装</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/kuberneteskubeadm/">kubernetes之使用kubeadm安装1.15.4</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/kuberneteshelm/">kubernetes之Helm安装</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/kubernetesopenings/">Kubernetes 开篇</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/sixregrets/">全文仅42个字道尽人生六大悔事</a></li>
+    
+</ul>
+
+        
+  
+        
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://www.k8sz.com/post/kubernetes-ingress-https/" data-toggle="tooltip" data-placement="top" title="kubernetes之NginxIngress HTTPS自动化">&larr; 前一篇</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://www.k8sz.com/post/helm2-to-v3/" data-toggle="tooltip" data-placement="top" title="HelmV2迁移到V3版本">后一篇 &rarr;</a>
+            </li>
+          
+        </ul>
+        
+
+        
+
+
+      </div>
+    
+    
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;
+          2019
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://www.k8sz.com/">ZB</a>
+            &nbsp;&bull;&nbsp;
+            <a href="https://www.k8sz.com/sitemap.xml">网站地图</a>
+            &nbsp;&bull;&nbsp;
+            <a href="https://www.k8sz.com/page/archive/">文章归档</a>
+            &nbsp;&bull;&nbsp;
+          
+        </p>
+
+        
+        <p class="credits theme-by text-muted">
+
+          由 <a href="http://gohugo.io">Hugo v0.55.6</a> 强力驱动 &nbsp;&bull;&nbsp; 主题 <a href="https://www.k8sz.com/">ZB的博客</a> 移植自 <a href="https://github.com/rootsongjc/beautifulhugo">Beautiful Hugo</a>
+
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src='https://www.k8sz.com/js/bundle.min.8242ab5c3c016acc49d8c7717b5c1a9f24511d0b9e5d1c0e44f2b907c76b5987.js' integrity='sha256-gkKrXDwBasxJ2Mdxe1wanyRRHQueXRwORPK5B8drWYc='></script>
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146440849-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-146440849-1');
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+<script type="text/javascript">
+ 
+var a_idx = 0;
+jQuery(document).ready(function($) {
+    $("body").click(function(e) {
+        var a = new Array("Docker", "Kubernetes", "Prometheus", "Envoy", "Istio", "Service Mesh", "Cloud Native", "Golang", "DevOps");
+        var $i = $("<span />").text(a[a_idx]);
+        a_idx = (a_idx + 1) % a.length;
+        var x = e.pageX,
+        y = e.pageY;
+        function randomColor() {
+          var flakeColor = new Array("#FFDA65", "#00BFFF", "#BA55D3", "#FFA07A", "#87CEEB", "#FFB6C1");
+          var snowColor = flakeColor[Math.floor(flakeColor.length * Math.random())];
+          return snowColor;
+        }
+        $i.css({
+            "z-index": 999999999999999999999999999999999999999999999999999999999999999999999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": randomColor()
+        });
+        $("body").append($i);
+        $i.animate({
+            "top": y - 180,
+            "opacity": 0
+        },
+        1500,
+        function() {
+            $i.remove();
+        });
+    });
+});
+</script>
+
+
+<script type="text/javascript" src="https://www.k8sz.com/js/lightbox.js"></script>
+
+
+<script src="https://cdn.plyr.io/3.4.7/plyr.js"></script>
+<script>const player = new Plyr('#player');</script>
+
+
+  </body>
+</html>
+

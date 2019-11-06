@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on ZB</title>
+    <link>https://www.k8sz.com/tags/git/</link>
+    <description>Recent content in git on ZB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 28 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.k8sz.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linux之git常用命令</title>
+      <link>https://www.k8sz.com/post/linux-git-command/</link>
+      <pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/linux-git-command/</guid>
+      <description>&lt;p&gt;git是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。  Git 是 Linus Torvalds为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件&lt;/p&gt;
+
+&lt;p&gt;本文主要介绍git一些常用命令&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes之gogs安装</title>
+      <link>https://www.k8sz.com/post/kubernetesgogs/</link>
+      <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetesgogs/</guid>
+      <description>&lt;p&gt;Gogs 是一款极易搭建的自助 Git 服务。
+Gogs 的目标是打造一个最简单、最快速和最轻松的方式搭建自助 Git 服务。使用 Go 语言开发使得 Gogs 能够通过独立的二进制分发，并且支持 Go 语言支持的 所有平台，包括 Linux、Mac OS X、Windows 以及 ARM 平台。&lt;/p&gt;
+
+&lt;p&gt;本文介绍在kubernetes安装gogs git服务&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

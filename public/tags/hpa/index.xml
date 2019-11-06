@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HPA on ZB</title>
+    <link>https://www.k8sz.com/tags/hpa/</link>
+    <description>Recent content in HPA on ZB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 26 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.k8sz.com/tags/hpa/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kubernetes生产基础服务之Kubesphere部署</title>
+      <link>https://www.k8sz.com/post/kubernetes-kubesphere/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-kubesphere/</guid>
+      <description>&lt;p&gt;KubeSphere 是在目前主流容器调度平台 Kubernetes 之上构建的企业级分布式多租户容器平台，提供简单易用的操作界面以及向导式操作方式，在降低用户使用容器调度平台学习成本的同时，极大减轻开发、测试、运维的日常工作的复杂度，旨在解决 Kubernetes 本身存在的存储、网络、安全和易用性等痛点。除此之外，平台已经整合并优化了多个适用于容器场景的功能模块，以完整的解决方案帮助企业轻松应对敏捷开发与自动化运维、微服务治理、多租户管理、工作负载和集群管理、服务与网络管理、应用编排与管理、镜像仓库管理和存储管理等业务场景。&lt;/p&gt;
+
+&lt;p&gt;KubeSphere为我们提供了可视化 CI/CD 流水线、多维度监控告警日志、多租户管理、LDAP 集成、新增支持 HPA (水平自动伸缩) 、容器健康检查以及 Secrets、ConfigMaps 的配置管理等功能，新增微服务治理、灰度发布、s2i、代码质量检查等。一定程度上简化了我们管理kubesnetes集群。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes挂载阿里云nas存储作为StorageClass</title>
+      <link>https://www.k8sz.com/post/kubernetes-nas-storageclass/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-nas-storageclass/</guid>
+      <description>&lt;p&gt;Kubernetes集群管理员通过提供不同的存储类，可以满足用户不同的服务质量级别、备份策略和任意策略要求的存储需求。动态存储卷供应使用StorageClass进行实现，其允许存储卷按需被创建。如果没有动态存储供应，Kubernetes集群的管理员将不得不通过手工的方式类创建新的存储卷。通过动态存储卷，Kubernetes将能够按照用户的需要，自动创建其需要的存储。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes之16个入门概念</title>
+      <link>https://www.k8sz.com/post/kubernetes-concept/</link>
+      <pubDate>Fri, 25 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-concept/</guid>
+      <description>&lt;p&gt;kubernetes是Google开源的容器集群管理系统，是Google多年⼤规模容器管理技术Borg的开源版本，主要功能包括:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;基于容器的应用部署、维护和滚动升级&lt;/li&gt;
+&lt;li&gt;负载均衡和服务发现&lt;/li&gt;
+&lt;li&gt;跨机器和跨地区的集群调度&lt;/li&gt;
+&lt;li&gt;自动伸缩&lt;/li&gt;
+&lt;li&gt;无状态服务和有状态服务&lt;/li&gt;
+&lt;li&gt;广泛的Volume支持&lt;/li&gt;
+&lt;li&gt;插件机制保证扩展性&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Kubernetes发展非常迅速，已经成为容器编排领域的领导者，接下来我们将讲解Kubernetes中涉及到的一些主要概念。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

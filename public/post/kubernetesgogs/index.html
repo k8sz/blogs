@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+
+  <title>kubernetes之gogs安装-https://www.k8sz.com/,ZB的博客,Kubernetes,Docker,istio,Golang,Cloud Native</title>
+  <meta property="og:title" content="kubernetes之gogs安装" />
+  <meta name="twitter:title" content="kubernetes之gogs安装" />
+
+  <meta name="description" content="配置LDAP验证">
+  <meta property="og:description" content="配置LDAP验证">
+  <meta name="twitter:description" content="配置LDAP验证">
+  <meta name="author" content=""/>
+  <link href='https://image.77s.vip/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://image.77s.vip/favicon.png" />
+  <meta name="twitter:image" content="https://image.77s.vip/favicon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="https://www.k8sz.com/post/kubernetesgogs/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ZB" />
+
+  <meta name="generator" content="Hugo 0.55.6" />
+  <link rel="canonical" href="https://www.k8sz.com/post/kubernetesgogs/" />
+  <link rel="alternate" href="https://www.k8sz.com/index.xml" type="application/rss+xml" title="ZB">
+
+  
+  
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700%7COpen+Sans:400,700" rel="stylesheet">
+  
+
+  <link rel="stylesheet" href='https://www.k8sz.com/css/bundle.min.d236889182ad0dba3ea8cf427c8c43c658a4b0d39ab889ff934e277a03537814.css' integrity='sha256-0jaIkYKtDbo&#43;qM9CfIxDxliksNOauIn/k04negNTeBQ='>
+
+  
+    
+    <!--[if lt IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <![endif]-->
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?96a7bf5b2259aa8174c0660477c03714";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-146440849-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">切换导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://www.k8sz.com/">ZB</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="首页" href="https://www.k8sz.com/">首页</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Docker" href="https://www.k8sz.com/tags/docker">Docker</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Kubernetes" href="https://www.k8sz.com/tags/kubernetes">Kubernetes</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="DevOps" href="https://www.k8sz.com/tags/devops">DevOps</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="励志人生" href="https://www.k8sz.com/tags/motivational">励志人生</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">book</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://www.k8sz.com/book/">kubernetes</a>
+                
+              </div>
+            </li>
+          
+        
+
+        
+
+        
+
+        
+          <li>
+            <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+              <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+            </a>
+          </li>
+          
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+
+  <div id="modalSearch" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">搜索</h4>
+        </div>
+        <div class="modal-body">
+            
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="Search for titles or URIs..." name="search" autocomplete="off" />
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="https://www.k8sz.com/js/algoliasearch.min.js"></script>
+<script src="https://www.k8sz.com/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("OGF3JK7MAT", "8ca8105cef83b57d5cf1122941280707");
+var index = client.initIndex('prod_k8sz');
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            return '<span>' + '<a href="https://www.k8sz.com/post/' + suggestion.slug + '">' +
+            suggestion._highlightResult.title.value + '</a></span>';
+        }
+    }
+});
+</script>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    
+  
+  
+  
+
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 data-img-src-1="https://www.k8sz.com/img/great-wall-01.jpg" ></div>
+  
+
+  <header class="header-section has-img">
+    
+      <div class="intro-header big-img">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>kubernetes之gogs安装</h1>
+                  
+                    
+                      <h2 class="post-subheading">配置LDAP验证</h2>
+                    
+                  
+                  
+                    <span class="post-meta">
+  
+    发表于 August 26, 2019
+  
+  
+</span>
+
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="img-desc" style="display: inline;"></span>
+      </div>
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>kubernetes之gogs安装</h1>
+                
+                  
+                    <h2 class="post-subheading">配置LDAP验证</h2>
+                  
+                
+                
+                  <span class="post-meta">
+  
+    发表于 August 26, 2019
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+
+
+
+<div class="container" role="main">
+  <div class="row">
+
+    
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div>
+            
+            
+            <h5 id="tags" style="margin-top: 30px;">标签:
+              
+                  <a href="https://www.k8sz.com/tags/kubernetes/">kubernetes</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/ldap/">ldap</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/docker/">docker</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/kubectl/">kubectl</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/yaml/">yaml</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/gogs/">gogs</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/git/">git</a> &nbsp;
+              
+            </h5>
+            
+        </div>
+  
+        <article role="main" class="blog-post" itemprop="articleBody" id="content">
+          
+            
+          
+  
+          
+          
+          
+  
+          
+          
+          
+  
+
+          
+          
+          
+          <p>Gogs 是一款极易搭建的自助 Git 服务。
+Gogs 的目标是打造一个最简单、最快速和最轻松的方式搭建自助 Git 服务。使用 Go 语言开发使得 Gogs 能够通过独立的二进制分发，并且支持 Go 语言支持的 所有平台，包括 Linux、Mac OS X、Windows 以及 ARM 平台。</p>
+
+<p>本文介绍在kubernetes安装gogs git服务</p>
+
+<h2 id="安装">安装</h2>
+
+<h3 id="编写pvc-yaml">编写pvc.yaml</h3>
+
+<p>用于gogs数据持久化存储</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: v1
+metadata:
+  name: gogs-pvc
+  namespace: basics
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: alicloud-disk-available</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f pvc.yaml
+<span style="color:#ff79c6">[</span>user@S001 basics<span style="color:#ff79c6">]</span><span style="color:#6272a4"># kubectl get pvc</span>
+NAME       STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS              AGE
+gogs-pvc   Bound    pvc-37ecf2e0-6723-4ff8-9af8-72058aa44d3c   5Gi        RWO            alicloud-disk-available   59s</code></pre></div>
+<ul>
+<li>存储使用了阿里云的nfs，storageClass模式</li>
+</ul>
+
+<h3 id="编写gogs-deployment-yaml">编写gogs-deployment.yaml</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: gogs
+  labels:
+    app: gogs
+  namespace: basics
+spec:
+  replicas: <span style="color:#bd93f9">1</span>
+  selector:
+    matchLabels:
+      app: gogs
+  template:
+    metadata:
+      name: gogs
+      labels:
+        app: gogs
+    spec:
+      containers:
+      - name: gogs
+        image: gogs/gogs:<span style="color:#bd93f9">0.11</span>.<span style="color:#bd93f9">86</span>
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: TZ
+          value: Asia/Shanghai
+
+        volumeMounts:
+          - name: gogs-data
+            mountPath: /data
+        ports:
+        - containerPort: <span style="color:#bd93f9">3000</span>
+          name: web
+          protocol: TCP
+        - containerPort: <span style="color:#bd93f9">22</span>
+          name: ssh
+          protocol: TCP
+        resources:
+          limits:
+            cpu: <span style="color:#f1fa8c">&#34;1000m&#34;</span>
+            memory: <span style="color:#f1fa8c">&#34;1024Mi&#34;</span>
+          requests:
+            cpu: <span style="color:#f1fa8c">&#34;500m&#34;</span>
+            memory: <span style="color:#f1fa8c">&#34;512Mi&#34;</span>
+        livenessProbe:
+          httpGet:
+            port: <span style="color:#bd93f9">3000</span>
+        readinessProbe:
+          httpGet:
+            port: <span style="color:#bd93f9">3000</span>
+      volumes:
+      - name: gogs-data
+        persistentVolumeClaim:
+          claimName: gogs-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gogs
+  labels:
+    app: gogs
+  namespace: basics
+spec:
+  selector:
+    app: gogs
+  ports:
+    - name: http
+      port: <span style="color:#bd93f9">3000</span>
+  type: ClusterIP</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f gogs-deployment.yaml
+<span style="color:#ff79c6">[</span>user@S001 ~<span style="color:#ff79c6">]</span><span style="color:#6272a4"># kubectl get pods,svc-n default -l app=gogs</span>
+NAME                    READY   STATUS    RESTARTS   AGE
+gogs-7499894d8d-vcfpb   <span style="color:#bd93f9">2</span>/2     Running   <span style="color:#bd93f9">0</span>          22s
+NAME           TYPE        CLUSTER-IP      EXTERNAL-IP   PORT<span style="color:#ff79c6">(</span>S<span style="color:#ff79c6">)</span>    AGE
+service/gogs   ClusterIP   <span style="color:#bd93f9">10</span>.88.244.169   &lt;none&gt;        <span style="color:#bd93f9">3000</span>/TCP   77s</code></pre></div>
+<h3 id="外部访问gogs服务">外部访问gogs服务</h3>
+
+<p>kubernetes集群安装了istio，所以使用了istio-ingressgateway作为ingress</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: gogs-gateway
+  namespace: default
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: <span style="color:#bd93f9">80</span>
+      name: http-gogs
+      protocol: HTTP
+    hosts:
+    - <span style="color:#f1fa8c">&#34;gogs.zb.vip&#34;</span>
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: gogs-vs
+  namespace: default
+spec:
+  hosts:
+  - <span style="color:#f1fa8c">&#34;gogs.zb.vip&#34;</span>
+  gateways:
+  - gogs-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /gogs
+    route:
+    - destination:
+        host: gogs
+        port: 
+          number: <span style="color:#bd93f9">3000</span>
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: gogs
+  namespace: default
+spec:
+  host: gogs
+  trafficPolicy:
+    tls:
+      mode: DISABLEE</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ff79c6">[</span>root@ProApiS001 basics<span style="color:#ff79c6">]</span><span style="color:#6272a4"># kubectl apply -f gogs-gw.yaml</span> 
+gateway.networking.istio.io/gogs-gateway created
+virtualservice.networking.istio.io/gogs-vs created
+destinationrule.networking.istio.io/gogs created</code></pre></div>
+<p>安装完成后通过DNS解析，或者修改本机的<a href="C:WindowsSystem32driversetchosts">hosts</a>文件进行域名解释</p>
+
+<h3 id="初始化设置">初始化设置</h3>
+
+<p>利用浏览器登陆到gogs上，如果服务刚安装会跳转到初始化页面
+<img src="https://www.k8sz.com/img/k8s/gogs001.png" alt="gogs init" />
+<img src="https://www.k8sz.com/img/k8s/gogs002.png" alt="gogs init" /></p>
+
+<ul>
+<li>数据库设置，这里使用了SQLite3数据库</li>
+<li>域名输入自己的域名</li>
+<li>gogs的默认端口为3000</li>
+<li>应用URL，这里主要是git URL前缀，如：<a href="https://github.com/kubernetes/kubernetes.git">https://github.com/kubernetes/kubernetes.git</a></li>
+<li>默认情况下是没有管理员账户，需要设置，4项都要完整填写。填写完成点击”立即完成“</li>
+</ul>
+
+<h3 id="gogs使用ldap用户登陆">gogs使用ldap用户登陆</h3>
+
+<p><img src="https://www.k8sz.com/img/k8s/gogs003.png" alt="gogs ldap" />
+<img src="https://www.k8sz.com/img/k8s/gogs004.png" alt="gogs ldap" />
+<img src="https://www.k8sz.com/img/k8s/gogs005.png" alt="gogs ldap" /></p>
+
+<ul>
+<li>点击右上角用户图标下拉箭头，控制面板，认证源管理</li>
+<li>填写认证名称</li>
+<li>主机地址和端口，（这里用的是k8s同命名空间下的openldap服务）</li>
+<li>DN和密码是ldap中管理员和密码，<a href="https://www.k8sz.com/post/kubernetesldap">openldap安装请参考</a></li>
+<li>用户搜索基准，用户属性，名字属性，根据图中设置即可</li>
+<li>勾选相关设置，点击更新认证设置</li>
+</ul>
+
+<h3 id="验证ldap登陆">验证ldap登陆</h3>
+
+<p><img src="https://www.k8sz.com/img/k8s/gogs006.png" alt="gogs ldap" />
+<img src="https://www.k8sz.com/img/k8s/gogs007.png" alt="gogs ldap" />
+ldap设置成功后，在登陆页面可以看到，本地和设置的认证源</p>
+
+<h2 id="后记">后记</h2>
+
+<p>gogs和gitlab相比，足够轻便，是小团队和小型创业公司的不二选择。</p>
+
+
+
+
+          
+
+ 
+          
+            <div class="entry-shang text-center">
+    <p>「真诚赞赏，手留余香」</p>
+    <button class="zs show-zs btn btn-bred">赞赏</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+    <div class="zs-modal-head">
+        <button type="button" class="close">×</button>
+        <span class="author"><img src="https://www.k8sz.com/img/avatar.jpeg"/>ZB</span>
+        <p class="tip"><i></i><span>请我喝杯奶茶？</span></p>
+    </div>
+    <div class="zs-modal-body">
+
+        <div>
+           <img src="https://www.k8sz.com/img/zhuansuan.jpg" id="pay-image"/>
+        </div>
+
+    </div>
+    <div class="zs-modal-footer">
+        <span class="zs-wechat"><img src="https://www.k8sz.com/img/wechat-btn.png"/></span>
+    </div>
+</div>
+
+          
+
+          
+            <div class="social-share" data-initialized="true" style="margin-bottom: 20px;margin-top:20px;">
+    <center>
+    <font style="font-size:18px;color:darkcyan;">分享到：</font>
+    <a href="#" class="social-share-icon icon-weibo"></a>
+    <a href="#" class="social-share-icon icon-wechat"></a>
+
+    <a href="#" class="social-share-icon icon-linkedin"></a>
+
+
+    <a href="#" class="social-share-icon icon-qzone"></a>
+    </center>
+</div>
+ 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+          
+        </article>
+  
+        
+          
+
+<h3>相关文章</h3>
+<ul style="margin-bottom: 25px;">
+    
+    <li><a href="https://www.k8sz.com/post/kubernetesldap/">kubernetes之LDAP安装</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/kuberneteskubeadm/">kubernetes之使用kubeadm安装1.15.4</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/kuberneteshelm/">kubernetes之Helm安装</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/sixregrets/">全文仅42个字道尽人生六大悔事</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/kubernetesopenings/">Kubernetes 开篇</a></li>
+    
+</ul>
+
+        
+  
+        
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://www.k8sz.com/post/kuberneteshelm/" data-toggle="tooltip" data-placement="top" title="kubernetes之Helm安装">&larr; 前一篇</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://www.k8sz.com/post/kubernetes-drone-install/" data-toggle="tooltip" data-placement="top" title="kubernetes CI/CD之drone安装">后一篇 &rarr;</a>
+            </li>
+          
+        </ul>
+        
+
+        
+
+
+      </div>
+    
+    
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;
+          2019
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://www.k8sz.com/">ZB</a>
+            &nbsp;&bull;&nbsp;
+            <a href="https://www.k8sz.com/sitemap.xml">网站地图</a>
+            &nbsp;&bull;&nbsp;
+            <a href="https://www.k8sz.com/page/archive/">文章归档</a>
+            &nbsp;&bull;&nbsp;
+          
+        </p>
+
+        
+        <p class="credits theme-by text-muted">
+
+          由 <a href="http://gohugo.io">Hugo v0.55.6</a> 强力驱动 &nbsp;&bull;&nbsp; 主题 <a href="https://www.k8sz.com/">ZB的博客</a> 移植自 <a href="https://github.com/rootsongjc/beautifulhugo">Beautiful Hugo</a>
+
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src='https://www.k8sz.com/js/bundle.min.8242ab5c3c016acc49d8c7717b5c1a9f24511d0b9e5d1c0e44f2b907c76b5987.js' integrity='sha256-gkKrXDwBasxJ2Mdxe1wanyRRHQueXRwORPK5B8drWYc='></script>
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146440849-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-146440849-1');
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+<script type="text/javascript">
+ 
+var a_idx = 0;
+jQuery(document).ready(function($) {
+    $("body").click(function(e) {
+        var a = new Array("Docker", "Kubernetes", "Prometheus", "Envoy", "Istio", "Service Mesh", "Cloud Native", "Golang", "DevOps");
+        var $i = $("<span />").text(a[a_idx]);
+        a_idx = (a_idx + 1) % a.length;
+        var x = e.pageX,
+        y = e.pageY;
+        function randomColor() {
+          var flakeColor = new Array("#FFDA65", "#00BFFF", "#BA55D3", "#FFA07A", "#87CEEB", "#FFB6C1");
+          var snowColor = flakeColor[Math.floor(flakeColor.length * Math.random())];
+          return snowColor;
+        }
+        $i.css({
+            "z-index": 999999999999999999999999999999999999999999999999999999999999999999999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": randomColor()
+        });
+        $("body").append($i);
+        $i.animate({
+            "top": y - 180,
+            "opacity": 0
+        },
+        1500,
+        function() {
+            $i.remove();
+        });
+    });
+});
+</script>
+
+
+<script type="text/javascript" src="https://www.k8sz.com/js/lightbox.js"></script>
+
+
+<script src="https://cdn.plyr.io/3.4.7/plyr.js"></script>
+<script>const player = new Plyr('#player');</script>
+
+
+  </body>
+</html>
+

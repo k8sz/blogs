@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+
+  <title>Kubernetes生产基础服务之Kubesphere部署-https://www.k8sz.com/,ZB的博客,Kubernetes,Docker,istio,Golang,Cloud Native</title>
+  <meta property="og:title" content="Kubernetes生产基础服务之Kubesphere部署" />
+  <meta name="twitter:title" content="Kubernetes生产基础服务之Kubesphere部署" />
+
+  <meta name="description" content="Kubernetes生产之基础篇">
+  <meta property="og:description" content="Kubernetes生产之基础篇">
+  <meta name="twitter:description" content="Kubernetes生产之基础篇">
+  <meta name="author" content=""/>
+  <link href='https://image.77s.vip/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://image.77s.vip/favicon.png" />
+  <meta name="twitter:image" content="https://image.77s.vip/favicon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="https://www.k8sz.com/post/kubernetes-kubesphere/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ZB" />
+
+  <meta name="generator" content="Hugo 0.55.6" />
+  <link rel="canonical" href="https://www.k8sz.com/post/kubernetes-kubesphere/" />
+  <link rel="alternate" href="https://www.k8sz.com/index.xml" type="application/rss+xml" title="ZB">
+
+  
+  
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700%7COpen+Sans:400,700" rel="stylesheet">
+  
+
+  <link rel="stylesheet" href='https://www.k8sz.com/css/bundle.min.d236889182ad0dba3ea8cf427c8c43c658a4b0d39ab889ff934e277a03537814.css' integrity='sha256-0jaIkYKtDbo&#43;qM9CfIxDxliksNOauIn/k04negNTeBQ='>
+
+  
+    
+    <!--[if lt IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <![endif]-->
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?96a7bf5b2259aa8174c0660477c03714";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-146440849-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">切换导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://www.k8sz.com/">ZB</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="首页" href="https://www.k8sz.com/">首页</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Docker" href="https://www.k8sz.com/tags/docker">Docker</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Kubernetes" href="https://www.k8sz.com/tags/kubernetes">Kubernetes</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="DevOps" href="https://www.k8sz.com/tags/devops">DevOps</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="励志人生" href="https://www.k8sz.com/tags/motivational">励志人生</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">book</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://www.k8sz.com/book/">kubernetes</a>
+                
+              </div>
+            </li>
+          
+        
+
+        
+
+        
+
+        
+          <li>
+            <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+              <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+            </a>
+          </li>
+          
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+
+  <div id="modalSearch" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">搜索</h4>
+        </div>
+        <div class="modal-body">
+            
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="Search for titles or URIs..." name="search" autocomplete="off" />
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="https://www.k8sz.com/js/algoliasearch.min.js"></script>
+<script src="https://www.k8sz.com/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("OGF3JK7MAT", "8ca8105cef83b57d5cf1122941280707");
+var index = client.initIndex('prod_k8sz');
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            return '<span>' + '<a href="https://www.k8sz.com/post/' + suggestion.slug + '">' +
+            suggestion._highlightResult.title.value + '</a></span>';
+        }
+    }
+});
+</script>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    
+  
+  
+  
+
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 data-img-src-1="https://bxdc-static.oss-cn-beijing.aliyuncs.com/images/photo-1565780421727-543646cefafb.jpeg" ></div>
+  
+
+  <header class="header-section has-img">
+    
+      <div class="intro-header big-img">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>Kubernetes生产基础服务之Kubesphere部署</h1>
+                  
+                    
+                      <h2 class="post-subheading">Kubernetes生产之基础篇</h2>
+                    
+                  
+                  
+                    <span class="post-meta">
+  
+    发表于 October 26, 2019
+  
+  
+</span>
+
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="img-desc" style="display: inline;"></span>
+      </div>
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>Kubernetes生产基础服务之Kubesphere部署</h1>
+                
+                  
+                    <h2 class="post-subheading">Kubernetes生产之基础篇</h2>
+                  
+                
+                
+                  <span class="post-meta">
+  
+    发表于 October 26, 2019
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+
+
+
+<div class="container" role="main">
+  <div class="row">
+
+    
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div>
+            
+            
+            <h5 id="tags" style="margin-top: 30px;">标签:
+              
+                  <a href="https://www.k8sz.com/tags/kubernetes/">kubernetes</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/concept/">concept</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/service/">service</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/pod/">pod</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/ingress/">ingress</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/namespace/">namespace</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/volume/">volume</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/pv/">pv</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/pvc/">pvc</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/deployment/">deployment</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/statefulset/">StatefulSet</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/job/">Job</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/cronjob/">CronJob</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/hpa/">HPA</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/service-account/">Service Account</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/secret/">Secret</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/configmap/">ConfigMap</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/resource-quotas/">Resource Quotas</a> &nbsp;
+              
+            </h5>
+            
+        </div>
+  
+        <article role="main" class="blog-post" itemprop="articleBody" id="content">
+          
+            
+          
+  
+          
+          
+          
+  
+          
+          
+          
+  
+
+          
+          
+          
+          <p>KubeSphere 是在目前主流容器调度平台 Kubernetes 之上构建的企业级分布式多租户容器平台，提供简单易用的操作界面以及向导式操作方式，在降低用户使用容器调度平台学习成本的同时，极大减轻开发、测试、运维的日常工作的复杂度，旨在解决 Kubernetes 本身存在的存储、网络、安全和易用性等痛点。除此之外，平台已经整合并优化了多个适用于容器场景的功能模块，以完整的解决方案帮助企业轻松应对敏捷开发与自动化运维、微服务治理、多租户管理、工作负载和集群管理、服务与网络管理、应用编排与管理、镜像仓库管理和存储管理等业务场景。</p>
+
+<p>KubeSphere为我们提供了可视化 CI/CD 流水线、多维度监控告警日志、多租户管理、LDAP 集成、新增支持 HPA (水平自动伸缩) 、容器健康检查以及 Secrets、ConfigMaps 的配置管理等功能，新增微服务治理、灰度发布、s2i、代码质量检查等。一定程度上简化了我们管理kubesnetes集群。</p>
+
+<h2 id="在-kubernetes-在线部署-kubesphere">在 Kubernetes 在线部署 KubeSphere</h2>
+
+<h3 id="创建namespace">创建Namespace</h3>
+
+<p>在 Kubernetes 集群中创建名为 kubesphere-system 和 kubesphere-monitoring-system 的 namespace</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat <span style="color:#f1fa8c">&lt;&lt;EOF | kubectl create -f -
+</span><span style="color:#f1fa8c">---
+</span><span style="color:#f1fa8c">apiVersion: v1
+</span><span style="color:#f1fa8c">kind: Namespace
+</span><span style="color:#f1fa8c">metadata:
+</span><span style="color:#f1fa8c">    name: kubesphere-system
+</span><span style="color:#f1fa8c">---
+</span><span style="color:#f1fa8c">apiVersion: v1
+</span><span style="color:#f1fa8c">kind: Namespace
+</span><span style="color:#f1fa8c">metadata:
+</span><span style="color:#f1fa8c">    name: kubesphere-monitoring-system
+</span><span style="color:#f1fa8c">EOF</span></code></pre></div>
+<h3 id="创建-kubernetes-集群-ca-证书的-secret">创建 Kubernetes 集群 CA 证书的 Secret</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl -n kubesphere-system create secret generic kubesphere-ca --from-file<span style="color:#ff79c6">=</span>ca.crt<span style="color:#ff79c6">=</span>/etc/kubernetes/pki/ca.crt --from-file<span style="color:#ff79c6">=</span>ca.key<span style="color:#ff79c6">=</span>/etc/kubernetes/pki/ca.key </code></pre></div>
+<h3 id="创建-etcd-的证书-secret">创建 etcd 的证书 Secret</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl -n kubesphere-monitoring-system create secret generic kube-etcd-client-certs --from-file<span style="color:#ff79c6">=</span>etcd-client-ca.crt<span style="color:#ff79c6">=</span>/etc/kubernetes/pki/etcd/ca.crt --from-file<span style="color:#ff79c6">=</span>etcd-client.crt<span style="color:#ff79c6">=</span>/etc/kubernetes/pki/etcd/healthcheck-client.crt --from-file<span style="color:#ff79c6">=</span>etcd-client.key<span style="color:#ff79c6">=</span>/etc/kubernetes/pki/etcd/healthcheck-client.key</code></pre></div>
+<h3 id="克隆-kubesphere-installer-仓库至本地">克隆 kubesphere-installer 仓库至本地</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/kubesphere/ks-installer.git</code></pre></div>
+<h3 id="修改安装配置文件">修改安装配置文件</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#8be9fd;font-style:italic">cd</span> ks-installer/deploy
+vim kubesphere-installer.yaml</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">apiVersion: v1
+data:
+  ks-config.yaml: <span style="color:#f1fa8c">|
+</span><span style="color:#f1fa8c">    kube_apiserver_host: 192.168.1.1:6443</span>
+    etcd_tls_enable: True
+    etcd_endpoint_ips: <span style="color:#bd93f9">192.168</span>.<span style="color:#bd93f9">1.1</span>
+    disableMultiLogin: False
+    istio_enable: False
+    keep_log_days: <span style="color:#bd93f9">30</span>
+    sonarqube_enable: False
+    metrics_server_enable: False
+    elk_prefix: logstash
+    persistence:
+      enable: True
+      storageClass: <span style="color:#f1fa8c">&#34;alicloud-disk-available&#34;</span>
+......</code></pre></div>
+<p>配置文件关闭了istio，sonarqube，metrics_server之前有安装所以这里不安装，日志保存30天，开启storageClass参考<a href="https://www.k8sz.com/post/kubrenetes-nas-storageclass">kubernetes 挂载阿里云nas存储作为StorageClass</a>,开启账户可以多终端登录
+运行部署</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f kubesphere-installer.yaml</code></pre></div>
+<h3 id="查看部署日志">查看部署日志</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl logs -n kubesphere-system <span style="color:#ff79c6">$(</span>kubectl get pod -n kubesphere-system -l job-name<span style="color:#ff79c6">=</span>kubesphere-installer -o <span style="color:#8be9fd;font-style:italic">jsonpath</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;{.items[0].metadata.name}&#39;</span><span style="color:#ff79c6">)</span> -f</code></pre></div>
+<h3 id="kubesphere镜像无法下载">kubesphere镜像无法下载</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4">#登陆到镜像仓库，每个nodes都需要操作</span>
+docker login -u guest -p guest dockerhub.qingcloud.com</code></pre></div>
+<h3 id="查看控制台的服务端口">查看控制台的服务端口</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># 查看 ks-console 服务的端口  默认为 NodePort: 30880 默认的集群管理员账号为 admin/P@88w0rd</span>
+kubectl get svc -n kubesphere-system</code></pre></div>
+<h2 id="参考">参考</h2>
+
+<ul>
+<li><a href="https://kubesphere.io/docs/v2.0/zh-CN/installation/install-on-k8s/">https://kubesphere.io/docs/v2.0/zh-CN/installation/install-on-k8s/</a></li>
+</ul>
+
+
+
+
+          
+
+ 
+          
+            <div class="entry-shang text-center">
+    <p>「真诚赞赏，手留余香」</p>
+    <button class="zs show-zs btn btn-bred">赞赏</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+    <div class="zs-modal-head">
+        <button type="button" class="close">×</button>
+        <span class="author"><img src="https://www.k8sz.com/img/avatar.jpeg"/>ZB</span>
+        <p class="tip"><i></i><span>请我喝杯奶茶？</span></p>
+    </div>
+    <div class="zs-modal-body">
+
+        <div>
+           <img src="https://www.k8sz.com/img/zhuansuan.jpg" id="pay-image"/>
+        </div>
+
+    </div>
+    <div class="zs-modal-footer">
+        <span class="zs-wechat"><img src="https://www.k8sz.com/img/wechat-btn.png"/></span>
+    </div>
+</div>
+
+          
+
+          
+            <div class="social-share" data-initialized="true" style="margin-bottom: 20px;margin-top:20px;">
+    <center>
+    <font style="font-size:18px;color:darkcyan;">分享到：</font>
+    <a href="#" class="social-share-icon icon-weibo"></a>
+    <a href="#" class="social-share-icon icon-wechat"></a>
+
+    <a href="#" class="social-share-icon icon-linkedin"></a>
+
+
+    <a href="#" class="social-share-icon icon-qzone"></a>
+    </center>
+</div>
+ 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+          
+        </article>
+  
+        
+          
+
+<h3>相关文章</h3>
+<ul style="margin-bottom: 25px;">
+    
+    <li><a href="https://www.k8sz.com/post/kubernetes-nas-storageclass/">kubernetes挂载阿里云nas存储作为StorageClass</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/kubernetes-concept/">Kubernetes之16个入门概念</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/kubernetes-ingress-https/">kubernetes之NginxIngress HTTPS自动化</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/kubernetes-kustomize/">Kubernetes之使用Kustomize配置应用</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/linux-vim/">Linux之vim技巧</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/helm2-to-v3/">HelmV2迁移到V3版本</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/kubernetes-jenkinsfile/">kubernetes之Jenkins 流水线语法</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/kubernetes-jx-install/">kubernetes之Jenkins x安装</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/kubernetes-jx-component/">kubernetes之Jenkins x主要组件</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/kubernetes-prometheus-intro/">kubernetes之prometheus简介</a></li>
+    
+</ul>
+
+        
+  
+        
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://www.k8sz.com/post/kubernetes-nas-storageclass/" data-toggle="tooltip" data-placement="top" title="kubernetes挂载阿里云nas存储作为StorageClass">&larr; 前一篇</a>
+            </li>
+          
+          
+        </ul>
+        
+
+        
+
+
+      </div>
+    
+    
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;
+          2019
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://www.k8sz.com/">ZB</a>
+            &nbsp;&bull;&nbsp;
+            <a href="https://www.k8sz.com/sitemap.xml">网站地图</a>
+            &nbsp;&bull;&nbsp;
+            <a href="https://www.k8sz.com/page/archive/">文章归档</a>
+            &nbsp;&bull;&nbsp;
+          
+        </p>
+
+        
+        <p class="credits theme-by text-muted">
+
+          由 <a href="http://gohugo.io">Hugo v0.55.6</a> 强力驱动 &nbsp;&bull;&nbsp; 主题 <a href="https://www.k8sz.com/">ZB的博客</a> 移植自 <a href="https://github.com/rootsongjc/beautifulhugo">Beautiful Hugo</a>
+
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src='https://www.k8sz.com/js/bundle.min.8242ab5c3c016acc49d8c7717b5c1a9f24511d0b9e5d1c0e44f2b907c76b5987.js' integrity='sha256-gkKrXDwBasxJ2Mdxe1wanyRRHQueXRwORPK5B8drWYc='></script>
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146440849-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-146440849-1');
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+<script type="text/javascript">
+ 
+var a_idx = 0;
+jQuery(document).ready(function($) {
+    $("body").click(function(e) {
+        var a = new Array("Docker", "Kubernetes", "Prometheus", "Envoy", "Istio", "Service Mesh", "Cloud Native", "Golang", "DevOps");
+        var $i = $("<span />").text(a[a_idx]);
+        a_idx = (a_idx + 1) % a.length;
+        var x = e.pageX,
+        y = e.pageY;
+        function randomColor() {
+          var flakeColor = new Array("#FFDA65", "#00BFFF", "#BA55D3", "#FFA07A", "#87CEEB", "#FFB6C1");
+          var snowColor = flakeColor[Math.floor(flakeColor.length * Math.random())];
+          return snowColor;
+        }
+        $i.css({
+            "z-index": 999999999999999999999999999999999999999999999999999999999999999999999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": randomColor()
+        });
+        $("body").append($i);
+        $i.animate({
+            "top": y - 180,
+            "opacity": 0
+        },
+        1500,
+        function() {
+            $i.remove();
+        });
+    });
+});
+</script>
+
+
+<script type="text/javascript" src="https://www.k8sz.com/js/lightbox.js"></script>
+
+
+<script src="https://cdn.plyr.io/3.4.7/plyr.js"></script>
+<script>const player = new Plyr('#player');</script>
+
+
+  </body>
+</html>
+

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on ZB</title>
+    <link>https://www.k8sz.com/tags/linux/</link>
+    <description>Recent content in linux on ZB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 22 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.k8sz.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linux之常用命令</title>
+      <link>https://www.k8sz.com/post/linux-command/</link>
+      <pubDate>Tue, 22 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/linux-command/</guid>
+      <description>&lt;p&gt;Linux这么多命令，通常会让初学者望而生畏。
+内容：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;✔ 目录操作&lt;/li&gt;
+&lt;li&gt;✔ 文本处理&lt;/li&gt;
+&lt;li&gt;✔ 压缩&lt;/li&gt;
+&lt;li&gt;✔ 日常运维&lt;/li&gt;
+&lt;li&gt;✔ 系统状态概览&lt;/li&gt;
+&lt;li&gt;✔ 工作常用&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux之git常用命令</title>
+      <link>https://www.k8sz.com/post/linux-git-command/</link>
+      <pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/linux-git-command/</guid>
+      <description>&lt;p&gt;git是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。  Git 是 Linus Torvalds为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件&lt;/p&gt;
+
+&lt;p&gt;本文主要介绍git一些常用命令&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

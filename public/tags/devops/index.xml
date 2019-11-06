@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>devops on ZB</title>
+    <link>https://www.k8sz.com/tags/devops/</link>
+    <description>Recent content in devops on ZB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 14 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.k8sz.com/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>kubernetes之Jenkins 流水线语法</title>
+      <link>https://www.k8sz.com/post/kubernetes-jenkinsfile/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-jenkinsfile/</guid>
+      <description>&lt;p&gt;声明式和脚本化的流水线从根本上是不同的。 声明式流水线的是 Jenkins 流水线更近的特性:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;相比脚本化的流水线语法，它提供更丰富的语法特性,&lt;/li&gt;
+&lt;li&gt;是为了使编写和读取流水线代码更容易而设计的。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes之Jenkins x主要组件</title>
+      <link>https://www.k8sz.com/post/kubernetes-jx-component/</link>
+      <pubDate>Fri, 06 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-jx-component/</guid>
+      <description>&lt;p&gt;Jenkins X 是一个高度集成化的CI/CD平台，基于Jenkins和Kubernetes实现，旨在解决微服务体系架构下的云原生应用的持续交付的问题，简化整个云原生应用的开发、运行和部署过程。&lt;/p&gt;
+
+&lt;p&gt;jx是云原生CICD，devops的一个最佳实践之一，目前在快速的发展成熟中,这里介绍jx用到的一些相关组件&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes之prometheus简介</title>
+      <link>https://www.k8sz.com/post/kubernetes-prometheus-intro/</link>
+      <pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-prometheus-intro/</guid>
+      <description>&lt;p&gt;kubernetes作为当下最炙手可热的容器编排平台，在给应用部署运维带来便捷的同时，也给应用及性能监控带来了新的挑战。&lt;/p&gt;
+
+&lt;p&gt;本文给大家分享一款十分火热的开源监控工具Prometheus，让我们一起来看它是如何兼顾传统的应用监控、主机性能监控和Kubernetes监控的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>kubernetes CI/CD之drone安装</title>
+      <link>https://www.k8sz.com/post/kubernetes-drone-install/</link>
+      <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-drone-install/</guid>
+      <description>&lt;p&gt;Drone是一种基于容器技术的持续交付系统。使用简单的YAML配置文件来定义和执行Docker容器中定义的Pipeline，Drone主要由两个部分组成：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Server端负责身份认证，仓库配置，用户，Secrets以及Webhook相关配置&lt;/li&gt;
+&lt;li&gt;Agent端端用于接受构建的作业和真正用于运行的 Pipeline 工作流&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Server 和 Agent 都是非常轻量级的服务，大概只使用 10~15MB 内存&lt;/p&gt;
+
+&lt;p&gt;本文将介绍在kubernetes 集群基于Drone搭建一个CI/CD服务。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes 开篇</title>
+      <link>https://www.k8sz.com/post/kubernetesopenings/</link>
+      <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetesopenings/</guid>
+      <description>&lt;p&gt;Kubernetes是一个可移植，可扩展的开源平台，用于管理容器化工作负载和服务，有助于声明性配置和自动化。作为一个从业运维工作的人员，得益与容器Docker和容器编排Kubernetes的出现，解决了许多运维中出现的痛点，提高运维效率。Kubernetes是如何解决运维中出现的痛点的呢？&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

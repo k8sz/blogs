@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+
+  <title>kubernetes之LDAP安装-https://www.k8sz.com/,ZB的博客,Kubernetes,Docker,istio,Golang,Cloud Native</title>
+  <meta property="og:title" content="kubernetes之LDAP安装" />
+  <meta name="twitter:title" content="kubernetes之LDAP安装" />
+
+  <meta name="description" content="轻型目录访问协议（英文：Lightweight Directory Access Protocol 缩写: LDAP）是一个开放的，中立的，工业标准的应用协议，通过IP协议提供访问控制和维护分布式信息的目录信息。
+可以这样讲：市面上只要你能够想像得到的所有工具软件，全部都支持LDAP协议。比如说你公司要安装一个项目管理工具，那么这个工具几乎必然支持LDAP协议，你公司要安装一个bug管理工具，这工具必然也支持LDAP协议，你公司要安装一套软件版本管理工具，这工具也必然支持LDAP协议。LDAP协议的好处就是你公司的所有员工在所有这些工具里共享同一套用户名和密码，来人的时候新增一个用户就能自动访问所有系统，走人的时候一键删除就取消了他对所有系统的访问权限，这就是LDAP。
+
+本文将介绍如何使用Helm在kubernetes 集群上搭建一个OpenLDAP服务。">
+  <meta property="og:description" content="轻型目录访问协议（英文：Lightweight Directory Access Protocol 缩写: LDAP）是一个开放的，中立的，工业标准的应用协议，通过IP协议提供访问控制和维护分布式信息的目录信息。
+可以这样讲：市面上只要你能够想像得到的所有工具软件，全部都支持LDAP协议。比如说你公司要安装一个项目管理工具，那么这个工具几乎必然支持LDAP协议，你公司要安装一个bug管理工具，这工具必然也支持LDAP协议，你公司要安装一套软件版本管理工具，这工具也必然支持LDAP协议。LDAP协议的好处就是你公司的所有员工在所有这些工具里共享同一套用户名和密码，来人的时候新增一个用户就能自动访问所有系统，走人的时候一键删除就取消了他对所有系统的访问权限，这就是LDAP。
+
+本文将介绍如何使用Helm在kubernetes 集群上搭建一个OpenLDAP服务。">
+  <meta name="twitter:description" content="轻型目录访问协议（英文：Lightweight Directory Access Protocol 缩写: LDAP）是一个开放的，中立的，工业标准的应用协议，通过IP协议提供访问控制和维护分布式信息的目录信息。
+可以这样讲：市面上只要你能够想像得到的所有工具软件，全部都支持LDAP协议。比如说你公司要安装一个项目管理工具，那么这个工具几乎必然支持LDAP协议，你公司要安装一个bug管理工具，这工 …">
+  <meta name="author" content=""/>
+  <link href='https://image.77s.vip/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://image.77s.vip/favicon.png" />
+  <meta name="twitter:image" content="https://image.77s.vip/favicon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="https://www.k8sz.com/post/kubernetesldap/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ZB" />
+
+  <meta name="generator" content="Hugo 0.55.6" />
+  <link rel="canonical" href="https://www.k8sz.com/post/kubernetesldap/" />
+  <link rel="alternate" href="https://www.k8sz.com/index.xml" type="application/rss+xml" title="ZB">
+
+  
+  
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700%7COpen+Sans:400,700" rel="stylesheet">
+  
+
+  <link rel="stylesheet" href='https://www.k8sz.com/css/bundle.min.d236889182ad0dba3ea8cf427c8c43c658a4b0d39ab889ff934e277a03537814.css' integrity='sha256-0jaIkYKtDbo&#43;qM9CfIxDxliksNOauIn/k04negNTeBQ='>
+
+  
+    
+    <!--[if lt IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <![endif]-->
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?96a7bf5b2259aa8174c0660477c03714";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-146440849-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">切换导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://www.k8sz.com/">ZB</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="首页" href="https://www.k8sz.com/">首页</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Docker" href="https://www.k8sz.com/tags/docker">Docker</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Kubernetes" href="https://www.k8sz.com/tags/kubernetes">Kubernetes</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="DevOps" href="https://www.k8sz.com/tags/devops">DevOps</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="励志人生" href="https://www.k8sz.com/tags/motivational">励志人生</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">book</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://www.k8sz.com/book/">kubernetes</a>
+                
+              </div>
+            </li>
+          
+        
+
+        
+
+        
+
+        
+          <li>
+            <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+              <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+            </a>
+          </li>
+          
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+
+  <div id="modalSearch" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">搜索</h4>
+        </div>
+        <div class="modal-body">
+            
+<div class="aa-input-container" id="aa-input-container">
+    <input type="search" id="aa-search-input" class="aa-input-search" placeholder="Search for titles or URIs..." name="search" autocomplete="off" />
+    <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+        <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+    </svg>
+</div>
+<script src="https://www.k8sz.com/js/algoliasearch.min.js"></script>
+<script src="https://www.k8sz.com/js/autocomplete.min.js"></script>
+
+<script>
+var client = algoliasearch("OGF3JK7MAT", "8ca8105cef83b57d5cf1122941280707");
+var index = client.initIndex('prod_k8sz');
+
+autocomplete('#aa-search-input',
+{ hint: false}, {
+    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+    
+    displayKey: 'name',
+    
+    templates: {
+        
+        suggestion: function(suggestion) {
+            return '<span>' + '<a href="https://www.k8sz.com/post/' + suggestion.slug + '">' +
+            suggestion._highlightResult.title.value + '</a></span>';
+        }
+    }
+});
+</script>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    
+  
+  
+  
+
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 data-img-src-1="https://www.k8sz.com/img/great-wall-01.jpg" ></div>
+  
+
+  <header class="header-section has-img">
+    
+      <div class="intro-header big-img">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>kubernetes之LDAP安装</h1>
+                  
+                  
+                    <span class="post-meta">
+  
+    发表于 August 16, 2019
+  
+  
+</span>
+
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="img-desc" style="display: inline;"></span>
+      </div>
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>kubernetes之LDAP安装</h1>
+                
+                
+                  <span class="post-meta">
+  
+    发表于 August 16, 2019
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+
+
+
+<div class="container" role="main">
+  <div class="row">
+
+    
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div>
+            
+            
+            <h5 id="tags" style="margin-top: 30px;">标签:
+              
+                  <a href="https://www.k8sz.com/tags/kubernetes/">kubernetes</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/ldap/">ldap</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/docker/">docker</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/kubectl/">kubectl</a> &nbsp;
+              
+                  <a href="https://www.k8sz.com/tags/yaml/">yaml</a> &nbsp;
+              
+            </h5>
+            
+        </div>
+  
+        <article role="main" class="blog-post" itemprop="articleBody" id="content">
+          
+            
+<aside class="toc">
+  <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#安装openldap">安装OpenLDAP</a>
+<ul>
+<li><a href="#编写helm-values-yaml">编写Helm values.yaml</a></li>
+<li><a href="#接下来我们使用helm进行openldap进行安装">接下来我们使用helm进行openldap进行安装</a></li>
+<li><a href="#验证openldap是否安装成功">验证openldap是否安装成功</a></li>
+<li><a href="#openldap端口开放和客户端连接">openldap端口开放和客户端连接</a></li>
+</ul></li>
+<li><a href="#结语">结语</a></li>
+</ul></li>
+</ul>
+</nav>
+</aside>
+
+          
+  
+          
+          
+          
+  
+          
+          
+          
+  
+
+          
+          
+          
+          <p>轻型目录访问协议（英文：Lightweight Directory Access Protocol 缩写: LDAP）是一个开放的，中立的，工业标准的应用协议，通过IP协议提供访问控制和维护分布式信息的目录信息。
+可以这样讲：市面上只要你能够想像得到的所有工具软件，全部都支持LDAP协议。比如说你公司要安装一个项目管理工具，那么这个工具几乎必然支持LDAP协议，你公司要安装一个bug管理工具，这工具必然也支持LDAP协议，你公司要安装一套软件版本管理工具，这工具也必然支持LDAP协议。LDAP协议的好处就是你公司的所有员工在所有这些工具里共享同一套用户名和密码，来人的时候新增一个用户就能自动访问所有系统，走人的时候一键删除就取消了他对所有系统的访问权限，这就是LDAP。</p>
+
+<p>本文将介绍如何使用Helm在kubernetes 集群上搭建一个OpenLDAP服务。</p>
+
+<h2 id="安装openldap">安装OpenLDAP</h2>
+
+<h3 id="编写helm-values-yaml">编写Helm values.yaml</h3>
+
+<p>编写我们需要修改的Helm values.yaml文件，将我们需要修改的字段信息增加到文件中，用来替换默认的字段</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">env:
+  LDAP_ORGANISATION: <span style="color:#f1fa8c">&#34;ZB Inc.&#34;</span>
+  LDAP_DOMAIN: <span style="color:#f1fa8c">&#34;zb.com&#34;</span>
+  LDAP_BACKEND: <span style="color:#f1fa8c">&#34;hdb&#34;</span>
+  LDAP_TLS: <span style="color:#f1fa8c">&#34;true&#34;</span>
+  LDAP_TLS_ENFORCE: <span style="color:#f1fa8c">&#34;false&#34;</span>
+  LDAP_REMOVE_CONFIG_AFTER_SETUP: <span style="color:#f1fa8c">&#34;true&#34;</span></code></pre></div>
+<p>这里主要是修改了LDAP_DOMAIN(域名)，和LDAP_ORGANISATION（公司名称），可以根据自己的需求进行修改。
+因为各个Chart的版本values.yaml有所不同，需要留意一下，我的Chart版本如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ff79c6">[</span>user@S01 /<span style="color:#ff79c6">]</span><span style="color:#6272a4"># helm search  stable/openldap</span>
+NAME            CHART VERSION   APP VERSION DESCRIPTION                     
+stable/openldap     <span style="color:#bd93f9">1</span>.1.0          <span style="color:#bd93f9">2</span>.4.47   Community developed LDAP software</code></pre></div>
+<h3 id="接下来我们使用helm进行openldap进行安装">接下来我们使用helm进行openldap进行安装</h3>
+
+<p>首先我们先进行repo更新，并查看openldap Chart最新版本</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ff79c6">[</span>user@S01 openldap<span style="color:#ff79c6">]</span><span style="color:#6272a4"># helm repo update</span>
+Hang tight <span style="color:#ff79c6">while</span> we grab the latest from your chart repositories...
+...Skip <span style="color:#8be9fd;font-style:italic">local</span> chart repository
+...Successfully got an update from the <span style="color:#f1fa8c">&#34;incubator&#34;</span> chart repository
+...Successfully got an update from the <span style="color:#f1fa8c">&#34;stable&#34;</span> chart repository
+Update Complete.
+<span style="color:#ff79c6">[</span>user@S01 /<span style="color:#ff79c6">]</span><span style="color:#6272a4"># helm search  stable/openldap</span>
+NAME            CHART VERSION   APP VERSION DESCRIPTION                     
+stable/openldap     <span style="color:#bd93f9">1</span>.1.0          <span style="color:#bd93f9">2</span>.4.47   Community developed LDAP software</code></pre></div>
+<p>接下来进行openldap安装</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ff79c6">[</span>user@S01 ~<span style="color:#ff79c6">]</span><span style="color:#6272a4"># helm install -n openldap --namespace default -f zb.yaml stable/openldap</span>
+NAME:   openldap
+LAST DEPLOYED: Fri Aug <span style="color:#bd93f9">16</span> <span style="color:#bd93f9">14</span>:37:24 <span style="color:#bd93f9">2019</span>
+NAMESPACE: default
+STATUS: DEPLOYED
+
+RESOURCES:
+<span style="color:#ff79c6">==</span>&gt; v1/ConfigMap
+NAME          DATA  AGE
+openldap-env  <span style="color:#bd93f9">6</span>     <span style="color:#8be9fd;font-style:italic">0s</span>
+
+<span style="color:#ff79c6">==</span>&gt; v1/Pod<span style="color:#ff79c6">(</span>related<span style="color:#ff79c6">)</span>
+NAME                       READY  STATUS             RESTARTS  AGE
+openldap-858575df78-6kpgd  <span style="color:#bd93f9">0</span>/1    ContainerCreating  <span style="color:#bd93f9">0</span>         <span style="color:#8be9fd;font-style:italic">0s</span>
+
+<span style="color:#ff79c6">==</span>&gt; v1/Secret
+NAME      TYPE    DATA  AGE
+openldap  Opaque  <span style="color:#bd93f9">2</span>     <span style="color:#8be9fd;font-style:italic">0s</span>
+
+<span style="color:#ff79c6">==</span>&gt; v1/Service
+NAME      TYPE       CLUSTER-IP      EXTERNAL-IP  PORT<span style="color:#ff79c6">(</span>S<span style="color:#ff79c6">)</span>          AGE
+openldap  ClusterIP  <span style="color:#bd93f9">10</span>.109.187.113  &lt;none&gt;       <span style="color:#bd93f9">389</span>/TCP,636/TCP  <span style="color:#8be9fd;font-style:italic">0s</span>
+
+<span style="color:#ff79c6">==</span>&gt; v1beta2/Deployment
+NAME      READY  UP-TO-DATE  AVAILABLE  AGE
+openldap  <span style="color:#bd93f9">0</span>/1    <span style="color:#bd93f9">1</span>           <span style="color:#bd93f9">0</span>          0s
+
+
+NOTES:
+OpenLDAP has been installed. You can access the server from within the k8s cluster using:
+
+  openldap.default.svc.cluster.local:389
+
+
+You can access the LDAP adminPassword and configPassword using:
+
+  kubectl get secret --namespace default openldap -o <span style="color:#8be9fd;font-style:italic">jsonpath</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;{.data.LDAP_ADMIN_PASSWORD}&#34;</span> | base64 --decode; <span style="color:#8be9fd;font-style:italic">echo</span>
+  kubectl get secret --namespace default openldap -o <span style="color:#8be9fd;font-style:italic">jsonpath</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;{.data.LDAP_CONFIG_PASSWORD}&#34;</span> | base64 --decode; <span style="color:#8be9fd;font-style:italic">echo</span>
+
+
+You can access the LDAP service, from within the cluster <span style="color:#ff79c6">(</span>or with kubectl port-forward<span style="color:#ff79c6">)</span> with a <span style="color:#8be9fd;font-style:italic">command</span> like <span style="color:#ff79c6">(</span>replace password and domain<span style="color:#ff79c6">)</span>:
+  ldapsearch -x -H ldap://openldap-service.default.svc.cluster.local:389 -b <span style="color:#8be9fd;font-style:italic">dc</span><span style="color:#ff79c6">=</span>example,dc<span style="color:#ff79c6">=</span>org -D <span style="color:#f1fa8c">&#34;cn=admin,dc=example,dc=org&#34;</span> -w <span style="color:#8be9fd;font-style:italic">$LDAP_ADMIN_PASSWORD</span>
+
+
+Test server health using Helm test:
+  helm <span style="color:#8be9fd;font-style:italic">test</span> openldap
+
+
+You can also consider installing the helm chart <span style="color:#ff79c6">for</span> phpldapadmin to manage this instance of OpenLDAP, or install Apache Directory Studio, and connect using kubectl port-forward.</code></pre></div>
+<p>因admin密码是随机生成并使用base64进行了加密，所以我们可以根据helm安装提示获取openldap的admin密码</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ff79c6">[</span>user@S01 ~<span style="color:#ff79c6">]</span><span style="color:#6272a4"># kubectl get secret --namespace default openldap -o jsonpath=&#34;{.data.LDAP_ADMIN_PASSWORD}&#34; | base64 --decode; echo</span>
+B74G7RiwwSYXC8LRqAagNaqkDGcZ5RRL</code></pre></div>
+<h3 id="验证openldap是否安装成功">验证openldap是否安装成功</h3>
+
+<p>输入一下命令查看openldap是否安装成功</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ff79c6">[</span>root@ZabbixServer01 ~<span style="color:#ff79c6">]</span><span style="color:#6272a4"># helm list openldap</span>
+NAME        REVISION    UPDATED                     STATUS      CHART           APP VERSION NAMESPACE
+openldap    <span style="color:#bd93f9">1</span>           Fri Aug <span style="color:#bd93f9">16</span> <span style="color:#bd93f9">14</span>:37:24 <span style="color:#bd93f9">2019</span>    DEPLOYED    openldap-1.1.0  <span style="color:#bd93f9">2</span>.4.47      default</code></pre></div>
+<p>或者使用kubetl查看Pod的状态进行验证</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ff79c6">[</span>root@ZabbixServer01 ~<span style="color:#ff79c6">]</span><span style="color:#6272a4"># kubectl get pods openldap-858575df78-6kpgd</span> 
+NAME                        READY   STATUS    RESTARTS   AGE
+openldap-858575df78-6kpgd   <span style="color:#bd93f9">1</span>/1     Running   <span style="color:#bd93f9">0</span>          11m</code></pre></div>
+<p>STATUS为Running表示Pod运行正常</p>
+
+<h3 id="openldap端口开放和客户端连接">openldap端口开放和客户端连接</h3>
+
+<p>默认情况下openladp只能在kubernetes集群上通信，此处使用nodeport的方式进行端口开放
+直接修改集群openldap service</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ff79c6">[</span>user@S01 ~<span style="color:#ff79c6">]</span><span style="color:#6272a4"># kubectl get svc openldap</span> 
+NAME       TYPE       CLUSTER-IP       EXTERNAL-IP   PORT<span style="color:#ff79c6">(</span>S<span style="color:#ff79c6">)</span>                   AGE
+openldap   NodePort   <span style="color:#bd93f9">10</span>.109.187.113   &lt;none&gt;        <span style="color:#bd93f9">389</span>:389/TCP,636:636/TCP   50m
+
+<span style="color:#ff79c6">[</span>user@S01 ~<span style="color:#ff79c6">]</span><span style="color:#6272a4"># kubectl edit -n default svc openldap</span>
+
+<span style="color:#6272a4"># Please edit the object below. Lines beginning with a &#39;#&#39; will be ignored,</span>
+<span style="color:#6272a4"># and an empty file will abort the edit. If an error occurs while saving this file will be</span>
+<span style="color:#6272a4"># reopened with the relevant failures.</span>
+#
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: <span style="color:#f1fa8c">&#34;2019-08-16T06:37:24Z&#34;</span>
+  labels:
+    app: openldap
+    chart: openldap-1.1.0
+    heritage: Tiller
+    release: openldap
+  name: openldap
+  namespace: default
+  resourceVersion: <span style="color:#f1fa8c">&#34;9925276&#34;</span>
+  selfLink: /api/v1/namespaces/default/services/openldap
+  uid: 4eb64b71-bff0-11e9-97d3-525400eeff5c
+spec:
+  clusterIP: <span style="color:#bd93f9">10</span>.109.187.113
+  ports:
+  - name: ldap-port
+    port: <span style="color:#bd93f9">389</span>
+    nodePort: <span style="color:#bd93f9">389</span>
+    protocol: TCP
+    targetPort: ldap-port
+  - name: ssl-ldap-port
+    port: <span style="color:#bd93f9">636</span>
+    nodePort: <span style="color:#bd93f9">636</span>
+    protocol: TCP
+    targetPort: ssl-ldap-port
+  selector:
+    app: openldap
+    release: openldap
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: <span style="color:#ff79c6">{}</span></code></pre></div>
+<p>添加nodePort: 389 和nodePort: 636 并将type修改为NodePort ，默认情况下kubernetes开放的端口为30000-32768，需要开放其他端口需要修改kube-apiserver启动参数
+查看主机端口开放情况</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ff79c6">[</span>user@S01 ~<span style="color:#ff79c6">]</span><span style="color:#6272a4"># netstat -tnpl |grep :389</span>
+tcp6       <span style="color:#bd93f9">0</span>      <span style="color:#bd93f9">0</span> :::389                  :::*                    LISTEN      <span style="color:#bd93f9">5285</span>/kube-proxy     </code></pre></div>
+<p>下载客户端：<a href="https://gitee.com/k8sz/zb/raw/master/LdapAdmin.exe">LdapAdmin</a>
+打开客户端进行连接：
+<img src="https://www.k8sz.com/img/k8s/ldap001.png" alt="LdapAdmin" /></p>
+
+<ul>
+<li>点击Start或者图标，弹出Connections页面</li>
+<li>New connections添加一个新连接</li>
+<li>输入Connection name</li>
+<li>输入openldap Host IP或者域名（前提要域名能解释到Host IP）</li>
+<li>如果与Host连接正常，点击Fetch DNs会自动填充Base信息</li>
+<li>输入Username，如：cn=admin,dc=zb,dc=com  Password为我们安装openldap时admin的密码</li>
+<li>点击Test connection,所有信息填写正确，会弹出提示框提示Connection is successful.</li>
+<li>点击OK进行保存使用客户端登陆到openldap后就可以进行OU和用户创建</li>
+</ul>
+
+<h2 id="结语">结语</h2>
+
+<p>至此我们还有几个地方需要进行优化，最重要的就是数据持久化存储。</p>
+
+<p>接下来，会继续分享第三方应用使用ldap进行登陆</p>
+
+
+
+
+          
+
+ 
+          
+            <div class="entry-shang text-center">
+    <p>「真诚赞赏，手留余香」</p>
+    <button class="zs show-zs btn btn-bred">赞赏</button>
+</div>
+<div class="zs-modal-bg"></div>
+<div class="zs-modal-box">
+    <div class="zs-modal-head">
+        <button type="button" class="close">×</button>
+        <span class="author"><img src="https://www.k8sz.com/img/avatar.jpeg"/>ZB</span>
+        <p class="tip"><i></i><span>请我喝杯奶茶？</span></p>
+    </div>
+    <div class="zs-modal-body">
+
+        <div>
+           <img src="https://www.k8sz.com/img/zhuansuan.jpg" id="pay-image"/>
+        </div>
+
+    </div>
+    <div class="zs-modal-footer">
+        <span class="zs-wechat"><img src="https://www.k8sz.com/img/wechat-btn.png"/></span>
+    </div>
+</div>
+
+          
+
+          
+            <div class="social-share" data-initialized="true" style="margin-bottom: 20px;margin-top:20px;">
+    <center>
+    <font style="font-size:18px;color:darkcyan;">分享到：</font>
+    <a href="#" class="social-share-icon icon-weibo"></a>
+    <a href="#" class="social-share-icon icon-wechat"></a>
+
+    <a href="#" class="social-share-icon icon-linkedin"></a>
+
+
+    <a href="#" class="social-share-icon icon-qzone"></a>
+    </center>
+</div>
+ 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+          
+        </article>
+  
+        
+          
+
+<h3>相关文章</h3>
+<ul style="margin-bottom: 25px;">
+    
+    <li><a href="https://www.k8sz.com/post/sixregrets/">全文仅42个字道尽人生六大悔事</a></li>
+    
+    <li><a href="https://www.k8sz.com/post/kubernetesopenings/">Kubernetes 开篇</a></li>
+    
+</ul>
+
+        
+  
+        
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://www.k8sz.com/post/kubernetesopenings/" data-toggle="tooltip" data-placement="top" title="Kubernetes 开篇">&larr; 前一篇</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://www.k8sz.com/post/kuberneteskubeadm/" data-toggle="tooltip" data-placement="top" title="kubernetes之使用kubeadm安装1.15.4">后一篇 &rarr;</a>
+            </li>
+          
+        </ul>
+        
+
+        
+
+
+      </div>
+    
+    
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;
+          2019
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://www.k8sz.com/">ZB</a>
+            &nbsp;&bull;&nbsp;
+            <a href="https://www.k8sz.com/sitemap.xml">网站地图</a>
+            &nbsp;&bull;&nbsp;
+            <a href="https://www.k8sz.com/page/archive/">文章归档</a>
+            &nbsp;&bull;&nbsp;
+          
+        </p>
+
+        
+        <p class="credits theme-by text-muted">
+
+          由 <a href="http://gohugo.io">Hugo v0.55.6</a> 强力驱动 &nbsp;&bull;&nbsp; 主题 <a href="https://www.k8sz.com/">ZB的博客</a> 移植自 <a href="https://github.com/rootsongjc/beautifulhugo">Beautiful Hugo</a>
+
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src='https://www.k8sz.com/js/bundle.min.8242ab5c3c016acc49d8c7717b5c1a9f24511d0b9e5d1c0e44f2b907c76b5987.js' integrity='sha256-gkKrXDwBasxJ2Mdxe1wanyRRHQueXRwORPK5B8drWYc='></script>
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146440849-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-146440849-1');
+</script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+<script type="text/javascript">
+ 
+var a_idx = 0;
+jQuery(document).ready(function($) {
+    $("body").click(function(e) {
+        var a = new Array("Docker", "Kubernetes", "Prometheus", "Envoy", "Istio", "Service Mesh", "Cloud Native", "Golang", "DevOps");
+        var $i = $("<span />").text(a[a_idx]);
+        a_idx = (a_idx + 1) % a.length;
+        var x = e.pageX,
+        y = e.pageY;
+        function randomColor() {
+          var flakeColor = new Array("#FFDA65", "#00BFFF", "#BA55D3", "#FFA07A", "#87CEEB", "#FFB6C1");
+          var snowColor = flakeColor[Math.floor(flakeColor.length * Math.random())];
+          return snowColor;
+        }
+        $i.css({
+            "z-index": 999999999999999999999999999999999999999999999999999999999999999999999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": randomColor()
+        });
+        $("body").append($i);
+        $i.animate({
+            "top": y - 180,
+            "opacity": 0
+        },
+        1500,
+        function() {
+            $i.remove();
+        });
+    });
+});
+</script>
+
+
+<script type="text/javascript" src="https://www.k8sz.com/js/lightbox.js"></script>
+
+
+<script src="https://cdn.plyr.io/3.4.7/plyr.js"></script>
+<script>const player = new Plyr('#player');</script>
+
+
+  </body>
+</html>
+

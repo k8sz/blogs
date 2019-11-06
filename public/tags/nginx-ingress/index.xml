@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nginx-ingress on ZB</title>
+    <link>https://www.k8sz.com/tags/nginx-ingress/</link>
+    <description>Recent content in nginx-ingress on ZB</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 08 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.k8sz.com/tags/nginx-ingress/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>kubernetes之NginxIngress HTTPS自动化</title>
+      <link>https://www.k8sz.com/post/kubernetes-ingress-https/</link>
+      <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.k8sz.com/post/kubernetes-ingress-https/</guid>
+      <description>&lt;p&gt;cert-manager是本地&lt;a href=&#34;https://kubernetes.io/&#34;&gt;Kubernetes&lt;/a&gt;证书管理控制器。它可以帮助从各种来源颁发证书，例如 &lt;a href=&#34;https://letsencrypt.org/&#34;&gt;Let&amp;rsquo;s Encrypt&lt;/a&gt;，&lt;a href=&#34;https://www.vaultproject.io/&#34;&gt;HashiCorp Vault&lt;/a&gt;，&lt;a href=&#34;https://www.venafi.com/&#34;&gt;Venafi&lt;/a&gt;，简单签名密钥对或自签名&lt;/p&gt;
+
+&lt;p&gt;本文主要说明如何在kubernetes安装和设置cert-manager。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

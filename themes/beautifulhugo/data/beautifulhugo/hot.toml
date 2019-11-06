@@ -1,0 +1,35 @@
+[[posts]]
+url = "/post/sixregrets/"
+title = "全文仅42个字道尽人生六大悔事"
+cover = "/img/rs/SixRegrets.jpg"
+date = "Aug 14, 2019"
+
+[[posts]]
+url = "/post/kubernetes-drone-install/"
+title = "kubernetes CI/CD之drone安装"
+cover = "/img/k8s/drone001.png"
+date = "Aug 27, 2019"
+
+[[posts]]
+url = "/post/kubernetesgogs/"
+title = "kubernetes之gogs安装"
+cover = "/img/k8s/gogs006.png"
+date = "Aug 26, 2019"
+
+[[posts]]
+url = "/post/kuberneteshelm/"
+title = "kubernetes之Helm安装"
+cover = "/img/sphere-thumb.jpg"
+date = "Aug 17, 2019"
+
+[[posts]]
+url = "/post/kuberneteskubeadm/"
+title = "kubernetes之使用kubeadm安装1.15.4"
+cover = "/img/triangle-thumb.jpg"
+date = "Aug 17, 2019"
+
+[[posts]]
+url = "/post/kubernetesldap/"
+title = "kubernetes之LDAP安装"
+cover = "/img/k8s/ldap001.png"
+date = "Aug 16, 2019"
